@@ -9,6 +9,28 @@ package br.com.credru.model;
  *
  * @author Soriano
  */
-public class TipoUsuario {
+public enum TipoUsuario {
+    ADMIN(1, "Permissão realizada somente pelo Administrador"),
+    USER(2, "Permissão realizada somente pelo Usuário");
     
+    private final int id;
+    private final String msgErro;
+    
+    private TipoUsuario(int id, String msgErro){
+        this.id = id;
+        this.msgErro = msgErro;
+    }
+    
+    public static String getMsgErro(TipoUsuario tipoUsuario){
+        return tipoUsuario.msgErro;
+    }
+    
+    public static String getMsgErro(int id){
+        for(TipoUsuario user : TipoUsuario.values()){
+            if( id == user.id){
+                return user.msgErro;
+            }
+        }
+        throw new IllegalArgumentException("Id não encontrado");
+    }
 }
