@@ -5,8 +5,6 @@
  */
 package br.com.credru.model;
 
-import jdk.nashorn.internal.codegen.CompilerConstants;
-
 /**
  *
  * @author Soriano

@@ -12,6 +12,7 @@ import java.util.ArrayList;
  * @author Soriano
  */
 public class Refeicao {
+    private String nome;
     private final Turno turno;
     private ArrayList<Alimento> alimentos;
     
@@ -30,6 +31,13 @@ public class Refeicao {
     public Turno getTurno() {
         return turno;
     }
-    
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
     
 }

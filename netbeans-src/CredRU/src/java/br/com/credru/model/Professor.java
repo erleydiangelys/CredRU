@@ -10,5 +10,19 @@ package br.com.credru.model;
  * @author Soriano
  */
 public class Professor {
+    private Usuario user;
+    
+    public Professor(){
+        
+    }
+
+    public Usuario getUser() {
+        return user;
+    }
+
+    public void setUser(Usuario user) {
+        this.user = user;
+    }
+    
     
 }
