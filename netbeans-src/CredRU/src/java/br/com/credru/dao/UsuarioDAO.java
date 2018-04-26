@@ -13,13 +13,13 @@ import java.util.ArrayList;
  * @author Soriano
  */
 public class UsuarioDAO {
-    ArrayList<Usuario> usuarios;
+    private static ArrayList<Usuario> usuarios = new ArrayList<>();
     
     public UsuarioDAO(){
-        usuarios = new ArrayList<>();
+        
     }
     
-    public Usuario getUsuario(String username){
+    public static Usuario getUsuario(String username){
         for(Usuario u : usuarios){
             if(u.getUser().equals(username)){
                 return u;
@@ -28,7 +28,11 @@ public class UsuarioDAO {
         return null;
     }
     
-    public ArrayList<Usuario> getUsuario(){
+    public static ArrayList<Usuario> getUsuario(){
         return (ArrayList<Usuario>) usuarios.clone();
+    }
+    
+    public static void setUsuario(Usuario user){
+        usuarios.add(user);
     }
 }

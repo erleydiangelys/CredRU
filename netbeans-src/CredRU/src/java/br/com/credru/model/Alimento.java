@@ -10,6 +10,7 @@ package br.com.credru.model;
  * @author Soriano
  */
 public class Alimento {
+    private long id;
     private String nome;
     private float pesoG;
     private float valorCalorico;
@@ -58,6 +59,14 @@ public class Alimento {
 
     public void setMarca(String marca) {
         this.marca = marca;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
     
     
