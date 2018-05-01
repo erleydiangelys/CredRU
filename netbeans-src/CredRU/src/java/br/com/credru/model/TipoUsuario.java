@@ -10,27 +10,26 @@ package br.com.credru.model;
  * @author Soriano
  */
 public enum TipoUsuario {
-    ADMIN(1, "Permissão realizada somente pelo Administrador"),
-    USER(2, "Permissão realizada somente pelo Usuário");
+    ADMIN(1),
+    USER(2),
+    NUTRICIONISTA(3);
     
     private final int id;
-    private final String msgErro;
     
-    private TipoUsuario(int id, String msgErro){
+    private TipoUsuario(int id){
         this.id = id;
-        this.msgErro = msgErro;
     }
     
-    public static String getMsgErro(TipoUsuario tipoUsuario){
-        return tipoUsuario.msgErro;
-    }
-    
-    public static String getMsgErro(int id){
-        for(TipoUsuario user : TipoUsuario.values()){
-            if( id == user.id){
-                return user.msgErro;
+    public static TipoUsuario getTipoUsuario(int id){
+        for(TipoUsuario u : TipoUsuario.values()){
+            if(u.id == id){
+                return u;
             }
         }
-        throw new IllegalArgumentException("Id não encontrado");
+        throw new IllegalArgumentException("O id passado não corresponde a nenhum Tipo de Usuário");
+    }
+    
+    public static int getId(TipoUsuario user){
+        return user.id;
     }
 }

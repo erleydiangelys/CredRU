@@ -5,13 +5,28 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+<%
+    if (request.getParameter("sairbtn") != null) {
+        session.removeAttribute("usuario");
+    }
+%>
+
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Cred. RU</title>
+        <link rel="stylesheet" href="../assets/css/credru.css">
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <jsp:include page="include/header.jsp"></jsp:include>
+        
+        blah blah blah ...<br>
+        blah blah blah ...<br>
+        blah blah blah ...<br>
+        blah blah blah ...<br>
+        
+        <jsp:include page="include/footer.jsp"></jsp:include>
     </body>
 </html>

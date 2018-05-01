@@ -21,7 +21,16 @@ public class UsuarioDAO {
     
     public static Usuario getUsuario(String username){
         for(Usuario u : usuarios){
-            if(u.getUser().equals(username)){
+            if(u.getUserName().equals(username)){
+                return u;
+            }
+        }
+        return null;
+    }
+    
+    public static Usuario getUsuario(String username, String senha){
+        for(Usuario u : usuarios){
+            if(u.getUserName().equals(username) && u.getSenha().equals(senha)){
                 return u;
             }
         }

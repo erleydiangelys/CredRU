@@ -11,7 +11,7 @@ package br.com.credru.model;
  */
 public class Usuario {
     private String nome;
-    private String user;
+    private String userName;
     private String senha;
     private String cpf;
     private int creditos;
@@ -39,12 +39,12 @@ public class Usuario {
         this.creditos = creditos;
     }
 
-    public void setUser(String user){
-        this.user = user;
+    public void setUserName(String userName){
+        this.userName = userName;
     }
     
-    public String getUser() {
-        return user;
+    public String getUserName() {
+        return userName;
     }
 
     public void setTipoComprador(TipoComprador tipoComprador) {
