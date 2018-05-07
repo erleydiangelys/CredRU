@@ -11,8 +11,9 @@ package br.com.credru.model;
  */
 public enum TipoUsuario {
     ADMIN(1),
-    USER(2),
-    NUTRICIONISTA(3);
+    COMPRADOR(2),
+    NUTRICIONISTA(3),
+    SCANIADOR(4);
     
     private final int id;
     

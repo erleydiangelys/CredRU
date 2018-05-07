@@ -10,7 +10,7 @@ package br.com.credru.model;
  * @author Soriano
  */
 public class Aluno {
-    private Usuario user;
+    private Usuario usuario;
     private long matricula;
     private String curso;
     private boolean inativo;
@@ -21,17 +21,17 @@ public class Aluno {
         this.inativo = false;
     }
     
-    public Aluno(Usuario user) {
+    public Aluno(Usuario usuario) {
         this();
-        this.user = user;
+        this.usuario = usuario;
     }
 
-    public Usuario getUser() {
-        return user;
+    public Usuario getUsuario() {
+        return usuario;
     }
 
-    public void setUser(Usuario user) {
-        this.user = user;
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
     public long getMatricula() {

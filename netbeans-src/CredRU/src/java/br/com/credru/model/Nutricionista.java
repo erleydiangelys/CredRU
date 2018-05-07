@@ -9,11 +9,11 @@ package br.com.credru.model;
  *
  * @author Soriano
  */
-public class Professor {
+public class Nutricionista {
     private Usuario usuario;
-    private long siape;
-    
-    public Professor(){
+    private long crn;
+
+    public Nutricionista() {
         
     }
 
@@ -25,12 +25,23 @@ public class Professor {
         this.usuario = usuario;
     }
 
-    public long getSiape() {
-        return siape;
+    public long getCrn() {
+        return crn;
     }
 
-    public void setSiape(long siape) {
-        this.siape = siape;
+    public void setCrn(long crn) {
+        this.crn = crn;
     }
     
+    public void cadastrarAlimento(){
+        
+    }
+    
+    public void cadastrarRefeicao(){
+        
+    }
+    
+    public void cadastrarIgrediente(){
+        
+    }
 }

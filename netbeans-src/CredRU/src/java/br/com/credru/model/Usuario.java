@@ -12,15 +12,39 @@ package br.com.credru.model;
 public class Usuario {
     private String nome;
     private String userName;
+    private String email;
     private String senha;
     private String cpf;
-    private int creditos;
-    private TipoComprador tipoComprador;
-    private final TipoUsuario tipoUsuario;
-    
-    public Usuario(TipoComprador tipoComprador, TipoUsuario tipoUsuario) {
-        this.tipoComprador = tipoComprador;
-        this.tipoUsuario = tipoUsuario;
+    private int credito;
+    private TipoUsuario tipoUsuario;
+    private Perfil perfil;
+
+    public Usuario() {
+
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getSenha() {
@@ -31,34 +55,6 @@ public class Usuario {
         this.senha = senha;
     }
 
-    public int getCreditos() {
-        return creditos;
-    }
-
-    public void setCreditos(int creditos) {
-        this.creditos = creditos;
-    }
-
-    public void setUserName(String userName){
-        this.userName = userName;
-    }
-    
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setTipoComprador(TipoComprador tipoComprador) {
-        this.tipoComprador = tipoComprador;
-    }
-
-    public TipoComprador getTipoComprador() {
-        return tipoComprador;
-    }
-
-    public TipoUsuario getTipoUsuario() {
-        return tipoUsuario;
-    }
-
     public String getCpf() {
         return cpf;
     }
@@ -67,13 +63,28 @@ public class Usuario {
         this.cpf = cpf;
     }
 
-    public String getNome() {
-        return nome;
+    public int getCredito() {
+        return credito;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setCredito(int credito) {
+        this.credito = credito;
     }
-    
-    
+
+    public TipoUsuario getTipoUsuario() {
+        return tipoUsuario;
+    }
+
+    public void setTipoUsuario(TipoUsuario tipoUsuario) {
+        this.tipoUsuario = tipoUsuario;
+    }
+
+    public Perfil getPerfil() {
+        return perfil;
+    }
+
+    public void setPerfil(Perfil perfil) {
+        this.perfil = perfil;
+    }
+     
 }

@@ -10,19 +10,29 @@ package br.com.credru.model;
  * @author Soriano
  */
 public class Servidor {
-    private Usuario user;
+    private Usuario usuario;
+    private long carteiraDeTrabalho;
     
     public Servidor(){
         
     }
 
-    public Usuario getUser() {
-        return user;
+    public Usuario getUsuario() {
+        return usuario;
     }
 
-    public void setUser(Usuario user) {
-        this.user = user;
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
+
+    public long getCarteiraDeTrabalho() {
+        return carteiraDeTrabalho;
+    }
+
+    public void setCarteiraDeTrabalho(long carteiraDeTrabalho) {
+        this.carteiraDeTrabalho = carteiraDeTrabalho;
+    }
+    
     
     
 }
