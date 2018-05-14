@@ -6,13 +6,14 @@
 package br.com.credru.model;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 /**
  *
  * @author Soriano
  */
-public class Refeicao {
-    private Periodo periodo;
-    private LocalDate data;
-    private ArrayList<Alimento> alimentos;
+public class RestauranteUni {
+    private String nome;
+    private ArrayList<Horario> horarios;
+    private Map<String, ArrayList<Refeicao>> refeicoes;
 }

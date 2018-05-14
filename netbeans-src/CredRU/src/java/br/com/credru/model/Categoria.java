@@ -3,12 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.credru.dao;
+package br.com.credru.model;
 
 /**
  *
  * @author Soriano
  */
-public class RefeicaoDAO {
-    
+public enum Categoria {
+    PRINCIPAL,
+    VEGETARIANO,
+    SALADA,
+    GUARDINACAO,
+    ACOMPANHAMENTO,
+    SUCO,
+    SOBREMESA;
 }

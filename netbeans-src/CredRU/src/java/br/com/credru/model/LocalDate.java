@@ -9,9 +9,8 @@ package br.com.credru.model;
  *
  * @author Soriano
  */
-public class Scaniador extends Servidor{
-    
-    public void debitarCredito(Usuario comprador){
-        
-    }
+public class LocalDate {
+    private int dia;
+    private int mes;
+    private int ano;
 }

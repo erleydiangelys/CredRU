@@ -9,6 +9,8 @@ package br.com.credru.model;
  *
  * @author Soriano
  */
-public class Ingrediente {
-    
+public enum Periodo {
+    MANHA,
+    TARDE,
+    NOITE;
 }
