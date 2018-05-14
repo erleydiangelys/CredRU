@@ -10,8 +10,8 @@ package br.com.credru.model;
  * @author Soriano
  */
 public enum NivelAcesso {
-    ADMIN,
+    ADMINISTRADOR,
     COMPRADOR,
     NUTRICIONISTA,
-    SCANIADOR;
+    ESCANEADOR;
 }

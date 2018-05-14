@@ -1,21 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
-    <servlet>
-        <servlet-name>Controller</servlet-name>
-        <servlet-class>br.com.credru.servlet.Controller</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>Controller</servlet-name>
-        <url-pattern>/Controller</url-pattern>
-    </servlet-mapping>
+    
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
+    
     <welcome-file-list>
         <welcome-file>
             index.jsp
         </welcome-file>
     </welcome-file-list>
+    
+    <servlet>
+        <servlet-name>Controller</servlet-name>
+        <servlet-class>br.com.credru.servlet.Controller</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Administrador</servlet-name>
+        <servlet-class>br.com.credru.servlet.Administrador</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Nutricionista</servlet-name>
+        <servlet-class>br.com.credru.servlet.Nutricionista</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Escaneador</servlet-name>
+        <servlet-class>br.com.credru.servlet.Escaneador</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Comprador</servlet-name>
+        <servlet-class>br.com.credru.servlet.Comprador</servlet-class>
+    </servlet>
+    
+    
+    <servlet-mapping>
+        <servlet-name>Controller</servlet-name>
+        <url-pattern>/Controller</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Administrador</servlet-name>
+        <url-pattern>/Administrador</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Nutricionista</servlet-name>
+        <url-pattern>/Nutricionista</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Escaneador</servlet-name>
+        <url-pattern>/Escaneador</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Comprador</servlet-name>
+        <url-pattern>/Comprador</url-pattern>
+    </servlet-mapping>
+    
 </web-app>
