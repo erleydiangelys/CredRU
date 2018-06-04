@@ -5,6 +5,8 @@
  */
 package br.com.credru.servlet;
 
+import br.com.credru.comando.Comando;
+import br.com.credru.comando.PaginaNaoEncontrada;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -19,7 +21,20 @@ public class Comprador extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+        Comando paginaRequisitada = new PaginaNaoEncontrada();
+
+        try {
+
+            paginaRequisitada = (Comando) Class.forName("br.com.credru.comando." + request.getParameter("comando")).newInstance();
+
+        } catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
+            e.printStackTrace();
+        } finally {
+
+            paginaRequisitada.execute(request, response);
+
+        }
+
     }
 
     @Override

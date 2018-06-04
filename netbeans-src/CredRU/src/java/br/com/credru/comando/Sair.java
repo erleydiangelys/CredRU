@@ -3,30 +3,32 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.credru.comando.administrador;
+package br.com.credru.comando;
 
-import br.com.credru.comando.Comando;
 import java.io.IOException;
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Soriano
  */
-public class Index implements Comando{
+public class Sair implements Comando{
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) {
+        HttpSession session = request.getSession();
+        session.removeAttribute("usuario");
+        
         try {
-            RequestDispatcher d = request.getRequestDispatcher("administrador/index.jsp");
-            d.forward(request,response);
-            
-        } catch (IOException | ServletException e) {
-            e.printStackTrace();
+            response.sendRedirect("Visitante");
+        } catch (IOException ex) {
+            Logger.getLogger(Sair.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
     }
     
 }

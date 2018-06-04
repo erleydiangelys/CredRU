@@ -20,4 +20,70 @@ public class Usuario {
     private boolean ativo;
     private ArrayList<Transacao> transacoes;
     private NivelAcesso nivelAcesso;
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    public int getCredito() {
+        return credito;
+    }
+
+    public void setCredito(int credito) {
+        this.credito = credito;
+    }
+
+    public Perfil getPerfil() {
+        return perfil;
+    }
+
+    public void setPerfil(Perfil perfil) {
+        this.perfil = perfil;
+    }
+
+    public boolean isAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(boolean ativo) {
+        this.ativo = ativo;
+    }
+
+    public ArrayList<Transacao> getTransacoes() {
+        return transacoes;
+    }
+
+    public void setTransacoes(ArrayList<Transacao> transacoes) {
+        this.transacoes = transacoes;
+    }
+
+    public NivelAcesso getNivelAcesso() {
+        return nivelAcesso;
+    }
+
+    public void setNivelAcesso(NivelAcesso nivelAcesso) {
+        this.nivelAcesso = nivelAcesso;
+    }
+    
+    
 }

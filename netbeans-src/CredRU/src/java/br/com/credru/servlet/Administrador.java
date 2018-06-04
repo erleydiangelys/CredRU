@@ -6,7 +6,7 @@
 package br.com.credru.servlet;
 
 import br.com.credru.comando.Comando;
-import br.com.credru.comando.NaoEncontrado;
+import br.com.credru.comando.PaginaNaoEncontrada;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -23,13 +23,13 @@ public class Administrador extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //Executa o Comando conforme a URL
-        Comando comando = new NaoEncontrado();
+        Comando comando = new PaginaNaoEncontrada();
         
 	try {
             PrintWriter out = response.getWriter();
             out.print("Pagina do Administrador");
             
-            comando = (Comando)Class.forName("br.com.credru.administrador."+request.getParameter("command")).newInstance();
+            comando = (Comando)Class.forName("br.com.credru.administrador."+request.getParameter("comando")).newInstance();
 	} catch (InstantiationException e) {
 		e.printStackTrace();
 	} catch (IllegalAccessException e) {
