@@ -15,14 +15,14 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Soriano
  */
-public class NaoEncontrado implements Comando{
+public class Inicio implements Comando{
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) {
         try {
-            RequestDispatcher d = request.getRequestDispatcher("paginaNaoEncontrada.jsp");
-            d.forward(request,response);
-            
+            RequestDispatcher d = request.getRequestDispatcher("index.jsp");
+            d.forward(request, response);
+
         } catch (IOException | ServletException e) {
             e.printStackTrace();
         }
