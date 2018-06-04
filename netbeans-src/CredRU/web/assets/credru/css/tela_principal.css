@@ -1,0 +1,8 @@
+.hero-body {
+  background-image: url(../img/p_fundo.jpg);
+}
+
+nav.navbar {
+  border-top: 4px solid #276cda;
+  margin-bottom: 0rem;
+}
