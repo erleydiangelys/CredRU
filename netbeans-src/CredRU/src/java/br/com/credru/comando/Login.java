@@ -30,10 +30,12 @@ public class Login implements Comando {
         if (request.getParameter("username") != null && request.getParameter("senha") != null) {
             String username = request.getParameter("username");
             String senha = request.getParameter("senha");
-
+            
             UsuarioDAO dao = new UsuarioDAOList();
             Usuario user = null;
-
+            
+            
+            
             user = dao.getUsuario(username, senha);
 
             if (user != null) {
@@ -77,6 +79,13 @@ public class Login implements Comando {
             } else {
                 //Usuário não encontrado
                 request.setAttribute("errou", true);
+                try {
+                    RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
+                    rd.forward(request, response);
+
+                } catch (IOException | ServletException e) {
+                    e.printStackTrace();
+                }
             }
 
         } else {
