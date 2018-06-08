@@ -9,6 +9,6 @@ package br.com.credru.dao;
  *
  * @author Soriano
  */
-public interface AlimentoDAO {
+public class PerfilDAOList implements PerfilDAO{
     
 }

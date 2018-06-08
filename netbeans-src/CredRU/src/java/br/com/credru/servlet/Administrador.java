@@ -26,10 +26,9 @@ public class Administrador extends HttpServlet {
         Comando comando = new PaginaNaoEncontrada();
         
 	try {
-            PrintWriter out = response.getWriter();
-            out.print("Pagina do Administrador");
             
             comando = (Comando)Class.forName("br.com.credru.administrador."+request.getParameter("comando")).newInstance();
+            
 	} catch (InstantiationException e) {
 		e.printStackTrace();
 	} catch (IllegalAccessException e) {
@@ -37,6 +36,7 @@ public class Administrador extends HttpServlet {
 	} catch (ClassNotFoundException e) {
 		e.printStackTrace();
 	} finally {
+            
             comando.execute(request, response);
         }
 

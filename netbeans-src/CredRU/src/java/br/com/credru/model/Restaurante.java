@@ -12,7 +12,7 @@ import java.util.Map;
  *
  * @author Soriano
  */
-public class RestauranteUni {
+public class Restaurante {
     private String nome;
     private ArrayList<Horario> horarios;
     private Map<String, ArrayList<Refeicao>> refeicoes;

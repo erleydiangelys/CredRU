@@ -9,36 +9,36 @@ package br.com.credru.dao;
  *
  * @author Soriano
  */
-public class FabricaDAOList implements FabricaDAOInterface{
+public class FabricaDAOMySQL implements FabricaDAOInterface{
 
     @Override
     public AlimentoDAO getAlimento() {
-        return new AlimentoDAOList();
+        return new AlimentoDAOMySQL();
     }
 
     @Override
     public PerfilDAO getPerfil() {
-        return new PerfilDAOList();
+        return new PerfilDAOMySQL();
     }
 
     @Override
     public RefeicaoDAO getRefeicao() {
-        return new RefeicaoDAOList();
+        return new RefeicaoDAOMySQL();
     }
 
     @Override
     public RestauranteDAO getRestaurante() {
-        return new RestauranteDAOList();
+        return new RestauranteDAOMySQL();
     }
 
     @Override
     public TransacaoDAO getTransacao() {
-        return new TransacaoDAOList();
+        return new TransacaoDAOMySQL();
     }
 
     @Override
     public UsuarioDAO getUsuario() {
-        return new UsuarioDAOList();
+        return new UsuarioDAOMySQL();
     }
     
 }

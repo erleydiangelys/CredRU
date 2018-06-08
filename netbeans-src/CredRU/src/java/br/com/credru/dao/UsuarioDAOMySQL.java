@@ -5,10 +5,17 @@
  */
 package br.com.credru.dao;
 
+import br.com.credru.model.Usuario;
+
 /**
  *
  * @author Soriano
  */
-public class UsuarioDAOMySQL {
+public class UsuarioDAOMySQL implements UsuarioDAO{
+
+    @Override
+    public Usuario getUsuario(String username, String senha) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }
