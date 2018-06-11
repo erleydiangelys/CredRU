@@ -6,6 +6,7 @@
 package br.com.credru.dao;
 
 import br.com.credru.model.Usuario;
+import java.util.List;
 
 /**
  *
@@ -15,6 +16,7 @@ public interface UsuarioDAO {
     public boolean setUsuario(Usuario user);
     public Usuario getUsuario(String username);
     public Usuario getUsuario(String username, String senha);
+    public List<Usuario> getUsuario();
     public boolean editUsuario(Usuario u1, Usuario u2);
     public boolean removeUsuario(Usuario user);
 }

@@ -21,6 +21,9 @@ public class Usuario {
     private ArrayList<Transacao> transacoes;
     private NivelAcesso nivelAcesso;
 
+    public Usuario() {
+    }
+
     public String getNome() {
         return nome;
     }

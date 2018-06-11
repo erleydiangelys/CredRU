@@ -15,4 +15,32 @@ public class Refeicao {
     private Periodo periodo;
     private LocalDate data;
     private ArrayList<Alimento> alimentos;
+
+    public Refeicao() {
+    }
+
+    public Periodo getPeriodo() {
+        return periodo;
+    }
+
+    public void setPeriodo(Periodo periodo) {
+        this.periodo = periodo;
+    }
+
+    public LocalDate getData() {
+        return data;
+    }
+
+    public void setData(LocalDate data) {
+        this.data = data;
+    }
+
+    public ArrayList<Alimento> getAlimentos() {
+        return alimentos;
+    }
+
+    public void setAlimentos(ArrayList<Alimento> alimentos) {
+        this.alimentos = alimentos;
+    }
+    
 }
