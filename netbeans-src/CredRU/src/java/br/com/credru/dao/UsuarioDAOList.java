@@ -6,6 +6,8 @@
 package br.com.credru.dao;
 
 import br.com.credru.model.Usuario;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -13,9 +15,16 @@ import br.com.credru.model.Usuario;
  */
 public class UsuarioDAOList implements UsuarioDAO{
 
+    private static List<Usuario> usuarios = new ArrayList<Usuario>();
+    
     @Override
     public Usuario getUsuario(String username, String senha) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        for(Usuario u : UsuarioDAOList.usuarios){
+            if(u.getUserName().equals(username) && u.getSenha().equals(senha)){
+                return u;
+            }
+        }
+        return null;
     }
     
 }
