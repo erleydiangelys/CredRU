@@ -46,14 +46,11 @@ public class PerfilDAOList implements PerfilDAO{
     @Override
     public boolean editPerfil(Perfil p1, Perfil p2) {
         if(TipoPerfil.getCodigo(p1.getTipo()) == TipoPerfil.getCodigo(p2.getTipo()) || getPerfil(p2.getTipo()) == null){
-            
-        }
-        if (u1.getUserName().equals(u2.getUserName()) || (this.getUsuario(u2.getUserName())==null)){
-            for(int i = 0; i < UsuarioDAOList.usuarios.size(); i++){
-                Usuario temp = UsuarioDAOList.usuarios.get(i);
-
-                if(temp.getUserName().equals(u1.getUserName())){
-                    UsuarioDAOList.usuarios.set(i, u2);
+            for(int i = 0; i < PerfilDAOList.perfis.size(); i++){
+                Perfil temp = PerfilDAOList.perfis.get(i);
+                
+                if(TipoPerfil.getCodigo(temp.getTipo()) == TipoPerfil.getCodigo(p1.getTipo())){
+                    PerfilDAOList.perfis.set(i, p2);
                     return true;
                 }
             }
@@ -63,6 +60,14 @@ public class PerfilDAOList implements PerfilDAO{
 
     @Override
     public boolean removerPerfil(Perfil p) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        for(int i = 0; i < PerfilDAOList.perfis.size(); i++){
+            Perfil temp = PerfilDAOList.perfis.get(i);
+            
+            if(TipoPerfil.getCodigo(temp.getTipo()) == TipoPerfil.getCodigo(p.getTipo())){
+                PerfilDAOList.perfis.remove(i);
+                return true;
+            }
+        }
+        return false;
     }
 }

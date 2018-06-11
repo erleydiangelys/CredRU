@@ -12,7 +12,6 @@ package br.com.credru.model;
 public class Horario {
     private LocalTime horaInicio;
     private LocalTime horaFim;
-    private Periodo periodo;
 
     public Horario() {
         

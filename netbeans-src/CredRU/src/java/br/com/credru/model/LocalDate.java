@@ -15,6 +15,9 @@ public class LocalDate {
     private int ano;
 
     public LocalDate() {
+        this.dia = 0;
+        this.mes = 0;
+        this.ano = 0;
     }
 
     public int getDia() {
@@ -40,5 +43,17 @@ public class LocalDate {
     public void setAno(int ano) {
         this.ano = ano;
     }
+
+    @Override
+    public String toString() {
+        String resultado = "";
+        
+        resultado += Integer.toString(this.dia) + "/";
+        resultado += Integer.toString(this.mes) + "/";
+        resultado += Integer.toString(this.ano);
+        
+        return resultado;
+    }
+    
     
 }

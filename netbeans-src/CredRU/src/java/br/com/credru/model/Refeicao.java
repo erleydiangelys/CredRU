@@ -12,19 +12,20 @@ import java.util.ArrayList;
  * @author Soriano
  */
 public class Refeicao {
-    private Periodo periodo;
+    private Horario horario;
     private LocalDate data;
     private ArrayList<Alimento> alimentos;
 
     public Refeicao() {
+        
     }
 
-    public Periodo getPeriodo() {
-        return periodo;
+    public Horario getHorario() {
+        return horario;
     }
 
-    public void setPeriodo(Periodo periodo) {
-        this.periodo = periodo;
+    public void setHorario(Horario horario) {
+        this.horario = horario;
     }
 
     public LocalDate getData() {

@@ -15,6 +15,9 @@ public class LocalTime {
     private int hora;
 
     public LocalTime() {
+        this.hora = 0;
+        this.minuto = 0;
+        this.hora = 0;
     }
 
     public int getSegundo() {
@@ -39,6 +42,17 @@ public class LocalTime {
 
     public void setHora(int hora) {
         this.hora = hora;
+    }
+
+    @Override
+    public String toString() {
+        String resultado = "";
+        
+        resultado += Integer.toString(this.segundo) + ":";
+        resultado += Integer.toString(this.minuto) + ":";
+        resultado += Integer.toString(this.hora);
+        
+        return resultado;
     }
     
 }
