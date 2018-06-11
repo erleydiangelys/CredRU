@@ -80,7 +80,7 @@ public class UsuarioDAOList implements UsuarioDAO{
 
     @Override
     public List<Usuario> getUsuario() {
-        return UsuarioDAOList.usuarios;
+        return new ArrayList<>(UsuarioDAOList.usuarios);
     }
     
 }
