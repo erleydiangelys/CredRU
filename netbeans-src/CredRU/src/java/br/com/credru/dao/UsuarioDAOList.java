@@ -26,5 +26,53 @@ public class UsuarioDAOList implements UsuarioDAO{
         }
         return null;
     }
+
+    @Override
+    public boolean setUsuario(Usuario user) {
+        for(Usuario u : usuarios){
+            if(u.getUserName().equals(user.getUserName())){
+                return false;
+            }
+        }
+        
+        UsuarioDAOList.usuarios.add(user);
+        return true;
+    }
+
+    @Override
+    public Usuario getUsuario(String username) {
+        for(Usuario u : usuarios){
+            if(u.getUserName().equals(username)){
+                return u;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public boolean editUsuario(Usuario u1, Usuario u2) {
+        for(int i = 0; i < UsuarioDAOList.usuarios.size(); i++){
+            Usuario temp = UsuarioDAOList.usuarios.get(i);
+            
+            if(temp.getUserName().equals(u1.getUserName())){
+                UsuarioDAOList.usuarios.set(i, u2);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public boolean removeUsuario(Usuario user) {
+        for(int i = 0; i < UsuarioDAOList.usuarios.size(); i++){
+            Usuario temp = UsuarioDAOList.usuarios.get(i);
+            
+            if(temp.getUserName().equals(user.getUserName())){
+                UsuarioDAOList.usuarios.remove(i);
+                return true;
+            }
+        }
+        return false;
+    }
     
 }

@@ -12,5 +12,9 @@ import br.com.credru.model.Usuario;
  * @author Soriano
  */
 public interface UsuarioDAO {
+    public boolean setUsuario(Usuario user);
+    public Usuario getUsuario(String username);
     public Usuario getUsuario(String username, String senha);
+    public boolean editUsuario(Usuario u1, Usuario u2);
+    public boolean removeUsuario(Usuario user);
 }

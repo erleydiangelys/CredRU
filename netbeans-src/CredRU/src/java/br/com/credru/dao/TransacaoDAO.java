@@ -5,10 +5,11 @@
  */
 package br.com.credru.dao;
 
+
 /**
  *
  * @author Soriano
  */
 public interface TransacaoDAO {
-    
+
 }
