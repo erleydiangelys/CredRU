@@ -26,27 +26,15 @@ public class Cadastrar {
     private static RestauranteDAO resdao = new FabricaDAO().getRestaurante();
     
     public static boolean cadastarUsuario ( Usuario u){
-        if (usudao.setUsuario(u)){
-            return true;
-        }
-        return false;
+        return usudao.setUsuario(u);
     }
     public static boolean cadastrarAlimento ( Alimento al){
-        if (alidao.setAlimento(al)){
-            return true;
-        }
-        return false;
+        return alidao.setAlimento(al);
     }
     public static boolean cadastrarRestaurante ( Restaurante res){
-        if (resdao.setRestaurante(res)){
-            return true;
-        }
-        return false;
+        return resdao.setRestaurante(res);
     }
     public static boolean cadastrarRefeicao ( Refeicao ref){
-        if (refdao.setRefeicao(ref)){
-            return true;
-        }
-        return false;
+        return refdao.setRefeicao(ref);
     }
 }
