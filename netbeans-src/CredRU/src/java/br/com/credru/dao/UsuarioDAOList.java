@@ -51,15 +51,18 @@ public class UsuarioDAOList implements UsuarioDAO{
 
     @Override
     public boolean editUsuario(Usuario u1, Usuario u2) {
-        for(int i = 0; i < UsuarioDAOList.usuarios.size(); i++){
-            Usuario temp = UsuarioDAOList.usuarios.get(i);
-            
-            if(temp.getUserName().equals(u1.getUserName())){
-                UsuarioDAOList.usuarios.set(i, u2);
-                return true;
+        if (u1.getUserName().equals(u2.getUserName()) || (this.getUsuario(u2.getUserName())==null)){
+            for(int i = 0; i < UsuarioDAOList.usuarios.size(); i++){
+                Usuario temp = UsuarioDAOList.usuarios.get(i);
+
+                if(temp.getUserName().equals(u1.getUserName())){
+                    UsuarioDAOList.usuarios.set(i, u2);
+                    return true;
+                }
             }
         }
         return false;
+        
     }
 
     @Override
@@ -73,6 +76,11 @@ public class UsuarioDAOList implements UsuarioDAO{
             }
         }
         return false;
+    }
+
+    @Override
+    public List<Usuario> getUsuario() {
+        return UsuarioDAOList.usuarios;
     }
     
 }
