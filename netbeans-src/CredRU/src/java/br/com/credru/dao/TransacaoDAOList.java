@@ -5,10 +5,15 @@
  */
 package br.com.credru.dao;
 
+import br.com.credru.model.Transacao;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Soriano
  */
 public class TransacaoDAOList implements TransacaoDAO{
+    private static List<Transacao> transacoes = new ArrayList<Transacao>();
     
 }

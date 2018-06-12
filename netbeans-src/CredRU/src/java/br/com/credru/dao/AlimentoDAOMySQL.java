@@ -8,6 +8,8 @@ package br.com.credru.dao;
 import br.com.credru.model.Alimento;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.List;
+
 
 /**
  *
@@ -32,6 +34,30 @@ public class AlimentoDAOMySQL extends Conexao implements AlimentoDAO{
         }
         
     }
+    
+    @Override
+    public boolean setAlimento(Alimento a) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
+    @Override
+    public Alimento getAlimento(String nome) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
+    @Override
+    public List<Alimento> getAlimento() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean editAlimento(Alimento a1, Alimento a2) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean removeAlimento(Alimento a) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+   
 }
