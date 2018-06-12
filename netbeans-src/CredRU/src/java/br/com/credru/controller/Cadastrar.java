@@ -7,12 +7,16 @@ package br.com.credru.controller;
 
 import br.com.credru.dao.AlimentoDAO;
 import br.com.credru.dao.FabricaDAO;
+import br.com.credru.dao.PerfilDAO;
 import br.com.credru.dao.RefeicaoDAO;
 import br.com.credru.dao.RestauranteDAO;
+import br.com.credru.dao.TransacaoDAO;
 import br.com.credru.dao.UsuarioDAO;
 import br.com.credru.model.Alimento;
+import br.com.credru.model.Perfil;
 import br.com.credru.model.Refeicao;
 import br.com.credru.model.Restaurante;
+import br.com.credru.model.Transacao;
 import br.com.credru.model.Usuario;
 
 /**
@@ -24,6 +28,8 @@ public class Cadastrar {
     private static AlimentoDAO alidao = new FabricaDAO().getAlimento();
     private static RefeicaoDAO refdao = new FabricaDAO().getRefeicao();
     private static RestauranteDAO resdao = new FabricaDAO().getRestaurante();
+    private static PerfilDAO perdao = new FabricaDAO().getPerfil();
+    private static TransacaoDAO tradao = new FabricaDAO().getTransacao();
     
     public static boolean cadastarUsuario ( Usuario u){
         return usudao.setUsuario(u);
@@ -36,5 +42,11 @@ public class Cadastrar {
     }
     public static boolean cadastrarRefeicao ( Refeicao ref){
         return refdao.setRefeicao(ref);
+    }
+    public static boolean cadastrarPerfil( Perfil p){
+        return perdao.setPerfil(p);
+    }
+    public static boolean cadastrarTransacao( Transacao t){
+        return tradao.setTransacao(t);
     }
 }

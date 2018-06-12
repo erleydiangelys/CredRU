@@ -7,22 +7,82 @@ package br.com.credru.controller;
 
 import br.com.credru.dao.AlimentoDAO;
 import br.com.credru.dao.FabricaDAO;
+import br.com.credru.dao.PerfilDAO;
 import br.com.credru.dao.RefeicaoDAO;
 import br.com.credru.dao.RestauranteDAO;
+import br.com.credru.dao.TransacaoDAO;
 import br.com.credru.dao.UsuarioDAO;
+import br.com.credru.model.Alimento;
+import br.com.credru.model.Horario;
 import br.com.credru.model.LocalDate;
-import br.com.credru.model.Periodo;
+import br.com.credru.model.LocalTime;
+import br.com.credru.model.Perfil;
 import br.com.credru.model.Refeicao;
+import br.com.credru.model.Restaurante;
+import br.com.credru.model.TipoPerfil;
+import br.com.credru.model.Transacao;
+import br.com.credru.model.Usuario;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
  * @author Eduardo
  */
 public class Visualizar {
+    private static UsuarioDAO usudao = new FabricaDAO().getUsuario();
+    private static AlimentoDAO alidao = new FabricaDAO().getAlimento();
     private static RefeicaoDAO refdao = new FabricaDAO().getRefeicao();
+    private static RestauranteDAO resdao = new FabricaDAO().getRestaurante();
+    private static PerfilDAO perdao = new FabricaDAO().getPerfil();
+    private static TransacaoDAO tradao = new FabricaDAO().getTransacao();
     
-    public static Refeicao getRefeicao( LocalDate data, Periodo per){
-        Refeicao res = refdao.getRefeicao(data, per);
-        return res;
+    
+    public static Usuario getUsuario(String username){
+        return usudao.getUsuario(username);
+    }
+    public static Usuario getUsuario( String username, String senha){
+        return usudao.getUsuario(username, senha);
+    }
+    public static List<Usuario> getUsuario(){
+        return usudao.getUsuario();
+    }
+    
+    public static Alimento getAlimento (String nome){
+        return alidao.getAlimento(nome);
+    }
+    public static List<Alimento> getAlimento(){
+        return alidao.getAlimento();
+    }
+    
+    public static Refeicao getRefeicao( LocalDate ld, Horario h){
+        return refdao.getRefeicao( ld, h);
+    }
+    public static List<Refeicao> getRefeicao(){
+        return refdao.getRefeicao();
+    }
+    
+    public static Restaurante getRestaurante( String nome){
+        return resdao.getRestaurante(nome);
+    }
+    public static List<Restaurante> getRestaurante(){
+        return resdao.getRestaurante();
+    }
+    
+    public static Perfil getPerfil( Perfil p){
+        return perdao.getPerfil(p);
+    }
+    public static Perfil getPerfil ( TipoPerfil tp){
+        return perdao.getPerfil(tp);
+    }
+    public static List<Perfil> getPerfil(){
+        return perdao.getPerfil();
+    }
+    
+    public static Transacao getTransacao(LocalDate data, LocalTime tempo){
+        return tradao.getTransacao(data, tempo);
+    }
+    public static List<Transacao> getTransacao(){
+        return tradao.getTransacao();
     }
 }
