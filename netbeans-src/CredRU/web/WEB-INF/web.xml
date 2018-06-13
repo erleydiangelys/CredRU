@@ -7,7 +7,7 @@
     </session-config>
     <welcome-file-list>
         <welcome-file>
-            Visitante
+            Inicio
         </welcome-file>
     </welcome-file-list>
     <servlet>

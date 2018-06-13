@@ -1,13 +1,6 @@
-<%-- 
-    Document   : footer
-    Created on : 30/04/2018, 08:23:25
-    Author     : Soriano
---%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<footer>
-    <div align="center">
-        Ultima atualização <%= new java.util.Date() %>
-    </div>
-</footer>
+ <footer class="py-3 bg-info">
+      <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Universidade Federal do Ceará</p>
+      </div>
+      <!-- /.container -->
+    </footer>
