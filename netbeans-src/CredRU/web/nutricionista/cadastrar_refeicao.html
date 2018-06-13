@@ -109,25 +109,104 @@
       </ol>
     -->
 
-      <!-- Image Header -->
+                                        
+                    <div class="container">
+              
+              <hr>
 
-      
 
-      <!-- Marketing Icons Section -->
-            <div class="row">
+              <div class="row justify-content-center">
+              <div class="col-md-8 mb-5" >
+              <div class="card">
+              <header class="card-header">
+                
+                <center><h4 class="card-title mt-2">Cadastrar Nova Refeição</h4></center>
+              </header>
+              <article class="card-body">
+              <form>
+                <br><br>
+
+                <div class="form-row">
+                  <div class="col form-group col-md-12">
+                    <label>Nome</label>   
+                      <input type="text" class="form-control" placeholder="">
+                  </div> <!-- form-group end.// -->
+                </div>
+                 
+                 <div class="form-row">
+                  <div class="col form-group col-md-6">
+                    <label>Descrição</label>
+                      <input type="text" class="form-control" placeholder=" ">
+                  </div> <!-- form-group end.// -->
+               
 
              
-                    <div class="col-lg-12 mb-3">
-                      <div class="card h-100">
-                        <h4 class="card-header">Painel de Controle</h4>
-                          <div class="card-body">
+                    <div class="form-row">
+                          <div class="col form-group">
+                          <label>Valor Nutricional</label>
+                            <input type="text" class="form-control" placeholder=" ">
+                          </div> <!-- form-group end.// -->
+                   </div> <!-- form-row end.// -->
 
-                            <!-- menu operações-->
+                    </div>
+                       <!-- codigo novo aqui -->
 
-                             
 
-                            <!-- fim menu oprações-->
+                            <div class="form-row">
+                           <div class="col form-group col-md-12"></div>
+                                <div class="col-md-8">
+                                      <label>Adicionar Elemento</label>
+                                  <form name="checkListForm">
+                                    <input type="text" name="checkListItem" placeholder="Adicionar Item..."/>
+                                  </form>
+                                   <button type="button" id="add" class="btn btn-info"> + </button>
+                                       <button type="button" id="clear" title="Clear checked items" class="btn btn-default">Limpar</button>
+                                  <br/><br/>
+                                  <div class="list"></div>
+                                  </div>
+                                  <div class="col-md-12"></div>
+                     </div>
+                         
 
+
+
+                <!-- fim codigo novo-->
+
+                          <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-block"> Registrar  </button>
+                        </div> <!-- form-group// -->    
+                      <br>
+                </div> <!-- form-row end.// -->
+                
+                  
+
+              <!--
+                <div class="form-group">
+                  <label>Crie uma Senha</label>
+                    <input class="form-control" type="password">
+                </div> <!-- form-group end.// 
+
+                <div class="form-group">
+                  <label>Confirme sua Senha</label>
+                    <input class="form-control" type="password">
+                </div> <!-- form-group end.//  
+                -->
+
+                  
+      
+              </form>
+              </article> <!-- card-body end .// -->
+              
+              </div> <!-- card.// -->
+              </div> <!-- col.//-->
+
+              </div> <!-- row.//-->
+
+
+              </div> 
+              <!--container end.//-->
+
+              </div>              
                                 
                           </div>
                         
@@ -153,5 +232,44 @@
     <script src="../assets/credru/js/bootstrap.bundle.min.js"></script>
 
   </body>
+
+
+<script type="text/javascript">
+  
+  $(document).ready(function(){
+    //Hide clear btn on page load
+    $('#clear').hide();
+    //Add text input to list on button press
+    $('#add').click(function(){
+        //var toAdd gets the value of the input field
+        var toAdd = $("input[name=checkListItem]").val();
+        //Append list item in its own div with a class of item into the list div
+        //It also changes the cursor on hover of the appended item 
+        $('.list').append('<div class="item">' + toAdd + '</div>');
+        //fade in clear button when the add button is clicked
+        $('#clear').fadeIn('fast');
+        //Clear input field when add button is pressed
+        $('input').val('');
+    });
+    //Checks off items as they are pressed
+    $(document).on('click', '.item', function() {
+        //Chamge list item to red
+        $(this).css("color", "#cc0000");
+        //Change cursor for checked item
+        $(this).css("cursor","default");
+        //Strike through clicked item while giving it a class of done so it will be affected by the clear
+        $(this).wrapInner('<strike class="done"></strike>');
+        //Add the X glyphicon
+        $(this).append(" " + '<span class="glyphicon glyphicon-remove done" aria-hidden="true"></span>');
+        //Stops checked off items from being clicked again
+        $(this).prop('disabled', true);
+    });
+    //Removes list items with the class done
+    $('#clear').click(function(){
+        $('.done').remove('.done');
+    });
+});
+
+</script>
 
 </html>

@@ -111,33 +111,90 @@
 
       <!-- Image Header -->
 
-      
+      <!-- inicio do formulario -->
 
-      <!-- Marketing Icons Section -->
-            <div class="row">
+                    <div class="container">
+              
+              <hr>
 
-             
-                    <div class="col-lg-12 mb-3">
-                      <div class="card h-100">
-                        <h4 class="card-header">Painel de Controle</h4>
-                          <div class="card-body">
 
-                            <!-- menu operações-->
-
-                             
-
-                            <!-- fim menu oprações-->
-
-                                
+              <div class="row justify-content-center">
+              <div class="col-md-8">
+              <div class="card">
+              <header class="card-header">
+                
+                <center><h4 class="card-title mt-2">Cadastrar Novo Usuario</h4></center>
+              </header>
+              <article class="card-body">
+              <form>
+                <div class="form-row">
+                  <div class="col form-group">
+                    <label>Nome</label>   
+                      <input type="text" class="form-control" placeholder="">
+                  </div> <!-- form-group end.// -->
+                  <div class="col form-group">
+                    <label>Nome de Usuario</label>
+                      <input type="text" class="form-control" placeholder=" ">
+                  </div> <!-- form-group end.// -->
+                </div> <!-- form-row end.// -->
+                
+                
+                <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label>Status</label>
+                            <select id="inputState" class="form-control">
+                                <option>Ativo</option>
+                                <option selected="">Inativo</option>
+                            </select>
                           </div>
-                        
-                      </div>
-                    </div>
-            </div>
-            <!-- /.row -->
+
+
+                          <div class="form-group col-md-6">
+                            <label>Nivel de Acesso</label>
+                            <select id="inputState" class="form-control">
+                                <option>Professor</option>
+                                <option>Isento</option>
+                                <option selected="">Aluno</option>
+                                <option>Autorizada</option>
+                            </select>
+                          </div> <!-- form-group end.// -->
+                        </div> <!-- form-row.// -->
+
+
+
+                <div class="form-group">
+                  <label>Crie uma Senha</label>
+                    <input class="form-control" type="password">
+                </div> <!-- form-group end.// -->  
+
+                <div class="form-group">
+                  <label>Confirme sua Senha</label>
+                    <input class="form-control" type="password">
+                </div> <!-- form-group end.// -->  
+
+                  <div class="form-group">
+                      <button type="submit" class="btn btn-primary btn-block"> Registrar  </button>
+                  </div> <!-- form-group// -->      
+                                                       
+              </form>
+              </article> <!-- card-body end .// -->
+              
+              </div> <!-- card.// -->
+              </div> <!-- col.//-->
+
+              </div> <!-- row.//-->
+
+
+              </div> 
+              <!--container end.//-->
+
+              
 
     </div>
     <!-- /.container -->
+
+
+    <!-- fim do formulario -->
 
     <!-- Footer -->
     <footer class="py-3 bg-info">

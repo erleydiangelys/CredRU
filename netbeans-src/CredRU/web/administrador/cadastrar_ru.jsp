@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>CRED RU - ADM - AlterarUsuario </title>
+    <title>CRED RU - ADM - CadastrarRU </title>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" type="text/css" href="../assets/credru/css/bootstrap.min.css">
@@ -23,7 +23,7 @@
     <!-- Menu começa aqui-->
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-info fixed-top">
       <div class="container">
-        <a class="navbar-brand" href="index.html">CRED RU / ADM / ALTERAR USUARIO</a>
+        <a class="navbar-brand" href="index.html">CRED RU / ADM / CADASTRAR RU</a>
 
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -111,30 +111,64 @@
 
       <!-- Image Header -->
 
+
+                    <div class="container">
+              
+              <hr>
+
+
+              <div class="row justify-content-center">
+              <div class="col-md-8 mb-5" >
+              <div class="card">
+              <header class="card-header">
+                
+                <center><h4 class="card-title mt-2">Cadastrar Novo RU</h4></center>
+              </header>
+              <article class="card-body">
+              <form>
+                <br><br>
+                <div class="form-row">
+                  <div class="col form-group col-md-12">
+                    <label>Nome</label>   
+                      <input type="text" class="form-control" placeholder="">
+                  </div> <!-- form-group end.// -->
+
+                  <div class="col form-group">
+                    <label>Endereço</label>
+                      <input type="text" class="form-control" placeholder=" ">
+                  </div> <!-- form-group end.// -->
+                </div> <!-- form-row end.// -->
+                
+              <!--
+                <div class="form-group">
+                  <label>Crie uma Senha</label>
+                    <input class="form-control" type="password">
+                </div> <!-- form-group end.// 
+
+                <div class="form-group">
+                  <label>Confirme sua Senha</label>
+                    <input class="form-control" type="password">
+                </div> <!-- form-group end.//  
+                -->
+
+                  <div class="form-group">
+                      <button type="submit" class="btn btn-primary btn-block"> Registrar  </button>
+                  </div> <!-- form-group// -->    
+                <br><br>
       
+              </form>
+              </article> <!-- card-body end .// -->
+              
+              </div> <!-- card.// -->
+              </div> <!-- col.//-->
 
-      <!-- Marketing Icons Section -->
-            <div class="row">
+              </div> <!-- row.//-->
 
-             
-                    <div class="col-lg-12 mb-3">
-                      <div class="card h-100">
-                        <h4 class="card-header">Painel de Controle</h4>
-                          <div class="card-body">
 
-                            <!-- menu operações-->
+              </div> 
+              <!--container end.//-->
 
-                             
-
-                            <!-- fim menu oprações-->
-
-                                
-                          </div>
-                        
-                      </div>
-                    </div>
-            </div>
-            <!-- /.row -->
+              
 
     </div>
     <!-- /.container -->
