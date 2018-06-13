@@ -3,14 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.credru.model;
+package br.com.credru.comando.administrador;
 
 /**
  *
  * @author Soriano
  */
-public enum Periodo {
-    MANHA,
-    TARDE,
-    NOITE;
+public class VenderCredito {
+    
 }

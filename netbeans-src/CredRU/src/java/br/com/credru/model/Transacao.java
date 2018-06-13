@@ -15,6 +15,50 @@ public class Transacao {
     private TipoTransacao tipo;
     private float valor;
     private int qtdCreditos;
+
+    public Transacao() {
+    }
+
+    public LocalDate getData() {
+        return data;
+    }
+
+    public void setData(LocalDate data) {
+        this.data = data;
+    }
+
+    public LocalTime getHora() {
+        return hora;
+    }
+
+    public void setHora(LocalTime hora) {
+        this.hora = hora;
+    }
+
+    public TipoTransacao getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(TipoTransacao tipo) {
+        this.tipo = tipo;
+    }
+
+    public float getValor() {
+        return valor;
+    }
+
+    public void setValor(float valor) {
+        this.valor = valor;
+    }
+
+    public int getQtdCreditos() {
+        return qtdCreditos;
+    }
+
+    public void setQtdCreditos(int qtdCreditos) {
+        this.qtdCreditos = qtdCreditos;
+    }
+    
     
     public static Transacao creditarValor(Usuario user, float valor){
         return null;

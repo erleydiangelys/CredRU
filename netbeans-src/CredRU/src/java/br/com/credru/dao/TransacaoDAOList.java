@@ -3,17 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.credru.model;
+package br.com.credru.dao;
 
+import br.com.credru.model.Transacao;
 import java.util.ArrayList;
-import java.util.Map;
+import java.util.List;
 
 /**
  *
  * @author Soriano
  */
-public class RestauranteUni {
-    private String nome;
-    private ArrayList<Horario> horarios;
-    private Map<String, ArrayList<Refeicao>> refeicoes;
+public class TransacaoDAOList implements TransacaoDAO{
+    private static List<Transacao> transacoes = new ArrayList<Transacao>();
+    
 }
