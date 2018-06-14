@@ -5,6 +5,7 @@
  */
 package br.com.credru.dao;
 
+import br.com.credru.dao.RefeicaoDAO;
 import br.com.credru.model.Horario;
 import br.com.credru.model.LocalDate;
 import br.com.credru.model.Refeicao;
@@ -21,28 +22,58 @@ public class RefeicaoDAOList implements RefeicaoDAO{
     @Override
     public boolean setRefeicao(Refeicao r) {
         for(Refeicao temp : RefeicaoDAOList.refeicoes){
-            if()
+            if(temp.getData().toString().equals(r.getData().toString()) && temp.getHorario().equals(r.getHorario().toString())){
+                return false;
+            }
         }
+        RefeicaoDAOList.refeicoes.add(r);
+        return true;
     }
 
     @Override
     public Refeicao getRefeicao(LocalDate data, Horario horario) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        for(Refeicao temp : RefeicaoDAOList.refeicoes){
+            if(temp.getData().toString().equals(data.toString()) && temp.getHorario().equals(horario.toString())){
+                return temp;
+            }
+        }
+        return null;
     }
 
     @Override
     public List<Refeicao> getRefeicao() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return new ArrayList<>(RefeicaoDAOList.refeicoes);
     }
 
     @Override
     public boolean editRefeicao(Refeicao r1, Refeicao r2) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if((r1.getData().toString().equals(r2.getData().toString()) &&
+                r1.getHorario().toString().equals(r2.getHorario().toString())) ||
+                this.getRefeicao(r2.getData(), r2.getHorario()) == null){
+            
+            for(int i = 0; i < RefeicaoDAOList.refeicoes.size(); i++){
+                Refeicao temp = RefeicaoDAOList.refeicoes.get(i);
+                
+                if(temp.getData().toString().equals(r1.getData().toString()) && temp.getHorario().toString().equals(r1.getHorario().toString())){
+                    RefeicaoDAOList.refeicoes.set(i, r2);
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     @Override
     public boolean removeRefeicao(Refeicao r) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        for(int i = 0; i < RefeicaoDAOList.refeicoes.size(); i++){
+            Refeicao temp = RefeicaoDAOList.refeicoes.get(i);
+            
+            if(temp.getData().toString().equals(r.getData().toString()) && temp.getHorario().toString().equals(r.getHorario().toString())){
+                RefeicaoDAOList.refeicoes.remove(i);
+                return true;
+            }
+        }
+        return false;
     }
     
     

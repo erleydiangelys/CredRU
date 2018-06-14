@@ -5,7 +5,9 @@
  */
 package br.com.credru.dao;
 
+import br.com.credru.dao.UsuarioDAO;
 import br.com.credru.model.Usuario;
+import java.util.List;
 
 /**
  *
@@ -35,6 +37,11 @@ public class UsuarioDAOMySQL implements UsuarioDAO{
 
     @Override
     public boolean removeUsuario(Usuario user) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Usuario> getUsuario() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

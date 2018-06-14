@@ -5,6 +5,7 @@
  */
 package br.com.credru.dao;
 
+import br.com.credru.dao.AlimentoDAO;
 import br.com.credru.model.Alimento;
 import java.util.ArrayList;
 import java.util.List;

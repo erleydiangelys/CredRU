@@ -20,6 +20,12 @@ public class LocalTime {
         this.hora = 0;
     }
 
+    public LocalTime(int segundo, int minuto, int hora) {
+        this.segundo = segundo;
+        this.minuto = minuto;
+        this.hora = hora;
+    }
+
     public int getSegundo() {
         return segundo;
     }

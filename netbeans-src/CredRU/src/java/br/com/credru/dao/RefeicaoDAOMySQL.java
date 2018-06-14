@@ -5,10 +5,41 @@
  */
 package br.com.credru.dao;
 
+import br.com.credru.dao.RefeicaoDAO;
+import br.com.credru.model.Horario;
+import br.com.credru.model.LocalDate;
+import br.com.credru.model.Refeicao;
+import java.util.List;
+
 /**
  *
  * @author Soriano
  */
 public class RefeicaoDAOMySQL implements RefeicaoDAO{
+
+    @Override
+    public boolean setRefeicao(Refeicao r) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Refeicao getRefeicao(LocalDate data, Horario horario) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Refeicao> getRefeicao() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean editRefeicao(Refeicao r1, Refeicao r2) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean removeRefeicao(Refeicao r) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

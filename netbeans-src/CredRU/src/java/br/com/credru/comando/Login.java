@@ -26,76 +26,13 @@ public class Login implements Comando {
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) {
+        
+        try {
+            RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
+            rd.forward(request, response);
 
-        if (request.getParameter("username") != null && request.getParameter("senha") != null) {
-            String username = request.getParameter("username");
-            String senha = request.getParameter("senha");
-            
-            UsuarioDAO dao = new UsuarioDAOList();
-            Usuario user = null;
-            
-            
-            
-            user = dao.getUsuario(username, senha);
-
-            if (user != null) {
-                //Usuário Encontrado
-                HttpSession session = request.getSession();
-                session.setAttribute("usuario", user);
-
-                if (user.getNivelAcesso() == NivelAcesso.ADMINISTRADOR) {
-                    try {
-                        response.sendRedirect("Administrador?comando=Inicio");
-
-                    } catch (IOException ex) {
-                        Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }
-
-                if (user.getNivelAcesso() == NivelAcesso.COMPRADOR) {
-                    try {
-                        response.sendRedirect("Comprador?comando=Inicio");
-                    } catch (IOException ex) {
-                        Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }
-
-                if (user.getNivelAcesso() == NivelAcesso.ESCANEADOR) {
-                    try {
-                        response.sendRedirect("Escaneador?comando=Inicio");
-                    } catch (IOException ex) {
-                        Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }
-
-                if (user.getNivelAcesso() == NivelAcesso.NUTRICIONISTA) {
-                    try {
-                        response.sendRedirect("Nutricionista?comando=Inicio");
-                    } catch (IOException ex) {
-                        Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }
-
-            } else {
-                //Usuário não encontrado
-                request.setAttribute("errou", true);
-                try {
-                    RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
-                    rd.forward(request, response);
-
-                } catch (IOException | ServletException e) {
-                    e.printStackTrace();
-                }
-            }
-
-        } else {
-            try {
-                RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
-                rd.forward(request, response);
-
-            } catch (IOException | ServletException e) {
-                e.printStackTrace();
-            }
+        } catch (IOException | ServletException e) {
+            e.printStackTrace();
         }
 
     }

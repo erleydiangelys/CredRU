@@ -5,6 +5,7 @@
  */
 package br.com.credru.dao;
 
+import br.com.credru.dao.PerfilDAO;
 import br.com.credru.model.Perfil;
 import br.com.credru.model.TipoPerfil;
 import java.util.List;

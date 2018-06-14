@@ -8,7 +8,6 @@ package br.com.credru.servlet;
 import br.com.credru.comando.Comando;
 import br.com.credru.comando.PaginaNaoEncontrada;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;

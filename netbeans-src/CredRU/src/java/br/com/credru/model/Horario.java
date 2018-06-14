@@ -32,13 +32,5 @@ public class Horario {
     public void setHoraFim(LocalTime horaFim) {
         this.horaFim = horaFim;
     }
-
-    public Periodo getPeriodo() {
-        return periodo;
-    }
-
-    public void setPeriodo(Periodo periodo) {
-        this.periodo = periodo;
-    }
     
 }

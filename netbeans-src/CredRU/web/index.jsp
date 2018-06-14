@@ -40,7 +40,7 @@
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="login.jsp">LOGIN</a>
+              <a class="nav-link" href="Visitante?comando=Login">LOGIN</a>
             </li>
            
             <!--

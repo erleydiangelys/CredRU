@@ -5,6 +5,14 @@
  */
 package br.com.credru.dao;
 
+import br.com.credru.dao.AlimentoDAO;
+import br.com.credru.dao.FabricaDAOInterface;
+import br.com.credru.dao.PerfilDAO;
+import br.com.credru.dao.RefeicaoDAO;
+import br.com.credru.dao.RestauranteDAO;
+import br.com.credru.dao.TransacaoDAO;
+import br.com.credru.dao.UsuarioDAO;
+
 /**
  *
  * @author Soriano

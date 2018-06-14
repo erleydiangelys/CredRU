@@ -5,11 +5,14 @@
  */
 package br.com.credru.model;
 
+import java.util.Calendar;
+
 /**
  *
  * @author Soriano
  */
 public class Transacao {
+    private Usuario user;
     private LocalDate data;
     private LocalTime hora;
     private TipoTransacao tipo;
@@ -17,6 +20,15 @@ public class Transacao {
     private int qtdCreditos;
 
     public Transacao() {
+        
+    }
+
+    public Usuario getUser() {
+        return user;
+    }
+
+    public void setUser(Usuario user) {
+        this.user = user;
     }
 
     public LocalDate getData() {
@@ -61,10 +73,55 @@ public class Transacao {
     
     
     public static Transacao creditarValor(Usuario user, float valor){
-        return null;
+        Transacao transacao = new Transacao();
+        
+        Calendar dataHora = Calendar.getInstance();
+        int dia = dataHora.get(Calendar.DAY_OF_MONTH);
+        int mes = dataHora.get(Calendar.MONTH);
+        int ano = dataHora.get(Calendar.YEAR);
+        
+        int segundo = dataHora.get(Calendar.SECOND);
+        int minuto = dataHora.get(Calendar.MINUTE);
+        int hora = dataHora.get(Calendar.HOUR_OF_DAY);
+        
+        transacao.setData(new LocalDate(dia, mes, ano));
+        transacao.setHora(new LocalTime(segundo, minuto, hora));
+        transacao.setValor(valor);
+        transacao.setTipo(TipoTransacao.COMPRA);
+        transacao.setUser(user);
+        
+        int creditosGerado = (int) (valor / user.getPerfil().getValor());
+                
+        transacao.setQtdCreditos(creditosGerado);
+        user.setCredito(user.getCredito() + creditosGerado);
+        
+        return transacao;
+        
     }
     
     public static Transacao debitarValor(Usuario user){
-        return null;
+        Transacao tra = new Transacao();
+        
+        Calendar dataHora = Calendar.getInstance();
+        int dia = dataHora.get(Calendar.DAY_OF_MONTH);
+        int mes = dataHora.get(Calendar.MONTH);
+        int ano = dataHora.get(Calendar.YEAR);
+        
+        int segundo = dataHora.get(Calendar.SECOND);
+        int minuto = dataHora.get(Calendar.MINUTE);
+        int hora = dataHora.get(Calendar.HOUR_OF_DAY);
+        
+        tra.setData(new LocalDate(dia, mes, ano));
+        tra.setHora(new LocalTime(segundo, minuto, hora));
+        
+        
+        tra.setQtdCreditos(1);
+        tra.setTipo(TipoTransacao.DEBITO);
+        tra.setValor(0);
+        tra.setUser(user);
+        
+        user.setCredito(user.getCredito()-1);
+        
+        return tra;
     }    
 }

@@ -15,15 +15,15 @@ import javax.servlet.http.HttpSession;
  * @author Eduardo
  */
 public class Autenticar {
-    private static UsuarioDAO dao = new FabricaDAO().getUsuario();
+    private static final UsuarioDAO dao = new FabricaDAO().getUsuario();
     
-    public static boolean autenticar( HttpSession session, String user, String senha){
+    public static Usuario autenticar( HttpSession session, String user, String senha){
         Usuario u = dao.getUsuario(user, senha);
         if(u == null){
-            return false;
+            return null;
         }
         session.setAttribute("usuario", u);
-        return true;
+        return u;
     }
     public static void finalizar( HttpSession session){
         session.removeAttribute("usuario");

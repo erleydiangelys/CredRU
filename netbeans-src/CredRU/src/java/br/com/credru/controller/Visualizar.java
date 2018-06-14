@@ -22,7 +22,6 @@ import br.com.credru.model.Restaurante;
 import br.com.credru.model.TipoPerfil;
 import br.com.credru.model.Transacao;
 import br.com.credru.model.Usuario;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -30,12 +29,12 @@ import java.util.List;
  * @author Eduardo
  */
 public class Visualizar {
-    private static UsuarioDAO usudao = new FabricaDAO().getUsuario();
-    private static AlimentoDAO alidao = new FabricaDAO().getAlimento();
-    private static RefeicaoDAO refdao = new FabricaDAO().getRefeicao();
-    private static RestauranteDAO resdao = new FabricaDAO().getRestaurante();
-    private static PerfilDAO perdao = new FabricaDAO().getPerfil();
-    private static TransacaoDAO tradao = new FabricaDAO().getTransacao();
+    private static final UsuarioDAO usudao = new FabricaDAO().getUsuario();
+    private static final AlimentoDAO alidao = new FabricaDAO().getAlimento();
+    private static final RefeicaoDAO refdao = new FabricaDAO().getRefeicao();
+    private static final RestauranteDAO resdao = new FabricaDAO().getRestaurante();
+    private static final PerfilDAO perdao = new FabricaDAO().getPerfil();
+    private static final TransacaoDAO tradao = new FabricaDAO().getTransacao();
     
     
     public static Usuario getUsuario(String username){
@@ -69,8 +68,8 @@ public class Visualizar {
         return resdao.getRestaurante();
     }
     
-    public static Perfil getPerfil( Perfil p){
-        return perdao.getPerfil(p);
+    public static Perfil getPerfil(Perfil p){
+        return perdao.getPerfil(p.getTipo());
     }
     public static Perfil getPerfil ( TipoPerfil tp){
         return perdao.getPerfil(tp);

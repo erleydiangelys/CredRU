@@ -5,6 +5,7 @@
  */
 package br.com.credru.dao;
 
+import br.com.credru.dao.UsuarioDAO;
 import br.com.credru.model.Usuario;
 import java.util.ArrayList;
 import java.util.List;
