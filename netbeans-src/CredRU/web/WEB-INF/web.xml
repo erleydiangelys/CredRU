@@ -14,7 +14,7 @@
     </session-config>
     <welcome-file-list>
         <welcome-file>
-            Visitante
+            redirecionar.jsp
         </welcome-file>
     </welcome-file-list>
     <servlet>
