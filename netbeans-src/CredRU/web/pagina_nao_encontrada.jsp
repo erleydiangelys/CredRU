@@ -29,7 +29,7 @@
 	                    <h5>Foi mal mano, pagina não encontrada!</h5>
 	                </div>
 	                <div class="error-actions">
-	                    <a href="index.html" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-home"></span>
+	                    <a href="index.jsp" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-home"></span>
 	                        Voltar para o inicio </a>
 	                </div>
 	            </div>

@@ -32,15 +32,15 @@
           <ul class="navbar-nav ml-auto">
             
             <li class="nav-item">
-              <a class="nav-link" href="index.html">INICIO</a>
+              <a class="nav-link" href="index.jsp">INICIO</a>
             </li>
            
             <li class="nav-item">
-              <a class="nav-link" href="exibir_cardapio.html">CARDAPIO</a>
+              <a class="nav-link" href="exibir_cardapio.jsp">CARDAPIO</a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="login.html">LOGIN</a>
+              <a class="nav-link" href="login.jsp">LOGIN</a>
             </li>
            
             <!--
