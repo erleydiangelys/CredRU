@@ -75,6 +75,22 @@ public class RefeicaoDAOList implements RefeicaoDAO{
         }
         return false;
     }
+
+    @Override
+    public List<Refeicao> getRefeicao(LocalDate data) {
+        List<Refeicao> resultado = new ArrayList<>();
+        
+        for (Refeicao r : RefeicaoDAOList.refeicoes) {
+            if (r.getData().getAno() == data.getAno()
+                    && r.getData().getMes() == data.getMes()
+                    && r.getData().getSemana() == data.getSemana()) {
+
+                resultado.add(r);
+            }
+        }
+        
+        return resultado;
+    }
     
     
 }

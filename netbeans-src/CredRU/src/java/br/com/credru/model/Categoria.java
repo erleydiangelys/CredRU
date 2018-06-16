@@ -16,7 +16,11 @@ public enum Categoria {
     GUARDINACAO(3),
     ACOMPANHAMENTO(4),
     SUCO(5),
-    SOBREMESA(6);
+    SOBREMESA(6),
+    BEBIDAS(7),
+    PAES(8),
+    FRUTAS(9),
+    ESPECIAL(10);
     
     private final int codigo;
 
@@ -49,6 +53,18 @@ public enum Categoria {
         }
         if(codigo == 6){
             return Categoria.SOBREMESA;
+        }
+        if(codigo == 7){
+            return Categoria.BEBIDAS;
+        }
+        if(codigo == 8){
+            return Categoria.PAES;
+        }
+        if(codigo == 9){
+            return Categoria.FRUTAS;
+        }
+        if(codigo == 10){
+            return Categoria.ESPECIAL;
         }
         
         throw new IllegalArgumentException();

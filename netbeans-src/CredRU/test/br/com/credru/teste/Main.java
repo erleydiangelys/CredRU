@@ -7,27 +7,22 @@ package br.com.credru.teste;
 
 import br.com.credru.dao.FabricaDAO;
 import br.com.credru.dao.UsuarioDAO;
+import br.com.credru.model.LocalDate;
 import br.com.credru.model.Usuario;
-
+import java.util.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 /**
  *
  * @author Soriano
  */
 public class Main {
-    public static void main(String[] args){
-        UsuarioDAO dao = new FabricaDAO().getUsuario();
-        
-        Usuario u = new Usuario();
-        u.setNome("Anderson");
-        u.setUserName("ander");
-        
-        dao.setUsuario(u);
-        
-        Usuario temp = dao.getUsuario("ander");
-        
-        if(temp != null){
-            System.out.println(temp.getNome());
-        }
+
+    public static void main(String[] args) throws ParseException {
+
+        String k = "0" + 10;
+        System.out.println(k);
     }
 }

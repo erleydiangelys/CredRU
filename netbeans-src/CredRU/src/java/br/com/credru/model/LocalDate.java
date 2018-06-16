@@ -11,27 +11,38 @@ package br.com.credru.model;
  */
 public class LocalDate {
     private int dia;
+    private int semana;
     private int mes;
     private int ano;
 
     public LocalDate() {
         this.dia = 0;
+        this.semana = 0;
         this.mes = 0;
         this.ano = 0;
     }
 
-    public LocalDate(int dia, int mes, int ano) {
+    public LocalDate(int dia, int semana, int mes, int ano) {
         this.dia = dia;
+        this.semana = semana;
         this.mes = mes;
         this.ano = ano;
     }
-    
+
     public int getDia() {
         return dia;
     }
 
     public void setDia(int dia) {
         this.dia = dia;
+    }
+
+    public int getSemana() {
+        return semana;
+    }
+
+    public void setSemana(int semana) {
+        this.semana = semana;
     }
 
     public int getMes() {

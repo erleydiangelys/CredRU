@@ -77,6 +77,7 @@ public class Transacao {
         
         Calendar dataHora = Calendar.getInstance();
         int dia = dataHora.get(Calendar.DAY_OF_MONTH);
+        int semana = dataHora.get(Calendar.WEEK_OF_MONTH);
         int mes = dataHora.get(Calendar.MONTH);
         int ano = dataHora.get(Calendar.YEAR);
         
@@ -84,7 +85,7 @@ public class Transacao {
         int minuto = dataHora.get(Calendar.MINUTE);
         int hora = dataHora.get(Calendar.HOUR_OF_DAY);
         
-        transacao.setData(new LocalDate(dia, mes, ano));
+        transacao.setData(new LocalDate(dia, semana, mes, ano));
         transacao.setHora(new LocalTime(segundo, minuto, hora));
         transacao.setValor(valor);
         transacao.setTipo(TipoTransacao.COMPRA);
@@ -104,6 +105,7 @@ public class Transacao {
         
         Calendar dataHora = Calendar.getInstance();
         int dia = dataHora.get(Calendar.DAY_OF_MONTH);
+        int semana = dataHora.get(Calendar.WEEK_OF_MONTH);
         int mes = dataHora.get(Calendar.MONTH);
         int ano = dataHora.get(Calendar.YEAR);
         
@@ -111,7 +113,7 @@ public class Transacao {
         int minuto = dataHora.get(Calendar.MINUTE);
         int hora = dataHora.get(Calendar.HOUR_OF_DAY);
         
-        tra.setData(new LocalDate(dia, mes, ano));
+        tra.setData(new LocalDate(dia, semana, mes, ano));
         tra.setHora(new LocalTime(segundo, minuto, hora));
         
         

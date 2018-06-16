@@ -57,6 +57,9 @@ public class Visualizar {
     public static Refeicao getRefeicao( LocalDate ld, Horario h){
         return refdao.getRefeicao( ld, h);
     }
+    public static List<Refeicao> getRefeicao(LocalDate data){
+        return refdao.getRefeicao(data);
+    }
     public static List<Refeicao> getRefeicao(){
         return refdao.getRefeicao();
     }
