@@ -10,11 +10,20 @@ package br.com.credru.model;
  * @author Soriano
  */
 public class Horario {
+    private String descricao;
     private LocalTime horaInicio;
     private LocalTime horaFim;
 
     public Horario() {
         
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
     public LocalTime getHoraInicio() {

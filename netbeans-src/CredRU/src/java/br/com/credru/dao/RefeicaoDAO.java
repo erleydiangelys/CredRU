@@ -18,6 +18,7 @@ public interface RefeicaoDAO {
     public boolean setRefeicao(Refeicao r);
     public Refeicao getRefeicao(LocalDate data, Horario horario);
     public List<Refeicao> getRefeicao();
+    public List<Refeicao> getRefeicao(LocalDate data);
     public boolean editRefeicao(Refeicao r1, Refeicao r2);
     public boolean removeRefeicao(Refeicao r);
 }
