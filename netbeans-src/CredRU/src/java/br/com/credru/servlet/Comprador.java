@@ -25,7 +25,7 @@ public class Comprador extends HttpServlet {
 
         try {
 
-            paginaRequisitada = (Comando) Class.forName("br.com.credru.comando." + request.getParameter("comando")).newInstance();
+            paginaRequisitada = (Comando) Class.forName("br.com.credru.comando.comprador." + request.getParameter("comando")).newInstance();
 
         } catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
             e.printStackTrace();
