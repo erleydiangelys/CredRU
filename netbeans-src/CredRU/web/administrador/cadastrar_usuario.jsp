@@ -1,214 +1,181 @@
+<%@page import="br.com.credru.model.Usuario"%>
+<%@page import="br.com.credru.controller.Cadastrar"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+<%
+    boolean senhaCorrespondem = true;
+    
+    if(request.getParameter("nomeCompleto") != null &&
+            request.getParameter("nomeUsuario") != null &&
+            request.getParameter("status") != null &&
+            request.getParameter("nivelAcesso") != null &&
+            request.getParameter("senha") != null &&
+            request.getParameter("senhaConfir") != null){
+        
+        String nomeComp = request.getParameter("nomeCompleto");
+        String nomeUser = request.getParameter("nomeUsuario");
+        int status = Integer.parseInt(request.getParameter("status"));
+        String nivelAcesso = request.getParameter("nivelAcesso");
+        String senha = request.getParameter("senha");
+        String senhaConfir = request.getParameter("senhaConfir");    
+        
+        if(!senha.equals(senhaConfir)){
+            senhaCorrespondem = false;
+        }
+        
+        if(senhaCorrespondem){
+            Usuario u = new Usuario();
+            
+            if(status==1){
+                u.setAtivo(true);
+            }
+            else{
+                u.setAtivo(false);
+            }
+            
+            u.setNome(nome);
+            u.setSenha(senha);
+            u.setUserName(userName);
+            
+            if(nivelAcesso.equals("adm")){
+                u.setNivelAcesso(NivelAcesso.ADMINISTRADOR);
+            }
+            if(nivelAcesso.equals("nutri")){
+                u.setNivelAcesso(NivelAcesso.NUTRICIONISTAl);
+            }
+            if(nivelAcesso.equals("comprador")){
+                u.setNivelAcesso(NivelAcesso.COMPRADOR);
+            }
+            if(nivelAcesso.equals("escan")){
+                u.setNivelAcesso(NivelAcesso.ESCANEADOR);
+            }
+            
+            //falta definir o perfil
+            Cadastrar.cadastarUsuario(u)
+        }
+    }
+%>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
-  <head>
+    <head>
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
 
-    <title>CRED RU - ADM - CadastrarUser </title>
+        <title>CRED RU - ADM - CadastrarUser </title>
 
-    <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" type="text/css" href="../assets/credru/css/bootstrap.min.css">
+        <!-- Bootstrap core CSS -->
+        <link rel="stylesheet" type="text/css" href="assets/credru/css/bootstrap.min.css">
 
-    <!-- Custom styles for this template -->
-    <link rel="stylesheet" type="text/css" href="../assets/credru/css/index.css">
+        <!-- Custom styles for this template -->
+        <link rel="stylesheet" type="text/css" href="assets/credru/css/index.css">
 
-  </head>
+    </head>
 
-  <body>
+    <body>
 
-    <!-- Menu começa aqui-->
-    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-info fixed-top">
-      <div class="container">
-        <a class="navbar-brand" href="index.html">CRED RU / ADM / CADASTRAR USUARIO</a>
+        <jsp:include page="../include/header.jsp" />
 
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            
-            <li class="nav-item">
-              <a class="nav-link" href="../index.html">INICIO</a>
-            </li>
-           
-            <li class="nav-item">
-              <a class="nav-link" href="../exibir_cardapio.html">CARDAPIO</a>
-            </li>
+        <!-- Page Content -->
+        <div class="container">
+            <br><br>
 
-            <li class="nav-item">
-              <a class="nav-link" href="../login.html">LOGIN</a>
-            </li>
-           
-            <!--
-            <li class="nav-item">
-              <a class="nav-link" href="contact.html">Contact</a>
-            </li>
-            
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Portfolio
-              </a>
-             
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
-                <a class="dropdown-item" href="portfolio-1-col.html">1 Column Portfolio</a>
-                <a class="dropdown-item" href="portfolio-2-col.html">2 Column Portfolio</a>
-                <a class="dropdown-item" href="portfolio-3-col.html">3 Column Portfolio</a>
-                <a class="dropdown-item" href="portfolio-4-col.html">4 Column Portfolio</a>
-                <a class="dropdown-item" href="portfolio-item.html">Single Portfolio Item</a>
-              </div>
-            </li>
-            
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Blog
-              </a>
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
-                <a class="dropdown-item" href="blog-home-1.html">Blog Home 1</a>
-                <a class="dropdown-item" href="blog-home-2.html">Blog Home 2</a>
-                <a class="dropdown-item" href="blog-post.html">Blog Post</a>
-              </div>
-            </li>
-           
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Other Pages
-              </a>
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
-                <a class="dropdown-item" href="full-width.html">Full Width Page</a>
-                <a class="dropdown-item" href="sidebar.html">Sidebar Page</a>
-                <a class="dropdown-item" href="faq.html">FAQ</a>
-                <a class="dropdown-item" href="404.html">404</a>
-                <a class="dropdown-item" href="pricing.html">Pricing Table</a>
-              </div>
-            -->
+            <div class="container">
+                
+                <hr>
+                
+                <div class="row justify-content-center">
+                    <div class="col-md-8">
+                        <div class="card">
+                            <header class="card-header">
 
-            </li>
-          </ul>
+                                <center><h4 class="card-title mt-2">Cadastrar Novo Usuario</h4></center>
+                            </header>
+                            <article class="card-body">
+                                <form method="post" action="Administrador?comando=CadastrarUsuario">
+                                    <div class="form-row">
+                                        <div class="col form-group">
+                                            <label>Nome Completo</label>   
+                                            <input name="nomeCompleto" type="text" class="form-control" placeholder="" required="">
+                                        </div> <!-- form-group end.// -->
+                                        <div class="col form-group">
+                                            <label>Nome de Usuario</label>
+                                            <input name="nomeUsuario" type="text" class="form-control" placeholder="" required="">
+                                        </div> <!-- form-group end.// -->
+                                    </div> <!-- form-row end.// -->
+
+
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label>Status</label>
+                                            <select name="status" id="inputState" class="form-control">
+                                                <option value="1">Ativo</option>
+                                                <option selected="" value="0">Inativo</option>
+                                            </select>
+                                        </div>
+
+
+                                        <div class="form-group col-md-6">
+                                            <label>Nivel de Acesso</label>
+                                            <select name="nivelAcesso" id="inputState" class="form-control">
+                                                <option value="adm">Administrador</option>
+                                                <option value="nutri">Nrutricionista</option>
+                                                <option value="comprador" selected="">Comprador</option>
+                                                <option value="escan">Escaniador</option>
+                                            </select>
+                                        </div> <!-- form-group end.// -->
+                                    </div> <!-- form-row.// -->
+
+                                    <%if( !senhaCorrespondem ){%>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label>As senha não são iguais!</label>
+                                        </div>
+                                    </div>
+                                    <%}%>
+
+                                    <div class="form-group">
+                                        <label>Crie uma Senha</label>
+                                        <input name="senha" class="form-control" type="password" required="">
+                                    </div> <!-- form-group end.// -->  
+
+                                    <div class="form-group">
+                                        <label>Confirme sua Senha</label>
+                                        <input name="senhaConfir" class="form-control" type="password" required="">
+                                    </div> <!-- form-group end.// -->  
+
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-primary btn-block">Registrar</button>
+                                    </div> <!-- form-group// -->      
+
+                                </form>
+                            </article> <!-- card-body end .// -->
+
+                        </div> <!-- card.// -->
+                    </div> <!-- col.//-->
+
+                </div> <!-- row.//-->
+
+
+            </div> 
+            <!--container end.//-->
+
         </div>
-      </div>
-    </nav>
-
-    <!-- menu acaba aqui -->
-
-    <!-- Page Content -->
-    <div class="container">
-      <br><br>
-      <!-- Page Heading/Breadcrumbs
-      <h1 class="mt-4 mb-3">CRED RU</h1>
-       -->
-
-     <!-- <ol class="breadcrumb">
-        <li class="breadcrumb-item">
-          <a href="index.html">Home</a>
-        </li>
-        <li class="breadcrumb-item active">Services</li>
-      </ol>
-    -->
-
-      <!-- Image Header -->
-
-      <!-- inicio do formulario -->
-
-                    <div class="container">
-              
-              <hr>
+        <!-- /.container -->
 
 
-              <div class="row justify-content-center">
-              <div class="col-md-8">
-              <div class="card">
-              <header class="card-header">
-                
-                <center><h4 class="card-title mt-2">Cadastrar Novo Usuario</h4></center>
-              </header>
-              <article class="card-body">
-              <form>
-                <div class="form-row">
-                  <div class="col form-group">
-                    <label>Nome</label>   
-                      <input type="text" class="form-control" placeholder="">
-                  </div> <!-- form-group end.// -->
-                  <div class="col form-group">
-                    <label>Nome de Usuario</label>
-                      <input type="text" class="form-control" placeholder=" ">
-                  </div> <!-- form-group end.// -->
-                </div> <!-- form-row end.// -->
-                
-                
-                <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label>Status</label>
-                            <select id="inputState" class="form-control">
-                                <option>Ativo</option>
-                                <option selected="">Inativo</option>
-                            </select>
-                          </div>
+        <!-- fim do formulario -->
+        <br><br>
+        <jsp:include page="../include/footer.jsp" />
 
+        <!-- Bootstrap core JavaScript -->
+        <script src="assets/credru/jquery/jquery.min.js"></script>
 
-                          <div class="form-group col-md-6">
-                            <label>Nivel de Acesso</label>
-                            <select id="inputState" class="form-control">
-                                <option>Professor</option>
-                                <option>Isento</option>
-                                <option selected="">Aluno</option>
-                                <option>Autorizada</option>
-                            </select>
-                          </div> <!-- form-group end.// -->
-                        </div> <!-- form-row.// -->
+        <script src="assets/credru/js/bootstrap.bundle.min.js"></script>
 
-
-
-                <div class="form-group">
-                  <label>Crie uma Senha</label>
-                    <input class="form-control" type="password">
-                </div> <!-- form-group end.// -->  
-
-                <div class="form-group">
-                  <label>Confirme sua Senha</label>
-                    <input class="form-control" type="password">
-                </div> <!-- form-group end.// -->  
-
-                  <div class="form-group">
-                      <button type="submit" class="btn btn-primary btn-block"> Registrar  </button>
-                  </div> <!-- form-group// -->      
-                                                       
-              </form>
-              </article> <!-- card-body end .// -->
-              
-              </div> <!-- card.// -->
-              </div> <!-- col.//-->
-
-              </div> <!-- row.//-->
-
-
-              </div> 
-              <!--container end.//-->
-
-              
-
-    </div>
-    <!-- /.container -->
-
-
-    <!-- fim do formulario -->
-
-    <!-- Footer -->
-    <footer class="py-3 bg-info">
-      <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; Universidade Federal do Ceará</p>
-      </div>
-      <!-- /.container -->
-    </footer>
-
-    <!-- Bootstrap core JavaScript -->
-    <script src="../assets/credru/jquery/jquery.min.js"></script>
-
-    <script src="../assets/credru/js/bootstrap.bundle.min.js"></script>
-
-  </body>
+    </body>
 
 </html>

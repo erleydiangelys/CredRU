@@ -1,5 +1,7 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
     <head>
 
@@ -26,14 +28,8 @@
         <!-- Page Content -->
         <div class="container">
             <br><br>
-
-
-
-
             <!-- Marketing Icons Section -->
             <div class="row">
-
-
                 <div class="col-lg-12 mb-3">
                     <div class="card h-100">
                         <h4 class="card-header">Painel de Controle</h4>
@@ -183,20 +179,14 @@
             </div>
             <!-- /.container -->
 
-            <!-- Footer -->
-            <footer class="py-3 bg-info">
-                <div class="container">
-                    <p class="m-0 text-center text-white">Copyright &copy; Universidade Federal do Ceará</p>
-                </div>
-                <!-- /.container -->
-            </footer>
-
-            <!-- Bootstrap core JavaScript -->
-            <script src="../assets/credru/jquery/jquery.min.js"></script>
-
-            <script src="../assets/credru/js/bootstrap.bundle.min.js"></script>
-
         </div>
+
+        <jsp:include page="../include/footer.jsp" />
+        
+        <!-- Bootstrap core JavaScript -->
+        <script src="assets/credru/jquery/jquery.min.js"></script>
+        <script src="assets/credru/js/bootstrap.bundle.min.js"></script>
+        
     </body>
 
 </html>
