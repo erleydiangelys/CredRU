@@ -16,12 +16,12 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Soriano
  */
-public class ExibirHistorico implements Comando{
+public class AlterarPreco implements Comando{
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) {
         try {
-            RequestDispatcher rd = request.getRequestDispatcher("administrador/exibir_historico.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("administrador/alterar_preco.jsp");
             rd.forward(request, response);
 
         } catch (IOException | ServletException e) {

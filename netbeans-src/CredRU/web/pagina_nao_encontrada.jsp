@@ -67,8 +67,6 @@
                             <%
                                 }
                             %>
-                            <a href="index.jsp" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-home"></span>
-                                Voltar para o inicio </a>
                         </div>
                     </div>
                 </div>

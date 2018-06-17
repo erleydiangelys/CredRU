@@ -1,7 +1,11 @@
 
+<%@page import="br.com.credru.controller.Visualizar"%>
+<%@page import="br.com.credru.controller.Cadastrar"%>
+<%@page import="br.com.credru.model.TipoPerfil"%>
 <%@page import="br.com.credru.model.NivelAcesso"%>
 <%@page import="br.com.credru.controller.Autenticar"%>
 <%@page import="br.com.credru.model.Usuario"%>
+<%@page import="br.com.credru.model.Perfil" %>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
@@ -11,12 +15,32 @@
         <link rel="stylesheet" type="text/css" href="assets/credru/css/login.css">
         <link rel="stylesheet" type="text/css" href="assets/credru/js/login.js">
 
-
         <title>CRED RU - Login</title>
+        
     </head>
     <body>
-
-
+        
+        <%
+            //Só pra teste
+            Perfil pp = new Perfil();
+            pp.setDescricao("Especial");
+            pp.setTipo(TipoPerfil.AUTORIZADO);
+            pp.setValor(0);
+            
+            Cadastrar.cadastrarPerfil(pp);
+            
+            Usuario temp = new Usuario();
+            temp.setAtivo(true);
+            temp.setNivelAcesso(NivelAcesso.ADMINISTRADOR);
+            temp.setNome("Anderson Soriano");
+            temp.setUserName("ander");
+            temp.setSenha("senha");
+            temp.setPerfil(Visualizar.getPerfil(TipoPerfil.AUTORIZADO));
+            
+            Cadastrar.cadastarUsuario(temp);
+            
+        %>
+        
         <div class="container">
             <div class="card card-container">
                 <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->

@@ -16,12 +16,12 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Soriano
  */
-public class AlterarTabela implements Comando{
+public class ExibirRelatorio implements Comando{
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) {
         try {
-            RequestDispatcher rd = request.getRequestDispatcher("administrador/alterar_tabela.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("administrador/exibir_relatorio.jsp");
             rd.forward(request, response);
 
         } catch (IOException | ServletException e) {

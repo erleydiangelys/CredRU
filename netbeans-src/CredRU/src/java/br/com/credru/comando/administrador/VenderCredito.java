@@ -21,7 +21,7 @@ public class VenderCredito implements Comando{
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) {
         try {
-            RequestDispatcher d = request.getRequestDispatcher("administrador/venda_ticket.jsp");
+            RequestDispatcher d = request.getRequestDispatcher("administrador/venda_credito.jsp");
             d.forward(request,response);
             
         } catch (IOException | ServletException e) {
