@@ -60,7 +60,7 @@ public class AlimentoDAOMySQL extends Conexao implements AlimentoDAO{
         try{
         String SQL = "SELECT * FROM alimento WHERE nome like (?)";        
             PreparedStatement ps = super.getConnection().prepareStatement(SQL);
-            ps.setString(1, '%' + nome + '%');
+            ps.setString(1, '%' + nome + '%');            
             ps.close();
             ResultSet rs = ps.executeQuery();
             if(rs.next()){
