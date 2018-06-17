@@ -26,7 +26,7 @@ public class Administrador extends HttpServlet {
         
 	try {
             
-            comando = (Comando)Class.forName("br.com.credru.administrador."+request.getParameter("comando")).newInstance();
+            comando = (Comando)Class.forName("br.com.credru.comando.administrador."+request.getParameter("comando")).newInstance();
             
 	} catch (InstantiationException e) {
 		e.printStackTrace();
