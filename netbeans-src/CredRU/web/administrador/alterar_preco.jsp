@@ -21,6 +21,8 @@
   <body>
 
     <!-- Menu começa aqui-->
+    <jsp:include page="../include/header.jsp" />
+    <!--
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-info fixed-top">
       <div class="container">
         <a class="navbar-brand" href="index.html">CRED RU / ADM / ALTERAR TABELA</a>
@@ -42,7 +44,7 @@
             <li class="nav-item">
               <a class="nav-link" href="../login.html">LOGIN</a>
             </li>
-           
+           -->
             <!--
             <li class="nav-item">
               <a class="nav-link" href="contact.html">Contact</a>
@@ -85,13 +87,13 @@
                 <a class="dropdown-item" href="pricing.html">Pricing Table</a>
               </div>
             -->
-
+            <!--
             </li>
           </ul>
         </div>
       </div>
     </nav>
-
+    -->
     <!-- menu acaba aqui -->
 
     <!-- Page Content -->
@@ -123,11 +125,25 @@
                           <div class="card-body">
 
                             <!-- menu operações-->
-
-                             
+                            <div>
+                                <form method="post" action="">
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label>Preço para o Aluno</label>
+                                            <input name="aluno" type="text" class="form-control" placeholder="" required="">
+                                        
+                                        </div> <!-- form-group end.// -->
+                                    </div>
+                                    Aluno: <input type="number" name="daluno">
+                                    Professor: <input type="number" name="prof"> 
+                                    Servidor: <input type="number" name="serv">
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-primary btn-block">Alterar</button>
+                                    </div>
+                                </form>
+                            </div>
 
                             <!-- fim menu oprações-->
-
                                 
                           </div>
                         
@@ -137,15 +153,21 @@
             <!-- /.row -->
 
     </div>
+    
+    <%
+        if (request.getParameter("aluno") != null &&
+            request.getParameter("serv") != null &&
+            request.getParameter("prof") != null){
+            
+            
+        
+        }
+    %>
     <!-- /.container -->
 
     <!-- Footer -->
-    <footer class="py-3 bg-info">
-      <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; Universidade Federal do Ceará</p>
-      </div>
-      <!-- /.container -->
-    </footer>
+    <br><br>
+    <jsp:include page="../include/footer.jsp" />
 
     <!-- Bootstrap core JavaScript -->
     <script src="../assets/credru/jquery/jquery.min.js"></script>
