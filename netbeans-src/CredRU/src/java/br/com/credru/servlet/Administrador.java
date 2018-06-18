@@ -6,7 +6,11 @@
 package br.com.credru.servlet;
 
 import br.com.credru.comando.Comando;
+import br.com.credru.comando.Login;
 import br.com.credru.comando.PaginaNaoEncontrada;
+import br.com.credru.comando.administrador.Inicio;
+import br.com.credru.model.NivelAcesso;
+import br.com.credru.model.Usuario;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -26,16 +30,40 @@ public class Administrador extends HttpServlet {
         
 	try {
             
-            comando = (Comando)Class.forName("br.com.credru.comando.administrador."+request.getParameter("comando")).newInstance();
             
-	} catch (InstantiationException e) {
-		e.printStackTrace();
-	} catch (IllegalAccessException e) {
-		e.printStackTrace();
-	} catch (ClassNotFoundException e) {
+            Usuario user = null;
+            user = (Usuario) request.getSession().getAttribute("usuario");
+            
+            if(user != null){
+                if(NivelAcesso.getCodigo(user.getNivelAcesso()) == NivelAcesso.getCodigo(NivelAcesso.ADMINISTRADOR)){
+                    comando = (Comando)Class.forName("br.com.credru.comando.administrador."+request.getParameter("comando")).newInstance();
+                }
+                else{
+                    if(NivelAcesso.getCodigo(user.getNivelAcesso()) == NivelAcesso.getCodigo(NivelAcesso.COMPRADOR)){
+                        comando = (Comando)Class.forName("br.com.credru.comando.comprador.Inicio").newInstance();
+                    }
+                    
+                    if(NivelAcesso.getCodigo(user.getNivelAcesso()) == NivelAcesso.getCodigo(NivelAcesso.ESCANEADOR)){
+                        comando = (Comando)Class.forName("br.com.credru.comando.escaneador.Inicio").newInstance();
+                    }
+                    
+                    if(NivelAcesso.getCodigo(user.getNivelAcesso()) == NivelAcesso.getCodigo(NivelAcesso.NUTRICIONISTA)){
+                        comando = (Comando)Class.forName("br.com.credru.comando.nutricionista.Inicio").newInstance();
+                    }
+                }
+                
+                if(comando instanceof Login){
+                    comando = new Inicio();
+                }
+            }
+            else{
+                comando = new Login();
+            }
+            
+            
+	} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
 		e.printStackTrace();
 	} finally {
-            
             comando.execute(request, response);
         }
 

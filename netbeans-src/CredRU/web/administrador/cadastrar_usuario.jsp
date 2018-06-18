@@ -1,23 +1,35 @@
+<%@page import="br.com.credru.model.TipoPerfil"%>
+<%@page import="br.com.credru.model.Perfil"%>
+<%@page import="java.util.List"%>
+<%@page import="br.com.credru.controller.Visualizar"%>
+<%@page import="br.com.credru.model.NivelAcesso"%>
 <%@page import="br.com.credru.model.Usuario"%>
 <%@page import="br.com.credru.controller.Cadastrar"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%
     boolean senhaCorrespondem = true;
+    boolean codastroOk = true;
+    
+    List<Perfil> perfis = Visualizar.getPerfil();
     
     if(request.getParameter("nomeCompleto") != null &&
             request.getParameter("nomeUsuario") != null &&
             request.getParameter("status") != null &&
             request.getParameter("nivelAcesso") != null &&
             request.getParameter("senha") != null &&
-            request.getParameter("senhaConfir") != null){
+            request.getParameter("senhaConfir") != null &&
+            request.getParameter("perfil") != null){
         
         String nomeComp = request.getParameter("nomeCompleto");
         String nomeUser = request.getParameter("nomeUsuario");
         int status = Integer.parseInt(request.getParameter("status"));
         String nivelAcesso = request.getParameter("nivelAcesso");
         String senha = request.getParameter("senha");
-        String senhaConfir = request.getParameter("senhaConfir");    
+        String senhaConfir = request.getParameter("senhaConfir");
+        int codPerfil = Integer.parseInt(request.getParameter("perfil"));
+        
+        Perfil perfilEscolhido = Visualizar.getPerfil(TipoPerfil.getTipoPerfil(codPerfil));
         
         if(!senha.equals(senhaConfir)){
             senhaCorrespondem = false;
@@ -33,15 +45,15 @@
                 u.setAtivo(false);
             }
             
-            u.setNome(nome);
+            u.setNome(nomeComp);
             u.setSenha(senha);
-            u.setUserName(userName);
+            u.setUserName(nomeUser);
             
             if(nivelAcesso.equals("adm")){
                 u.setNivelAcesso(NivelAcesso.ADMINISTRADOR);
             }
             if(nivelAcesso.equals("nutri")){
-                u.setNivelAcesso(NivelAcesso.NUTRICIONISTAl);
+                u.setNivelAcesso(NivelAcesso.NUTRICIONISTA);
             }
             if(nivelAcesso.equals("comprador")){
                 u.setNivelAcesso(NivelAcesso.COMPRADOR);
@@ -50,8 +62,8 @@
                 u.setNivelAcesso(NivelAcesso.ESCANEADOR);
             }
             
-            //falta definir o perfil
-            Cadastrar.cadastarUsuario(u)
+            u.setPerfil(perfilEscolhido);
+            codastroOk = Cadastrar.cadastarUsuario(u);
         }
     }
 %>
@@ -84,7 +96,9 @@
             <br><br>
 
             <div class="container">
-                
+                <%if(!codastroOk){%>
+                <p>Erro ao cadastrar!</p>
+                <%}%>
                 <hr>
                 
                 <div class="row justify-content-center">
@@ -122,13 +136,28 @@
                                             <label>Nivel de Acesso</label>
                                             <select name="nivelAcesso" id="inputState" class="form-control">
                                                 <option value="adm">Administrador</option>
-                                                <option value="nutri">Nrutricionista</option>
+                                                <option value="nutri">Nutricionista</option>
                                                 <option value="comprador" selected="">Comprador</option>
                                                 <option value="escan">Escaniador</option>
                                             </select>
                                         </div> <!-- form-group end.// -->
                                     </div> <!-- form-row.// -->
-
+                                    
+                                    <div class="form-row">
+                                        <div class="col form-group">
+                                            <label>Perfil</label>
+                                            <select name="perfil" id="inputState" class="form-control">
+                                                <%
+                                                    for (Perfil pp : perfis) {
+                                                %>
+                                                <option value="<%= TipoPerfil.getCodigo(pp.getTipo()) %>"><%= pp.getDescricao() %></option>
+                                                <%
+                                                    }
+                                                %>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    
                                     <%if( !senhaCorrespondem ){%>
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
