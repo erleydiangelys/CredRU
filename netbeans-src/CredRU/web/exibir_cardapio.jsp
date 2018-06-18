@@ -38,7 +38,7 @@
         <jsp:include page="include/header.jsp" />
 
         <%
-            /*
+           
             //Só pra teste
             Restaurante temp = new Restaurante();
             temp.setNome("Russas");
@@ -69,7 +69,7 @@
             mm.put(dd.toString(), refei);
             temp.setRefeicoes(mm);
             Cadastrar.cadastrarRestaurante(temp);
-            */
+            
         %>
         
         
