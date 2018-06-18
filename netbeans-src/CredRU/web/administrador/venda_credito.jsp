@@ -11,10 +11,10 @@
     <title>CRED RU - ADM - TICKETS </title>
 
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" type="text/css" href="../assets/credru/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/credru/css/bootstrap.min.css">
 
     <!-- Custom styles for this template -->
-    <link rel="stylesheet" type="text/css" href="../assets/credru/css/index.css">
+    <link rel="stylesheet" type="text/css" href="assets/credru/css/index.css">
 
   </head>
 
@@ -148,9 +148,9 @@
     </footer>
 
     <!-- Bootstrap core JavaScript -->
-    <script src="../assets/credru/jquery/jquery.min.js"></script>
+    <script src="assets/credru/jquery/jquery.min.js"></script>
 
-    <script src="../assets/credru/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/credru/js/bootstrap.bundle.min.js"></script>
 
   </body>
 
