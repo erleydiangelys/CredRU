@@ -11,10 +11,10 @@
     <title>CRED RU - ADM - TICKETS </title>
 
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" type="text/css" href="assets/credru/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../assets/credru/css/bootstrap.min.css">
 
     <!-- Custom styles for this template -->
-    <link rel="stylesheet" type="text/css" href="assets/credru/css/index.css">
+    <link rel="stylesheet" type="text/css" href="../assets/credru/css/index.css">
 
   </head>
 
@@ -86,7 +86,6 @@
               </div>
             -->
 
-            </li>
           </ul>
         </div>
       </div>
@@ -97,46 +96,96 @@
     <!-- Page Content -->
     <div class="container">
       <br><br>
-      <!-- Page Heading/Breadcrumbs
-      <h1 class="mt-4 mb-3">CRED RU</h1>
-       -->
-
-     <!-- <ol class="breadcrumb">
-        <li class="breadcrumb-item">
-          <a href="index.html">Home</a>
-        </li>
-        <li class="breadcrumb-item active">Services</li>
-      </ol>
-    -->
-
-      <!-- Image Header -->
-
       
-
-      <!-- Marketing Icons Section -->
             <div class="row">
 
              
                     <div class="col-lg-12 mb-3">
                       <div class="card h-100">
-                        <h4 class="card-header">Painel de Controle</h4>
+                       <center><h4 class="card-header">Venda de Tickets</h4></center>
                           <div class="card-body">
 
                             <!-- menu operações-->
+                              <br> <br> <br>
+                              <div class="container">
+                                     <div class="row userMain">
+                                         <div class="col-md-3 col-sm-4">
+                                             <div class="userBlock">
+                                                 <div class="backgrounImg">
+                                                     <img src="../assets/img/fundoTicket.png">
+                                                 </div>
+                                                 <div class="userImg">
+                                                     <img src="../assets/img/icon.png">
+                                                 </div>
+                                                 <div class="userDescription">
+                                                     <h5>Nome do @</h5>
+                                                    
+                                                     
+                                                      <div class="followrs">
+                                                         <span class="number">10</span>
+                                                          <span>Tickets</span>
+                                                      </div>
+                                                      
+                                                 </div>
+                                                
+                                             </div>
+                                          </div>
 
-                             
+
+                                      <div class="col-md-9" >
+                                        <div class="card">
+                                        <header class="card-header">
+                                          
+                                          <center><h5 class="card-title mt-1">Adicione os tickets</h5></center>
+                                        </header>
+                                  <form>
+                                        <article class="card-body">
+
+                                           
+                                           
+                                         <!-- função de vender -->
+                                         <center><div>
+                                                <br>
+                                               <b>Selecionar Quantidade:</b>
+
+                                               <select>
+                                                  <option value="valor1">   5 Tickets   </option>
+                                                  <option value="valor2">   10 Tickets   </option>
+                                                </select>
+
+                                                <button type="button" class="btn btn-primary btn-sm mb-2"> Vender</button>
+                                               <br> 
+                                          </div></center>
+                                         <!-- função vender -->
+                                            
+                                           </div>
+                                        </article>
+                                  </form>
+                                           </div>
+
+                                      </div>
+
+
+                                  </div>
+                                     <br> <br> <br>
+
+                              </div>
 
                             <!-- fim menu oprações-->
 
-                                
+                                <br>
                           </div>
                         
                       </div>
                     </div>
-            </div>
-            <!-- /.row -->
 
-    </div>
+
+
+
+
+            </div><!-- /.row -->
+
+    
     <!-- /.container -->
 
     <!-- Footer -->
@@ -148,9 +197,9 @@
     </footer>
 
     <!-- Bootstrap core JavaScript -->
-    <script src="assets/credru/jquery/jquery.min.js"></script>
+    <script src="../assets/credru/jquery/jquery.min.js"></script>
 
-    <script src="assets/credru/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/credru/js/bootstrap.bundle.min.js"></script>
 
   </body>
 
