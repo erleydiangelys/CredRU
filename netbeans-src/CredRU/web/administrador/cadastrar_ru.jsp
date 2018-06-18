@@ -1,3 +1,5 @@
+<%@page import="br.com.credru.model.Restaurante"%>
+<%@page import="br.com.credru.controller.Cadastrar"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,6 +23,8 @@
   <body>
 
     <!-- Menu começa aqui-->
+    <jsp:include page="../include/header.jsp" />
+    <!--
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-info fixed-top">
       <div class="container">
         <a class="navbar-brand" href="index.html">CRED RU / ADM / CADASTRAR RU</a>
@@ -85,15 +89,28 @@
                 <a class="dropdown-item" href="pricing.html">Pricing Table</a>
               </div>
             -->
-
+            <!--
             </li>
           </ul>
         </div>
       </div>
     </nav>
-
+    -->
     <!-- menu acaba aqui -->
-
+    <%
+        if ( request.getParameter("nome") != null && request.getParameter("endereco") != null &&
+            request.getParameter("nome").isEmpty() == false && request.getParameter("endereco").isEmpty() == false ){
+        
+            String nome = request.getParameter("nome");
+            String endereco = request.getParameter("endereco");
+            
+            Restaurante res = new Restaurante();
+            res.setNome("nome");
+            
+            if (Cadastrar.cadastrarRestaurante(res)){}
+        
+        }
+    %>
     <!-- Page Content -->
     <div class="container">
       <br><br>
@@ -130,12 +147,11 @@
                 <div class="form-row">
                   <div class="col form-group col-md-12">
                     <label>Nome</label>   
-                      <input type="text" class="form-control" placeholder="">
+                      <input type="text" name="nome" class="form-control" placeholder="">
                   </div> <!-- form-group end.// -->
 
                   <div class="col form-group">
-                    <label>Endereço</label>
-                      <input type="text" class="form-control" placeholder=" ">
+                    
                   </div> <!-- form-group end.// -->
                 </div> <!-- form-row end.// -->
                 
@@ -174,12 +190,8 @@
     <!-- /.container -->
 
     <!-- Footer -->
-    <footer class="py-3 bg-info">
-      <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; Universidade Federal do Ceará</p>
-      </div>
-      <!-- /.container -->
-    </footer>
+    <br><br>
+    <jsp:include page="../include/footer.jsp" />
 
     <!-- Bootstrap core JavaScript -->
     <script src="../assets/credru/jquery/jquery.min.js"></script>
