@@ -8,6 +8,7 @@ package br.com.credru.dao;
 import br.com.credru.dao.AlimentoDAO;
 import br.com.credru.model.Alimento;
 import br.com.credru.model.Categoria;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -20,7 +21,7 @@ import java.util.List;
  * @author Soriano
  */
 public class AlimentoDAOMySQL extends Conexao implements AlimentoDAO{
-      
+     
     @Override
     public boolean setAlimento(Alimento a) {
         boolean retorno;

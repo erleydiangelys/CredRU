@@ -31,16 +31,16 @@ public class Alterar {
     private static PerfilDAO perdao = new FabricaDAO().getPerfil();
     private static TransacaoDAO tradao = new FabricaDAO().getTransacao();
     
-    private static boolean alterarUsuario(Usuario u1, Usuario u2){
+    public static boolean alterarUsuario(Usuario u1, Usuario u2){
         return usudao.editUsuario(u1, u2);
     }
-    private static boolean alterarAlimento( Alimento a1, Alimento a2){
+    public static boolean alterarAlimento( Alimento a1, Alimento a2){
         return alidao.editAlimento(a1,a2);
     }
-    private static boolean alterarRefeicao(Refeicao r1, Refeicao r2){
+    public static boolean alterarRefeicao(Refeicao r1, Refeicao r2){
         return refdao.editRefeicao(r1, r2);
     }
-    private static boolean alterarRestaurante( Restaurante r1, Restaurante r2){
+    public static boolean alterarRestaurante( Restaurante r1, Restaurante r2){
         return resdao.editRestaurante(r1, r2);
     }
     public static boolean alterarPerfil ( Perfil p1, Perfil p2){
