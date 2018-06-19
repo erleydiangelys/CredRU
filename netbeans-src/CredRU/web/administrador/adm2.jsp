@@ -1,5 +1,8 @@
+<%@page import="br.com.credru.model.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
+<%
+    Usuario u = (Usuario) session.getAttribute("usuario");
+%>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -24,7 +27,7 @@
 
         <jsp:include page="../include/header.jsp" />
 
-
+        <%= u.getNome() %>
         <!-- Page Content -->
         <div class="container">
             <br><br>

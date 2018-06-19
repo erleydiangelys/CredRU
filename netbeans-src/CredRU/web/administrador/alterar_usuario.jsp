@@ -1,3 +1,5 @@
+<%@page import="br.com.credru.controller.Alterar"%>
+<%@page import="br.com.credru.model.NivelAcesso"%>
 <%@page import="br.com.credru.model.Usuario"%>
 <%@page import="br.com.credru.model.TipoPerfil"%>
 <%@page import="br.com.credru.controller.Visualizar"%>
@@ -14,6 +16,62 @@
     
     if(request.getParameter("nomeUsuario")!=null){
         u = Visualizar.getUsuario(request.getParameter("nomeUsuario"));
+        
+        if( request.getParameter("nomeCompleto") != null &&
+            request.getParameter("status") != null &&
+            request.getParameter("nivelAcesso") != null &&
+            request.getParameter("senha") != null &&
+            request.getParameter("senhaConfir") != null &&
+            request.getParameter("perfil") != null){
+            
+            String nomeComp = request.getParameter("nomeCompleto");
+            String nomeUser = request.getParameter("nomeUsuario");
+            int status = Integer.parseInt(request.getParameter("status"));
+            String nivelAcesso = request.getParameter("nivelAcesso");
+            String senha = request.getParameter("senha");
+            String senhaConfir = request.getParameter("senhaConfir");
+            int codPerfil = Integer.parseInt(request.getParameter("perfil"));
+            
+            Perfil perfilEscolhido = Visualizar.getPerfil(TipoPerfil.getTipoPerfil(codPerfil));
+        
+            if(!senha.equals(senhaConfir)){
+                senhaCorrespondem = false;
+            }
+
+            if(senhaCorrespondem){
+                Usuario uu = new Usuario();
+
+                if(status==1){
+                    uu.setAtivo(true);
+                }
+                else{
+                    uu.setAtivo(false);
+                }
+
+                uu.setNome(nomeComp);
+                uu.setSenha(senha);
+                uu.setUserName(nomeUser);
+
+                if(nivelAcesso.equals("adm")){
+                    uu.setNivelAcesso(NivelAcesso.ADMINISTRADOR);
+                }
+                if(nivelAcesso.equals("nutri")){
+                    uu.setNivelAcesso(NivelAcesso.NUTRICIONISTA);
+                }
+                if(nivelAcesso.equals("comprador")){
+                    uu.setNivelAcesso(NivelAcesso.COMPRADOR);
+                }
+                if(nivelAcesso.equals("escan")){
+                    uu.setNivelAcesso(NivelAcesso.ESCANEADOR);
+                }
+
+                uu.setPerfil(perfilEscolhido);
+                codastroOk = Alterar.alterarUsuario(u, uu);
+            }
+        }
+    }
+    else{
+        
     }
 %>
 
@@ -59,15 +117,15 @@
                                 <center><h4 class="card-title mt-2">Alterar Usuario</h4></center>
                             </header>
                             <article class="card-body">
-                                <form method="post" action="Administrador?comando=CadastrarUsuario">
+                                <form method="post" action="Administrador?comando=AlterarUsuario">
                                     <div class="form-row">
                                         <div class="col form-group">
                                             <label>Nome Completo</label>   
-                                            <input <%if(request.getParameter("nomeCompleto") == null && u == null){%>disabled=""<%}else{%>placeholder="<%= u.getNome() %>" <%}%> name="nomeCompleto" type="text" class="form-control" required="">
+                                            <input <%if(request.getParameter("nomeCompleto") == null && u == null){%>disabled=""<%}else{%>value="<%= u.getNome() %>" <%}%> name="nomeCompleto" type="text" class="form-control" required="">
                                         </div> <!-- form-group end.// -->
                                         <div class="col form-group">
                                             <label>Nome de Usuario</label>
-                                            <input name="nomeUsuario" type="text" class="form-control" placeholder="" required="">
+                                            <input <%if(u != null){%> value="<%= u.getUserName() %>" disabled="" <%}%> name="nomeUsuario" type="text" class="form-control" placeholder="" required="">
                                         </div> <!-- form-group end.// -->
                                     </div> <!-- form-row end.// -->
 
@@ -75,7 +133,7 @@
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
                                             <label>Status</label>
-                                            <select <%if(request.getParameter("status") == null){%>disabled=""<%}%> name="status" id="inputState" class="form-control">
+                                            <select <%if(request.getParameter("status") == null && u == null){%>disabled=""<%}%> name="status" id="inputState" class="form-control">
                                                 <option <%if(u != null){ if(u.isAtivo()){%> selected="" <%}}%> value="1">Ativo</option>
                                                 <option <%if(u != null){ if(!u.isAtivo()){%> selected="" <%}}%> value="0">Inativo</option>
                                             </select>
@@ -84,11 +142,11 @@
 
                                         <div class="form-group col-md-6">
                                             <label>Nivel de Acesso</label>
-                                            <select <%if(request.getParameter("nivelAcesso") == null){%>disabled=""<%}%> name="nivelAcesso" id="inputState" class="form-control">
-                                                <option value="adm">Administrador</option>
-                                                <option value="nutri">Nutricionista</option>
-                                                <option value="comprador" selected="">Comprador</option>
-                                                <option value="escan">Escaniador</option>
+                                            <select <%if(request.getParameter("nivelAcesso") == null && u == null){%>disabled=""<%}%> name="nivelAcesso" id="inputState" class="form-control">
+                                                <option <%if(u != null){ if( NivelAcesso.getCodigo(u.getNivelAcesso()) == NivelAcesso.getCodigo(NivelAcesso.ADMINISTRADOR) ){%> selected="" <%}}%> value="adm">Administrador</option>
+                                                <option <%if(u != null){ if( NivelAcesso.getCodigo(u.getNivelAcesso()) == NivelAcesso.getCodigo(NivelAcesso.NUTRICIONISTA) ){%> selected="" <%}}%> value="nutri">Nutricionista</option>
+                                                <option <%if(u != null){ if( NivelAcesso.getCodigo(u.getNivelAcesso()) == NivelAcesso.getCodigo(NivelAcesso.COMPRADOR) ){%> selected="" <%}}%> value="comprador">Comprador</option>
+                                                <option <%if(u != null){ if( NivelAcesso.getCodigo(u.getNivelAcesso()) == NivelAcesso.getCodigo(NivelAcesso.ESCANEADOR) ){%> selected="" <%}}%> value="escan">Escaniador</option>
                                             </select>
                                         </div> <!-- form-group end.// -->
                                     </div> <!-- form-row.// -->
@@ -100,7 +158,7 @@
                                                 <%
                                                     for (Perfil pp : perfis) {
                                                 %>
-                                                <option value="<%= TipoPerfil.getCodigo(pp.getTipo()) %>"><%= pp.getDescricao() %></option>
+                                                <option <%if(request.getParameter("perfil") != null && u != null){ if( TipoPerfil.getCodigo(u.getPerfil().getTipo()) == Integer.parseInt(request.getParameter("perfil")) ){%> selected="" <%}}%> value="<%= TipoPerfil.getCodigo(pp.getTipo()) %>"><%= pp.getDescricao() %></option>
                                                 <%
                                                     }
                                                 %>
@@ -127,7 +185,7 @@
                                     </div> <!-- form-group end.// -->  
 
                                     <div class="form-group">
-                                        <button type="submit" class="btn btn-primary btn-block"><%if(request.getParameter("nomeUsuario") == null){%>Pesquisar<%}else{%>Atualizar<%}%></button>
+                                        <button type="submit" class="btn btn-primary btn-block"><%if(request.getParameter("nomeUsuario") == null && u == null){%>Pesquisar<%}else{%>Atualizar<%}%></button>
                                     </div> <!-- form-group// -->      
 
                                 </form>

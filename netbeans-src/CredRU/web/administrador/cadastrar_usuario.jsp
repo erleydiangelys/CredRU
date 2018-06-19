@@ -126,8 +126,8 @@
                                         <div class="form-group col-md-6">
                                             <label>Status</label>
                                             <select name="status" id="inputState" class="form-control">
-                                                <option value="1">Ativo</option>
-                                                <option selected="" value="0">Inativo</option>
+                                                <option value="1" selected="">Ativo</option>
+                                                <option selected="">Inativo</option>
                                             </select>
                                         </div>
 
