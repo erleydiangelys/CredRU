@@ -23,7 +23,7 @@ public class PerfilDAOMySQL extends Conexao implements PerfilDAO{
     @Override
     public boolean setPerfil(Perfil p) {
         boolean retorno;
-        super.open();       
+               
         try{
             String SQL = "INSERT INTO perfil (descricao, valor, tipoPerfil) VALUES" + "(?,?,?)";
             PreparedStatement ps = super.getConnection().prepareStatement(SQL);
@@ -52,7 +52,7 @@ public class PerfilDAOMySQL extends Conexao implements PerfilDAO{
     @Override
     public Perfil getPerfil(TipoPerfil tipo) {
         Perfil p = new Perfil();
-        super.open();
+        
         try{
             String SQL = "SELECT * FROM perfil WHERE tipoPerfil=(?)";
             PreparedStatement ps = super.getConnection().prepareStatement(SQL);
@@ -78,7 +78,7 @@ public class PerfilDAOMySQL extends Conexao implements PerfilDAO{
     @Override
     public List<Perfil> getPerfil() {
         ArrayList <Perfil> p = new ArrayList <Perfil>();
-        super.open();
+   
         try{
             String SQL = "SELECT * FROM perfil";
             PreparedStatement ps = super.getConnection().prepareStatement(SQL);            
@@ -106,7 +106,7 @@ public class PerfilDAOMySQL extends Conexao implements PerfilDAO{
     @Override
     public boolean editPerfil(Perfil p1, Perfil p2) {
        boolean retorno;
-        super.open();       
+              
         try{
             String SQL = "UPDATE perfil SET (descricao, valor, tipoPerfil) VALUES" + "(?,?,?) "
                     + "WHERE (descricao, valor, tipoPerfil) VALUES (?,?,?)";
@@ -139,7 +139,7 @@ public class PerfilDAOMySQL extends Conexao implements PerfilDAO{
     @Override
     public boolean removerPerfil(Perfil p) {
         boolean retorno;
-        super.open();       
+     
         try{
             String SQL = "DELETE FROM alimento"
                     + " WHERE  (descricao, valor, tipoPerfil) VALUES" + "(?,?,?)";
