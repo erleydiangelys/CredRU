@@ -1,222 +1,218 @@
+<%@page import="br.com.credru.controller.Alterar"%>
+<%@page import="br.com.credru.model.NivelAcesso"%>
+<%@page import="br.com.credru.model.Usuario"%>
+<%@page import="br.com.credru.model.TipoPerfil"%>
+<%@page import="br.com.credru.controller.Visualizar"%>
+<%@page import="br.com.credru.model.Perfil"%>
+<%@page import="java.util.List"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+<%
+    boolean senhaCorrespondem = true;
+    boolean codastroOk = true;
+    Usuario u = null;
+    
+    List<Perfil> perfis = Visualizar.getPerfil();
+    
+    if(request.getParameter("nomeUsuario")!=null){
+        u = Visualizar.getUsuario(request.getParameter("nomeUsuario"));
+        
+        if( request.getParameter("nomeCompleto") != null &&
+            request.getParameter("status") != null &&
+            request.getParameter("nivelAcesso") != null &&
+            request.getParameter("senha") != null &&
+            request.getParameter("senhaConfir") != null &&
+            request.getParameter("perfil") != null){
+            
+            String nomeComp = request.getParameter("nomeCompleto");
+            String nomeUser = request.getParameter("nomeUsuario");
+            int status = Integer.parseInt(request.getParameter("status"));
+            String nivelAcesso = request.getParameter("nivelAcesso");
+            String senha = request.getParameter("senha");
+            String senhaConfir = request.getParameter("senhaConfir");
+            int codPerfil = Integer.parseInt(request.getParameter("perfil"));
+            
+            Perfil perfilEscolhido = Visualizar.getPerfil(TipoPerfil.getTipoPerfil(codPerfil));
+        
+            if(!senha.equals(senhaConfir)){
+                senhaCorrespondem = false;
+            }
+
+            if(senhaCorrespondem){
+                Usuario uu = new Usuario();
+
+                if(status==1){
+                    uu.setAtivo(true);
+                }
+                else{
+                    uu.setAtivo(false);
+                }
+
+                uu.setNome(nomeComp);
+                uu.setSenha(senha);
+                uu.setUserName(nomeUser);
+
+                if(nivelAcesso.equals("adm")){
+                    uu.setNivelAcesso(NivelAcesso.ADMINISTRADOR);
+                }
+                if(nivelAcesso.equals("nutri")){
+                    uu.setNivelAcesso(NivelAcesso.NUTRICIONISTA);
+                }
+                if(nivelAcesso.equals("comprador")){
+                    uu.setNivelAcesso(NivelAcesso.COMPRADOR);
+                }
+                if(nivelAcesso.equals("escan")){
+                    uu.setNivelAcesso(NivelAcesso.ESCANEADOR);
+                }
+
+                uu.setPerfil(perfilEscolhido);
+                codastroOk = Alterar.alterarUsuario(u, uu);
+            }
+        }
+    }
+    else{
+        
+    }
+%>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
-  <head>
+    <head>
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
 
-    <title>CRED RU - ADM - AlterarUsuario </title>
+        <title>CRED RU - ADM - AlterarUsuario </title>
 
-    <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" type="text/css" href="../assets/credru/css/bootstrap.min.css">
+        <!-- Bootstrap core CSS -->
+        <link rel="stylesheet" type="text/css" href="assets/credru/css/bootstrap.min.css">
 
-    <!-- Custom styles for this template -->
-    <link rel="stylesheet" type="text/css" href="../assets/credru/css/index.css">
+        <!-- Custom styles for this template -->
+        <link rel="stylesheet" type="text/css" href="assets/credru/css/index.css">
 
-  </head>
+    </head>
 
-  <body>
+    <body>
 
-    <!-- Menu começa aqui-->
-    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-info fixed-top">
-      <div class="container">
-        <a class="navbar-brand" href="index.html">CRED RU / ADM / ALTERAR USUARIO</a>
+        <jsp:include page="../include/header.jsp" />
 
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            
-            <li class="nav-item">
-              <a class="nav-link" href="../index.html">INICIO</a>
-            </li>
-           
-            <li class="nav-item">
-              <a class="nav-link" href="../exibir_cardapio.html">CARDAPIO</a>
-            </li>
+        <!-- Page Content -->
+        <div class="container">
+            <br><br>
 
-            <li class="nav-item">
-              <a class="nav-link" href="../login.html">LOGIN</a>
-            </li>
-           
-            <!--
-            <li class="nav-item">
-              <a class="nav-link" href="contact.html">Contact</a>
-            </li>
-            
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Portfolio
-              </a>
-             
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
-                <a class="dropdown-item" href="portfolio-1-col.html">1 Column Portfolio</a>
-                <a class="dropdown-item" href="portfolio-2-col.html">2 Column Portfolio</a>
-                <a class="dropdown-item" href="portfolio-3-col.html">3 Column Portfolio</a>
-                <a class="dropdown-item" href="portfolio-4-col.html">4 Column Portfolio</a>
-                <a class="dropdown-item" href="portfolio-item.html">Single Portfolio Item</a>
-              </div>
-            </li>
-            
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Blog
-              </a>
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
-                <a class="dropdown-item" href="blog-home-1.html">Blog Home 1</a>
-                <a class="dropdown-item" href="blog-home-2.html">Blog Home 2</a>
-                <a class="dropdown-item" href="blog-post.html">Blog Post</a>
-              </div>
-            </li>
-           
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Other Pages
-              </a>
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
-                <a class="dropdown-item" href="full-width.html">Full Width Page</a>
-                <a class="dropdown-item" href="sidebar.html">Sidebar Page</a>
-                <a class="dropdown-item" href="faq.html">FAQ</a>
-                <a class="dropdown-item" href="404.html">404</a>
-                <a class="dropdown-item" href="pricing.html">Pricing Table</a>
-              </div>
-            -->
+            <div class="container">
+                <%if(!codastroOk){%>
+                <p>Erro ao cadastrar!</p>
+                <%}%>
+                <hr>
+                
+                <div class="row justify-content-center">
+                    <div class="col-md-8">
+                        <div class="card">
+                            <header class="card-header">
 
-            </li>
-          </ul>
+                                <center><h4 class="card-title mt-2">Alterar Usuario</h4></center>
+                            </header>
+                            <article class="card-body">
+                                <form method="post" action="Administrador?comando=AlterarUsuario">
+                                    <div class="form-row">
+                                        <div class="col form-group">
+                                            <label>Nome Completo</label>   
+                                            <input <%if(request.getParameter("nomeCompleto") == null && u == null){%>disabled=""<%}else{%>value="<%= u.getNome() %>" <%}%> name="nomeCompleto" type="text" class="form-control" required="">
+                                        </div> <!-- form-group end.// -->
+                                        <div class="col form-group">
+                                            <label>Nome de Usuario</label>
+                                            <input <%if(u != null){%> value="<%= u.getUserName() %>" disabled="" <%}%> name="nomeUsuario" type="text" class="form-control" placeholder="" required="">
+                                        </div> <!-- form-group end.// -->
+                                    </div> <!-- form-row end.// -->
+
+
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label>Status</label>
+                                            <select <%if(request.getParameter("status") == null && u == null){%>disabled=""<%}%> name="status" id="inputState" class="form-control">
+                                                <option <%if(u != null){ if(u.isAtivo()){%> selected="" <%}}%> value="1">Ativo</option>
+                                                <option <%if(u != null){ if(!u.isAtivo()){%> selected="" <%}}%> value="0">Inativo</option>
+                                            </select>
+                                        </div>
+
+
+                                        <div class="form-group col-md-6">
+                                            <label>Nivel de Acesso</label>
+                                            <select <%if(request.getParameter("nivelAcesso") == null && u == null){%>disabled=""<%}%> name="nivelAcesso" id="inputState" class="form-control">
+                                                <option <%if(u != null){ if( NivelAcesso.getCodigo(u.getNivelAcesso()) == NivelAcesso.getCodigo(NivelAcesso.ADMINISTRADOR) ){%> selected="" <%}}%> value="adm">Administrador</option>
+                                                <option <%if(u != null){ if( NivelAcesso.getCodigo(u.getNivelAcesso()) == NivelAcesso.getCodigo(NivelAcesso.NUTRICIONISTA) ){%> selected="" <%}}%> value="nutri">Nutricionista</option>
+                                                <option <%if(u != null){ if( NivelAcesso.getCodigo(u.getNivelAcesso()) == NivelAcesso.getCodigo(NivelAcesso.COMPRADOR) ){%> selected="" <%}}%> value="comprador">Comprador</option>
+                                                <option <%if(u != null){ if( NivelAcesso.getCodigo(u.getNivelAcesso()) == NivelAcesso.getCodigo(NivelAcesso.ESCANEADOR) ){%> selected="" <%}}%> value="escan">Escaniador</option>
+                                            </select>
+                                        </div> <!-- form-group end.// -->
+                                    </div> <!-- form-row.// -->
+                                    
+                                    <div class="form-row">
+                                        <div class="col form-group">
+                                            <label>Perfil</label>
+                                            <select <%if(request.getParameter("perfil") == null && u == null){%>disabled=""<%}%> name="perfil" id="inputState" class="form-control">
+                                                <%
+                                                    for (Perfil pp : perfis) {
+                                                %>
+                                                <option <%if(request.getParameter("perfil") != null && u != null){ if( TipoPerfil.getCodigo(u.getPerfil().getTipo()) == Integer.parseInt(request.getParameter("perfil")) ){%> selected="" <%}}%> value="<%= TipoPerfil.getCodigo(pp.getTipo()) %>"><%= pp.getDescricao() %></option>
+                                                <%
+                                                    }
+                                                %>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    
+                                    <%if( !senhaCorrespondem ){%>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label>As senha não são iguais!</label>
+                                        </div>
+                                    </div>
+                                    <%}%>
+
+                                    <div class="form-group">
+                                        <label>Crie uma Senha</label>
+                                        <input <%if(request.getParameter("senha") == null && u == null){%>disabled=""<%}%> name="senha" class="form-control" type="password" required="">
+                                    </div> <!-- form-group end.// -->  
+
+                                    <div class="form-group">
+                                        <label>Confirme sua Senha</label>
+                                        <input <%if(request.getParameter("senhaConfir") == null && u == null){%>disabled=""<%}%> name="senhaConfir" class="form-control" type="password" required="">
+                                    </div> <!-- form-group end.// -->  
+
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-primary btn-block"><%if(request.getParameter("nomeUsuario") == null && u == null){%>Pesquisar<%}else{%>Atualizar<%}%></button>
+                                    </div> <!-- form-group// -->      
+
+                                </form>
+                            </article> <!-- card-body end .// -->
+
+                        </div> <!-- card.// -->
+                    </div> <!-- col.//-->
+
+                </div> <!-- row.//-->
+
+
+            </div> 
+            <!--container end.//-->
+
         </div>
-      </div>
-    </nav>
-
-    <!-- menu acaba aqui -->
-
-    <!-- Page Content -->
-    <div class="container">
-      <br><br>
-      <!-- Page Heading/Breadcrumbs
-      <h1 class="mt-4 mb-3">CRED RU</h1>
-       -->
-
-     <!-- <ol class="breadcrumb">
-        <li class="breadcrumb-item">
-          <a href="index.html">Home</a>
-        </li>
-        <li class="breadcrumb-item active">Services</li>
-      </ol>
-    -->
-
-      <!-- Image Header -->
-
-      
-
-                    <div class="container">
-              
-              <hr>
+        <!-- /.container -->
 
 
-              <div class="row justify-content-center">
-              <div class="col-md-8">
-              <div class="card">
-              <header class="card-header">
-                
-                <center><h4 class="card-title mt-2">Atualuzar Usuario</h4></center>
-              </header>
-              <article class="card-body">
-              <form>
-                <div class="form-row">
-                  <div class="col form-group">
-                    <label> Nome </label>   
-                      <input type="text" class="form-control" placeholder="">
-                  </div> <!-- form-group end.// -->
-                  <div class="col form-group">
-                    <label>Nome de Usuario</label>
-                      <input type="text" class="form-control" placeholder=" ">
-                  </div> <!-- form-group end.// -->
-                </div> <!-- form-row end.// -->
-                
-                <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label>Status</label>
-                            <select id="inputState" class="form-control">
-                                <option>Ativo</option>
-                                <option selected="">Inativo</option>
-                            </select>
-                          </div>
+        <!-- fim do formulario -->
+        <br><br>
+        <jsp:include page="../include/footer.jsp" />
 
+        <!-- Bootstrap core JavaScript -->
+        <script src="assets/credru/jquery/jquery.min.js"></script>
 
-                          <div class="form-group col-md-6">
-                            <label>Nivel de Acesso</label>
-                            <select id="inputState" class="form-control">
-                                <option>Professor</option>
-                                <option>Isento</option>
-                                <option selected="">Aluno</option>
-                                <option>Autorizada</option>
-                            </select>
-                          </div> <!-- form-group end.// -->
-                        </div> <!-- form-row.// -->
+        <script src="assets/credru/js/bootstrap.bundle.min.js"></script>
 
-
-                <div class="form-group">
-                  <label>Altere sua Senha</label>
-                    <input class="form-control" type="password">
-                </div> <!-- form-group end.// -->  
-
-                <div class="form-group">
-                  <label>Confirme sua Senha</label>
-                    <input class="form-control" type="password">
-                </div> <!-- form-group end.// -->  
-
-                  <div class="form-group">
-                      <button type="submit" class="btn btn-primary btn-block"> Atualizar  </button>
-                  </div> <!-- form-group// -->      
-                                                       
-              </form>
-              </article> <!-- card-body end .// -->
-              
-              </div> <!-- card.// -->
-              </div> <!-- col.//-->
-
-              </div> <!-- row.//-->
-
-
-              </div> 
-              <!--container end.//-->
-
-              
-
-    </div>
-    <!-- /.container -->
-
-
-
-                                
-                          </div>
-                        
-                      </div>
-                    </div>
-            </div>
-            <!-- /.row -->
-
-    </div>
-    <!-- /.container -->
-
-    <!-- Footer -->
-    <footer class="py-3 bg-info">
-      <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; Universidade Federal do Ceará</p>
-      </div>
-      <!-- /.container -->
-    </footer>
-
-    <!-- Bootstrap core JavaScript -->
-    <script src="../assets/credru/jquery/jquery.min.js"></script>
-
-    <script src="../assets/credru/js/bootstrap.bundle.min.js"></script>
-
-  </body>
+    </body>
 
 </html>

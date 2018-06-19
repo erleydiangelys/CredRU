@@ -5,7 +5,7 @@
  */
 package br.com.credru.model;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class Refeicao {
     private Horario horario;
     private LocalDate data;
-    private ArrayList<Alimento> alimentos;
+    private List<Alimento> alimentos;
 
     public Refeicao() {
         
@@ -36,12 +36,12 @@ public class Refeicao {
         this.data = data;
     }
 
-    public ArrayList<Alimento> getAlimentos() {
+    public List<Alimento> getAlimentos() {
         return alimentos;
     }
 
-    public void setAlimentos(ArrayList<Alimento> alimentos) {
+    public void setAlimentos(List<Alimento> alimentos) {
         this.alimentos = alimentos;
     }
-    
+
 }

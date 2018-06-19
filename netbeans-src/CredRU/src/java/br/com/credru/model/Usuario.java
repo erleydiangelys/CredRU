@@ -6,6 +6,7 @@
 package br.com.credru.model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -18,10 +19,11 @@ public class Usuario {
     private int credito;
     private Perfil perfil;
     private boolean ativo;
-    private ArrayList<Transacao> transacoes;
+    private List<Transacao> transacoes;
     private NivelAcesso nivelAcesso;
 
     public Usuario() {
+        this.transacoes = new ArrayList<>();
     }
 
     public String getNome() {
@@ -72,11 +74,11 @@ public class Usuario {
         this.ativo = ativo;
     }
 
-    public ArrayList<Transacao> getTransacoes() {
+    public List<Transacao> getTransacoes() {
         return transacoes;
     }
 
-    public void setTransacoes(ArrayList<Transacao> transacoes) {
+    public void setTransacoes(List<Transacao> transacoes) {
         this.transacoes = transacoes;
     }
 
@@ -87,6 +89,6 @@ public class Usuario {
     public void setNivelAcesso(NivelAcesso nivelAcesso) {
         this.nivelAcesso = nivelAcesso;
     }
-    
+
     
 }

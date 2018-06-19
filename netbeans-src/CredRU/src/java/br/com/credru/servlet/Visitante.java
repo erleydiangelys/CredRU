@@ -42,11 +42,7 @@ public class Visitante extends HttpServlet {
                 pagina = (Comando)Class.forName("br.com.credru.comando."+request.getParameter("comando")).newInstance();
             }
             
-	} catch (InstantiationException e) {
-		e.printStackTrace();
-	} catch (IllegalAccessException e) {
-		e.printStackTrace();
-	} catch (ClassNotFoundException e) {
+	} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
 		e.printStackTrace();
 	} finally {
             

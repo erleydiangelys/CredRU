@@ -41,5 +41,10 @@ public class RefeicaoDAOMySQL implements RefeicaoDAO{
     public boolean removeRefeicao(Refeicao r) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public List<Refeicao> getRefeicao(LocalDate data) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

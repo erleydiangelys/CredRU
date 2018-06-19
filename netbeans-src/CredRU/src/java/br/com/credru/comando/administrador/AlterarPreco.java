@@ -3,10 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.credru.comando.comprador;
+package br.com.credru.comando.administrador;
 
 import br.com.credru.comando.Comando;
-import br.com.credru.comando.Comando;
+import java.io.IOException;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -14,11 +16,17 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Soriano
  */
-public class Perfil implements Comando{
+public class AlterarPreco implements Comando{
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) {
-        
+        try {
+            RequestDispatcher rd = request.getRequestDispatcher("administrador/alterar_preco.jsp");
+            rd.forward(request, response);
+
+        } catch (IOException | ServletException e) {
+            e.printStackTrace();
+        }
     }
     
 }

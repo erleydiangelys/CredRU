@@ -6,6 +6,8 @@
 package br.com.credru.model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -14,10 +16,12 @@ import java.util.Map;
  */
 public class Restaurante {
     private String nome;
-    private ArrayList<Horario> horarios;
-    private Map<String, ArrayList<Refeicao>> refeicoes;
+    private List<Horario> horarios;
+    private Map<String, List<Refeicao>> refeicoes;
 
     public Restaurante() {
+        this.horarios = new ArrayList<>();
+        this.refeicoes = new HashMap<>();
     }
 
     public String getNome() {
@@ -28,19 +32,19 @@ public class Restaurante {
         this.nome = nome;
     }
 
-    public ArrayList<Horario> getHorarios() {
+    public List<Horario> getHorarios() {
         return horarios;
     }
 
-    public void setHorarios(ArrayList<Horario> horarios) {
+    public void setHorarios(List<Horario> horarios) {
         this.horarios = horarios;
     }
 
-    public Map<String, ArrayList<Refeicao>> getRefeicoes() {
+    public Map<String, List<Refeicao>> getRefeicoes() {
         return refeicoes;
     }
 
-    public void setRefeicoes(Map<String, ArrayList<Refeicao>> refeicoes) {
+    public void setRefeicoes(Map<String, List<Refeicao>> refeicoes) {
         this.refeicoes = refeicoes;
     }
     

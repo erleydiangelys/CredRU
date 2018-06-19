@@ -10,22 +10,28 @@ package br.com.credru.model;
  * @author Soriano
  */
 public enum Categoria {
-    PRINCIPAL(0),
-    VEGETARIANO(1),
-    SALADA(2),
-    GUARDINACAO(3),
-    ACOMPANHAMENTO(4),
-    SUCO(5),
-    SOBREMESA(6),
-    BEBIDAS(7),
-    PAES(8),
-    FRUTAS(9),
-    ESPECIAL(10);
+    PRINCIPAL(0, "Principal"),
+    VEGETARIANO(1,"Vegetariano"),
+    SALADA(2,"Salada"),
+    GUARDINACAO(3, "Guadinação"),
+    ACOMPANHAMENTO(4,"Acompanhamento"),
+    SUCO(5,"Suco"),
+    SOBREMESA(6, "Sobemesa"),
+    BEBIDAS(7, "Bebidas"),
+    PAES(8, "Pães"),
+    FRUTAS(9, "Frutas"),
+    ESPECIAL(10, "Especial");
     
     private final int codigo;
+    private final String descricao;
 
-    private Categoria(int codigo) {
+    private Categoria(int codigo, String descricao) {
         this.codigo = codigo;
+        this.descricao = descricao;
+    }
+    
+    public static String getDescricao(Categoria c){
+        return c.descricao;
     }
     
     public static int getCodigo(Categoria cat){

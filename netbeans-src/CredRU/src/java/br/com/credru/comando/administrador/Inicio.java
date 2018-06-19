@@ -21,7 +21,7 @@ public class Inicio implements Comando{
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) {
         try {
-            RequestDispatcher d = request.getRequestDispatcher("administrador/index.jsp");
+            RequestDispatcher d = request.getRequestDispatcher("administrador/adm2.jsp");
             d.forward(request,response);
             
         } catch (IOException | ServletException e) {

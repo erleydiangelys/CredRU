@@ -16,14 +16,14 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Soriano
  */
-public class Perfil implements Comando{
+public class ExibirRelatorio implements Comando{
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) {
         try {
-            RequestDispatcher d = request.getRequestDispatcher("usuario/perfil_usuario.jsp");
-            d.forward(request,response);
-            
+            RequestDispatcher rd = request.getRequestDispatcher("administrador/exibir_relatorio.jsp");
+            rd.forward(request, response);
+
         } catch (IOException | ServletException e) {
             e.printStackTrace();
         }
