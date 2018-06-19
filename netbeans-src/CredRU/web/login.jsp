@@ -14,6 +14,7 @@
     <head>
         <link rel="stylesheet" type="text/css" href="assets/credru/css/login.css">
         <link rel="stylesheet" type="text/css" href="assets/credru/js/login.js">
+        
 
         <title>CRED RU - Login</title>
         
@@ -80,19 +81,16 @@
                     <span id="reauth-text" class="reauth-text"></span>
                     <input name="username" type="text" id="inputtext" class="form-control" placeholder="Usuario" required autofocus>
                     <input name="senha" type="password" id="inputPassword" class="form-control" placeholder="Senha" required>
-                    <div id="remember" class="checkbox">
-                        <center><label>
-                                <input name="lembrar" type="checkbox" value="remember-me"> Lembrar Senha!
-                            </label></center>
-                    </div>
+                    
                     <br>
 
-                    <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Entrar!</button>
+                    <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Entrar</button>
+                    <button class="btn btn-lg btn-warning btn-block" type="button"> <a href="#" > Voltar</a></button>
                 </form><!-- /form -->
 
             </div><!-- /card-container -->
         </div><!-- /container -->
-
+               
     </body>
 </html>
 

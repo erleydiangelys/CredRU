@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>CRED RU - ADM - TICKETS </title>
+    <title>CRED RU - ESCANEADOR </title>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" type="text/css" href="../assets/credru/css/bootstrap.min.css">
@@ -23,7 +23,7 @@
     <!-- Menu começa aqui-->
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-info fixed-top">
       <div class="container">
-        <a class="navbar-brand" href="index.html">CRED RU / ADM / TICKETS</a>
+        <a class="navbar-brand" href="index.html">CRED RU / ESCANEADOR</a>
 
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -43,8 +43,7 @@
               <a class="nav-link" href="../login.html">LOGIN</a>
             </li>
            
-            
-
+           
             </li>
           </ul>
         </div>
@@ -56,54 +55,46 @@
     <!-- Page Content -->
     <div class="container">
       <br><br>
+      <!-- Page Heading/Breadcrumbs
+      <h1 class="mt-4 mb-3">CRED RU</h1>
+       -->
+
+     <!-- <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="index.html">Home</a>
+        </li>
+        <li class="breadcrumb-item active">Services</li>
+      </ol>
+    -->
+
+      <!-- Image Header -->
+
       
+
+      <!-- Marketing Icons Section -->
             <div class="row">
 
              
-                    <div class="col-lg-11 mb-3">
+                    <div class="col-lg-12 mb-3">
                       <div class="card h-100">
-                       <center><h4 class="card-header">Venda de Tickets</h4></center>
+                        <center><h4 class="card-header">Debitar Tickets</h4></center>
                           <div class="card-body">
 
                             <!-- menu operações-->
-                              <br> <br> <br>
-                              
 
-
-                                      <div class="col-md-12" >
-                                        <div class="card">
-                                        <header class="card-header">
-                                          
-                                          <center><h5 class="card-title mt-1">Adicione os tickets</h5></center>
-                                        </header>
-                                  <form >
-                                        <article class="card-body">
-
-                                           <div>
-                                             
-
-
-                                           </div>
-                                           
-                                         <!-- função de vender -->
-                                         <center><div>
-                                                <br>
+                             <center><div>
+                                                <br> <br> <br> <br> <br> <br>
 
                                                <b>Nome de usuario:</b> <input type="text" name="addUser" placeholder="ex: zé123">
 
                                                &nbsp;&nbsp;
 
-                                               <b>Selecionar Quantidade:</b>
+                                               
 
-                                               <select>
-                                                  <option value="valor1">   5 Tickets   </option>
-                                                  <option value="valor2">   10 Tickets   </option>
-                                              </select>
-
-                                                &nbsp;&nbsp;
-
-                                                <button type="button" class="btn btn-primary btn-sm mb-2"> Vender</button>
-                                               <br> 
+                                                <a href="#" class="btn btn-info btn-lg">
+                                                    <span class="glyphicon glyphicon-minus"></span> Debitar
+                                                </a>
+                                               <br>   <br>   <br>   <br>   <br>   <br> 
                                           </div></center>
                                          <!-- função vender -->
                                             
@@ -120,21 +111,21 @@
 
                               </div>
 
+                                
+                          
+                             
+
                             <!-- fim menu oprações-->
 
-                                <br>
+                                
                           </div>
                         
                       </div>
                     </div>
+            </div>
+            <!-- /.row -->
 
-
-
-
-
-            </div><!-- /.row -->
-
-    
+    </div>
     <!-- /.container -->
 
     <!-- Footer -->

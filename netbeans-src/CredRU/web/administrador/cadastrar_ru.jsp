@@ -1,7 +1,11 @@
+<%@page import="br.com.credru.model.LocalTime"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
+<%@page import="br.com.credru.model.Horario"%>
 <%@page import="br.com.credru.model.Restaurante"%>
 <%@page import="br.com.credru.controller.Cadastrar"%>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
   <head>
 
@@ -24,93 +28,9 @@
 
     <!-- Menu começa aqui-->
     <jsp:include page="../include/header.jsp" />
-    <!--
-    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-info fixed-top">
-      <div class="container">
-        <a class="navbar-brand" href="index.html">CRED RU / ADM / CADASTRAR RU</a>
-
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            
-            <li class="nav-item">
-              <a class="nav-link" href="../index.html">INICIO</a>
-            </li>
-           
-            <li class="nav-item">
-              <a class="nav-link" href="../exibir_cardapio.html">CARDAPIO</a>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link" href="../login.html">LOGIN</a>
-            </li>
-           
-            <!--
-            <li class="nav-item">
-              <a class="nav-link" href="contact.html">Contact</a>
-            </li>
-            
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Portfolio
-              </a>
-             
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
-                <a class="dropdown-item" href="portfolio-1-col.html">1 Column Portfolio</a>
-                <a class="dropdown-item" href="portfolio-2-col.html">2 Column Portfolio</a>
-                <a class="dropdown-item" href="portfolio-3-col.html">3 Column Portfolio</a>
-                <a class="dropdown-item" href="portfolio-4-col.html">4 Column Portfolio</a>
-                <a class="dropdown-item" href="portfolio-item.html">Single Portfolio Item</a>
-              </div>
-            </li>
-            
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Blog
-              </a>
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
-                <a class="dropdown-item" href="blog-home-1.html">Blog Home 1</a>
-                <a class="dropdown-item" href="blog-home-2.html">Blog Home 2</a>
-                <a class="dropdown-item" href="blog-post.html">Blog Post</a>
-              </div>
-            </li>
-           
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Other Pages
-              </a>
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
-                <a class="dropdown-item" href="full-width.html">Full Width Page</a>
-                <a class="dropdown-item" href="sidebar.html">Sidebar Page</a>
-                <a class="dropdown-item" href="faq.html">FAQ</a>
-                <a class="dropdown-item" href="404.html">404</a>
-                <a class="dropdown-item" href="pricing.html">Pricing Table</a>
-              </div>
-            -->
-            <!--
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-    -->
+    
     <!-- menu acaba aqui -->
-    <%
-        if ( request.getParameter("nome") != null && request.getParameter("endereco") != null &&
-            request.getParameter("nome").isEmpty() == false && request.getParameter("endereco").isEmpty() == false ){
-        
-            String nome = request.getParameter("nome");
-            String endereco = request.getParameter("endereco");
-            
-            Restaurante res = new Restaurante();
-            res.setNome("nome");
-            
-            if (Cadastrar.cadastrarRestaurante(res)){}
-        
-        }
-    %>
+
     <!-- Page Content -->
     <div class="container">
       <br><br>
@@ -129,13 +49,14 @@
       <!-- Image Header -->
 
 
+
                     <div class="container">
               
               <hr>
 
 
               <div class="row justify-content-center">
-              <div class="col-md-8 mb-5" >
+              <div class="col-md-1O mb-5" >
               <div class="card">
               <header class="card-header">
                 
@@ -147,14 +68,108 @@
                 <div class="form-row">
                   <div class="col form-group col-md-12">
                     <label>Nome</label>   
-                      <input type="text" name="nome" class="form-control" placeholder="">
+                    <input type="text" name="nome" required="" class="form-control" placeholder="">
+                      <br>
+
+                      <center><label><h5>Horarios de funcionamento:</h5></label></center>	
+             
+                  </div> <!-- form-group end.// -->
+
+			
+
+
+
+               <div class="col-md-4" >
+              <div class="card">
+              <header class="card-header">
+                
+                <center><h6 class="card-title mt-2">Café</h6></center>
+              </header>
+              <article class="card-body">
+
+                 
+	               
+                 <div class="form-row">
+		                  <div class="col form-group col-md-5">
+		                    	<label>Hora Inicio</label>
+                                        <input type="time" name="cafe1" class="form-control" placeholder=" ">
+		                  </div> <!-- form-group end.// -->
+
+		                  <div class="col form-group col-md-5">
+		                    	<label>Hora final</label>
+                                        <input type="time" name="cafe2" class="form-control" placeholder=" ">
+		                  </div> <!-- form-group end.// -->
+
+                    </div>
+                 </article>
+                 </div>
+                 </div>
+              
+
+			<div class="col-md-4" >
+              <div class="card">
+              <header class="card-header">
+                
+                <center><h6 class="card-title mt-2">Almoço</h6></center>
+              </header>
+              <article class="card-body">
+
+                 
+	               
+               <div class="form-row">
+                  <div class="col form-group">
+                    <label>Hora Inicio</label>
+                    <input type="time" name="almoco1" required="" class="form-control" placeholder=" ">
                   </div> <!-- form-group end.// -->
 
                   <div class="col form-group">
-                    
+                    <label>Hora final</label>
+                    <input type="time" name="almoco2" required="" class="form-control" placeholder=" ">
                   </div> <!-- form-group end.// -->
-                </div> <!-- form-row end.// -->
+
+                 </div>
+                 </article>
+                 </div>
+                 </div>
+
+                 <div class="col-md-4" >
+              <div class="card">
+              <header class="card-header">
                 
+                <center><h6 class="card-title mt-2">Jantar</h6></center>
+              </header>
+              <article class="card-body">
+
+                 
+	               
+               <div class="form-row">
+                  <div class="col form-group">
+                    <label>Hora Inicio</label>
+                    <input type="time" name="jantar1" required="" class="form-control" placeholder=" ">
+                  </div> <!-- form-group end.// -->
+
+                  <div class="col form-group">
+                    <label>Hora final</label>
+                    <input type="time" name="jantar2" required="" class="form-control" placeholder=" ">
+                  </div> <!-- form-group end.// -->
+
+                 </div>
+                 </article>
+                 </div>
+                 </div>
+
+
+            	</div>
+
+
+
+            	<br>
+
+
+
+
+                
+
               <!--
                 <div class="form-group">
                   <label>Crie uma Senha</label>
@@ -170,8 +185,7 @@
                   <div class="form-group">
                       <button type="submit" class="btn btn-primary btn-block"> Registrar  </button>
                   </div> <!-- form-group// -->    
-                <br><br>
-      
+                <br>
               </form>
               </article> <!-- card-body end .// -->
               
@@ -188,9 +202,63 @@
 
     </div>
     <!-- /.container -->
-
+    <%
+        if (request.getParameter("nome") != null &&
+            request.getParameter("almoco1") != null && request.getParameter("almoco2") != null &&
+            request.getParameter("jantar1") != null && request.getParameter("jantar2") != null){
+        
+            String nome = request.getParameter("nome");
+            String hialmoco = request.getParameter("almoco1");
+            String hfalmoco = request.getParameter("almoco2");
+            String hijantar = request.getParameter("jantar1");
+            String hfjantar = request.getParameter("jantar2");
+            
+            //LocalTime tempo = 
+            ArrayList<Horario> horas = new ArrayList();
+            
+            Horario almoco = new Horario();
+            almoco.setDescricao("Almoço");
+            LocalTime hoIalmo = new LocalTime();
+            hoIalmo.setHora(Integer.parseInt(hialmoco.substring(0, 2)));
+            almoco.setHoraInicio(hoIalmo);
+            LocalTime hoFalmo = new LocalTime();
+            hoFalmo.setHora(Integer.parseInt(hialmoco.substring(3, 5)));
+            almoco.setHoraFim(hoFalmo);
+            
+            horas.add(almoco);
+            
+            Horario jantar = new Horario();
+            jantar.setDescricao("Jantar");
+            LocalTime hoIjan = new LocalTime();
+            hoIjan.setHora(Integer.parseInt(hijantar.substring(0, 2)));
+            jantar.setHoraInicio(hoIjan);
+            LocalTime hoFjan = new LocalTime();
+            hoFjan.setHora(Integer.parseInt(hfjantar.substring(3, 5)));
+            jantar.setHoraFim(hoFjan);
+            
+            horas.add(jantar);
+            
+            if (request.getParameter("cafe1") != null && request.getParameter("cafe2") != null){
+                String hicafe = request.getParameter("cafe1");
+                String hfcafe = request.getParameter("cafe2");
+                
+                Horario cafe = new Horario();
+                cafe.setDescricao("Café da Manhã");
+                LocalTime hoIcaf = new LocalTime();
+                hoIcaf.setHora(Integer.parseInt(hicafe.substring(0, 2)));
+                cafe.setHoraInicio(hoIcaf);
+                LocalTime hoFcaf = new LocalTime();
+                hoFcaf.setHora(Integer.parseInt(hfcafe.substring(3, 5)));
+                cafe.setHoraFim(hoFcaf);
+            
+                horas.add(cafe);
+                
+            }
+            
+            
+        }
+    %>
     <!-- Footer -->
-    <br><br>
     <jsp:include page="../include/footer.jsp" />
 
     <!-- Bootstrap core JavaScript -->
