@@ -105,12 +105,63 @@ public class PerfilDAOMySQL extends Conexao implements PerfilDAO{
 
     @Override
     public boolean editPerfil(Perfil p1, Perfil p2) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       boolean retorno;
+        super.open();       
+        try{
+            String SQL = "UPDATE perfil SET (descricao, valor, tipoPerfil) VALUES" + "(?,?,?) "
+                    + "WHERE (descricao, valor, tipoPerfil) VALUES (?,?,?)";
+            PreparedStatement ps = super.getConnection().prepareStatement(SQL);
+            //Setando as variaveis
+            ps.setString(1, p2.getDescricao());
+            ps.setFloat(2, p2.getValor());
+            ps.setInt(3, TipoPerfil.getCodigo(p2.getTipo()));
+            //antigo
+            ps.setString(4, p1.getDescricao());
+            ps.setFloat(5, p1.getValor());
+            ps.setInt(6, TipoPerfil.getCodigo(p1.getTipo()));
+            
+            //Executando
+            ps.executeUpdate();
+            ps.close();
+            retorno=true;
+        }catch(SQLException e){
+            e.printStackTrace();
+            retorno=false;
+            throw new RuntimeException("Falha ao cadastrar Perfil", e);
+            
+        }finally{
+            super.close();
+            
+        } 
+        return retorno; 
     }
 
     @Override
     public boolean removerPerfil(Perfil p) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        boolean retorno;
+        super.open();       
+        try{
+            String SQL = "DELETE FROM alimento"
+                    + " WHERE  (descricao, valor, tipoPerfil) VALUES" + "(?,?,?)";
+            PreparedStatement ps = super.getConnection().prepareStatement(SQL);
+            //Setando as variaveis
+            ps.setString(1, p.getDescricao());
+            ps.setFloat(2, p.getValor());
+            ps.setInt(3, TipoPerfil.getCodigo(p.getTipo()));
+                        
+            //Executando
+            ps.executeUpdate();
+            ps.close();
+            retorno=true;
+        }catch(SQLException e){
+            e.printStackTrace();
+            retorno=false;
+            throw new RuntimeException("Falha ao apagar Perfil", e);
+        }finally{
+            super.close();
+            
+        }
+        return retorno;
     }
     
 }
