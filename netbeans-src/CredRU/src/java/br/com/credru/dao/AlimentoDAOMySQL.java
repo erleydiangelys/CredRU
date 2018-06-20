@@ -24,8 +24,7 @@ public class AlimentoDAOMySQL extends Conexao implements AlimentoDAO{
      
     @Override
     public boolean setAlimento(Alimento a) {
-        boolean retorno;
-        super.open();       
+        boolean retorno;     
         try{
             String SQL = "INSERT INTO alimento (nome, gramas, valorCalorico,carboidrato,proteina,lipidios,obervacao,categoria) VALUES" + "(?,?,?,?,?,?)";
             PreparedStatement ps = super.getConnection().prepareStatement(SQL);
@@ -56,8 +55,7 @@ public class AlimentoDAOMySQL extends Conexao implements AlimentoDAO{
 
     @Override
     public Alimento getAlimento(String nome) {
-        Alimento a = new Alimento ();
-        super.open();
+        Alimento a = new Alimento ();        
         try{
         String SQL = "SELECT * FROM alimento WHERE nome like (?)";        
             PreparedStatement ps = super.getConnection().prepareStatement(SQL);
@@ -87,7 +85,7 @@ public class AlimentoDAOMySQL extends Conexao implements AlimentoDAO{
     @Override
     public List<Alimento> getAlimento() {
         ArrayList <Alimento> a = new ArrayList <Alimento>();
-        super.open();
+        
         try{
             String SQL = "SELECT * FROM alimento";
  
@@ -119,7 +117,7 @@ public class AlimentoDAOMySQL extends Conexao implements AlimentoDAO{
     @Override
     public boolean editAlimento(Alimento a1, Alimento a2) {
         boolean certo = false;
-        super.open();
+        
         try{
             String SQL = "UPDATE alimento SET  (nome, gramas, valorCalorico,carboidrato,proteina,lipidios,obervacao,categoria) VALUES" + "(?,?,?,?,?,?)"
                     + " WHERE (nome, gramas, valorCalorico,carboidrato,proteina,lipidios,obervacao,categoria) VALUES" +"(?,?,?,?,?,?)";
@@ -158,7 +156,7 @@ public class AlimentoDAOMySQL extends Conexao implements AlimentoDAO{
     @Override
     public boolean removeAlimento(Alimento a) {
         boolean retorno;
-        super.open();       
+        
         try{
             String SQL = "DELETE FROM alimento"
                     + " WHERE  (nome, gramas, valorCalorico,carboidrato,proteina,lipidios,obervacao,categoria) VALUES" + "(?,?,?,?,?,?)";
