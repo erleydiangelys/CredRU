@@ -1,155 +1,183 @@
+<%@page import="br.com.credru.model.TipoTransacao"%>
+<%@page import="br.com.credru.model.LocalDate"%>
+<%@page import="br.com.credru.model.LocalTime"%>
+<%@page import="java.util.Calendar"%>
+<%@page import="br.com.credru.model.Transacao"%>
+<%@page import="br.com.credru.controller.Visualizar"%>
+<%@page import="br.com.credru.model.Usuario"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
-<html lang="en">
 
-  <head>
+<html lang="pt-br">
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <head>
 
-    <title>CRED RU - ADM - TICKETS </title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
 
-    <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" type="text/css" href="../assets/credru/css/bootstrap.min.css">
+        <title>CRED RU - ADM - TICKETS </title>
 
-    <!-- Custom styles for this template -->
-    <link rel="stylesheet" type="text/css" href="../assets/credru/css/index.css">
+        <!-- Bootstrap core CSS -->
+        <link rel="stylesheet" type="text/css" href="assets/credru/css/bootstrap.min.css">
 
-  </head>
+        <!-- Custom styles for this template -->
+        <link rel="stylesheet" type="text/css" href="assets/credru/css/index.css">
 
-  <body>
+    </head>
 
-    <!-- Menu começa aqui-->
-    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-info fixed-top">
-      <div class="container">
-        <a class="navbar-brand" href="index.html">CRED RU / ADM / TICKETS</a>
+    <body>
 
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            
-            <li class="nav-item">
-              <a class="nav-link" href="../index.html">INICIO</a>
-            </li>
-           
-            <li class="nav-item">
-              <a class="nav-link" href="../exibir_cardapio.html">CARDAPIO</a>
-            </li>
+        <jsp:include page="../include/header.jsp" />
 
-            <li class="nav-item">
-              <a class="nav-link" href="../login.html">LOGIN</a>
-            </li>
-           
-            
-
-            </li>
-          </ul>
+        <div class="modal" id="modalConfirm" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Modal body text goes here.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </nav>
 
-    <!-- menu acaba aqui -->
+        <!-- Page Content -->
+        <div class="container">
+            <br><br>
 
-    <!-- Page Content -->
-    <div class="container">
-      <br><br>
-      
             <div class="row">
 
-             
-                    <div class="col-lg-11 mb-3">
-                      <div class="card h-100">
-                       <center><h4 class="card-header">Venda de Tickets</h4></center>
-                          <div class="card-body">
+
+                <div class="col-lg-11 mb-3">
+                    <div class="card h-100">
+                        <center><h4 class="card-header">Venda de Tickets</h4></center>
+                        <div class="card-body">
+
+
+                            <%
+                                if (request.getParameter("userName") != null && request.getParameter("qtdCreditos") != null) {
+                                    String userName = request.getParameter("userName");
+                                    String opQtd = request.getParameter("qtdCreditos");
+                                    int qtdCreditos = 0;
+
+                                    if (opQtd.equals("valor1")) {
+                                        qtdCreditos = 5;
+                                    } else {
+                                        if (opQtd.equals("valor2")) {
+                                            qtdCreditos = 10;
+                                        } else {
+                                            out.print("Opção de quantidade de creditos invalida!");
+                                        }
+                                    }
+
+                                    if (qtdCreditos != 0) {
+                                        Usuario u = Visualizar.getUsuario(userName);
+
+                                        if (u != null) {
+                                            out.print("Criando transacao");
+
+                                            Transacao tr = new Transacao();
+
+                                            Calendar cc = Calendar.getInstance();
+                                            LocalTime hora = new LocalTime();
+                                            LocalDate data = new LocalDate();
+
+                                            hora.setHora(cc.get(Calendar.HOUR_OF_DAY));
+                                            hora.setMinuto(cc.get(Calendar.MINUTE));
+                                            hora.setSegundo(cc.get(Calendar.MINUTE));
+
+                                            data.setAno(cc.get(Calendar.YEAR));
+                                            data.setDia(cc.get(Calendar.DAY_OF_WEEK));
+                                            data.setMes(cc.get(Calendar.MONTH));
+                                            data.setSemana(cc.get(Calendar.WEEK_OF_MONTH));
+
+                                            tr.setData(data);
+                                            tr.setHora(hora);
+
+                                            tr.setQtdCreditos(qtdCreditos);
+                                            tr.setTipo(TipoTransacao.COMPRA);
+                                            tr.setUser(u);
+
+                                            tr.setValor(55);
+
+                                        } else {
+                                            out.print("Usuáio não encontrado!");
+                                        }
+                                    } else {
+                                        out.print("qtTick 0");
+                                    }
+                                }
+                            %>
 
                             <!-- menu operações-->
-                              <br> <br> <br>
-                              
+                            <br> <br> <br>
 
 
-                                      <div class="col-md-12" >
-                                        <div class="card">
-                                        <header class="card-header">
-                                          
-                                          <center><h5 class="card-title mt-1">Adicione os tickets</h5></center>
-                                        </header>
-                                  <form >
-                                        <article class="card-body">
 
-                                           <div>
-                                             
+                            <div class="col-md-12" >
+                                <div class="card">
+                                    <header class="card-header">
 
+                                        <center><h5 class="card-title mt-1">Adicione os tickets</h5></center>
+                                    </header>
+                                    <article class="card-body">
+                                        <form action="Administrador?comando=VenderCredito" method="post">
+                                            <!-- função de vender -->
+                                            <center>
+                                                <div>
+                                                    <br>
 
-                                           </div>
-                                           
-                                         <!-- função de vender -->
-                                         <center><div>
-                                                <br>
+                                                    <b>Nome de usuario:</b> <input type="text" name="userName" placeholder="ex: ze123" required="">
 
-                                               <b>Nome de usuario:</b> <input type="text" name="addUser" placeholder="ex: zé123">
+                                                    &nbsp;&nbsp;
 
-                                               &nbsp;&nbsp;
+                                                    <b>Selecionar Quantidade:</b>
 
-                                               <b>Selecionar Quantidade:</b>
+                                                    <select name="qtdCreditos">
+                                                        <option value="valor1">   5 Creditos   </option>
+                                                        <option value="valor2">   10 Creditos   </option>
+                                                    </select>
 
-                                               <select>
-                                                  <option value="valor1">   5 Tickets   </option>
-                                                  <option value="valor2">   10 Tickets   </option>
-                                              </select>
+                                                    &nbsp;&nbsp;
 
-                                                &nbsp;&nbsp;
-
-                                                <button type="button" class="btn btn-primary btn-sm mb-2"> Vender</button>
-                                               <br> 
-                                          </div></center>
-                                         <!-- função vender -->
-                                            
-                                           </div>
-                                           </article>
-                                  </form>
-                                           </div>
-
-                                      </div>
-
-
-                                  </div>
-                                     <br> <br> <br>
-
-                              </div>
-
-                            <!-- fim menu oprações-->
-
-                                <br>
-                          </div>
-                        
-                      </div>
+                                                    <button type="submit" data-toggle="modal" data-target="modalConfirm" class="btn btn-primary btn-sm mb-2"> Vender</button>
+                                                    <br> 
+                                                </div>
+                                            </center>
+                                            <!-- função vender -->
+                                        </form>
+                                    </article>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                    <br> 
+                    <br> 
+                    <br>
+                </div>
+                <br>
+            </div>
+        </div>
+                            
 
+        <jsp:include page="../include/footer.jsp" />
 
+        <!-- Bootstrap core JavaScript -->
+        <script src="assets/credru/jquery/jquery.min.js"></script>
 
+        <script src="assets/credru/js/bootstrap.bundle.min.js"></script>
 
-
-            </div><!-- /.row -->
-
-    
-    <!-- /.container -->
-
-    <!-- Footer -->
-    <footer class="py-3 bg-info">
-      <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; Universidade Federal do Ceará</p>
-      </div>
-      <!-- /.container -->
-    </footer>
-
-    <!-- Bootstrap core JavaScript -->
-    <script src="../assets/credru/jquery/jquery.min.js"></script>
-
-    <script src="../assets/credru/js/bootstrap.bundle.min.js"></script>
-
-  </body>
+    </body>
 
 </html>

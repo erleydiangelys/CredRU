@@ -1,6 +1,8 @@
 <%@page import="br.com.credru.controller.Cadastrar"%>
 <%@page import="br.com.credru.model.Categoria"%>
 <%@page import="br.com.credru.model.Alimento"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -14,34 +16,21 @@
     <title>CRED RU - NUTRI ADM - CadastrarAlimento </title>
 
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" type="text/css" href="../assets/credru/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/credru/css/bootstrap.min.css">
 
     <!-- Custom styles for this template -->
-    <link rel="stylesheet" type="text/css" href="../assets/credru/css/index.css">
+    <link rel="stylesheet" type="text/css" href="assets/credru/css/index.css">
 
   </head>
 
   <body>
 
-    <!-- Menu começa aqui-->
     <jsp:include page="../include/header.jsp" />
     
-    <!-- menu acaba aqui -->
-
     <!-- Page Content -->
     <div class="container">
       <br><br>
-      <!-- Page Heading/Breadcrumbs
-      <h1 class="mt-4 mb-3">CRED RU</h1>
-       -->
 
-     <!-- <ol class="breadcrumb">
-        <li class="breadcrumb-item">
-          <a href="index.html">Home</a>
-        </li>
-        <li class="breadcrumb-item active">Services</li>
-      </ol>
-    -->
 
       
                                     
@@ -58,7 +47,7 @@
                 <center><h4 class="card-title mt-2">Cadastrar Novo Alimento</h4></center>
               </header>
               <article class="card-body">
-              <form action="" method="post">
+              <form action="Nutricionista?comando=CadastrarAlimento" method="post">
                 <br><br>
                 <div class="form-row">
                   <div class="col form-group col-md-12">
@@ -96,17 +85,6 @@
                           </div> <!-- form-group end.// -->
                 </div> <!-- form-row end.// -->
                 
-              <!--
-                <div class="form-group">
-                  <label>Crie uma Senha</label>
-                    <input class="form-control" type="password">
-                </div> <!-- form-group end.// 
-
-                <div class="form-group">
-                  <label>Confirme sua Senha</label>
-                    <input class="form-control" type="password">
-                </div> <!-- form-group end.//  
-                -->
 
                   <div class="form-group">
                       <button type="submit" class="btn btn-primary btn-block"> Registrar  </button>
@@ -162,13 +140,14 @@
             }
         }
     %>
+    
     <!-- Footer -->
     <jsp:include page="../include/footer.jsp" />
 
     <!-- Bootstrap core JavaScript -->
-    <script src="../assets/credru/jquery/jquery.min.js"></script>
+    <script src="assets/credru/jquery/jquery.min.js"></script>
 
-    <script src="../assets/credru/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/credru/js/bootstrap.bundle.min.js"></script>
 
   </body>
 

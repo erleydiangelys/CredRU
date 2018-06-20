@@ -85,7 +85,7 @@
                     <br>
 
                     <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Entrar</button>
-                    <button class="btn btn-lg btn-warning btn-block" type="button"> <a href="#" > Voltar</a></button>
+                    <button class="btn btn-lg btn-warning btn-block" type="button"> <a href="Visitante?comando=Inicio" > Voltar</a></button>
                 </form><!-- /form -->
 
             </div><!-- /card-container -->

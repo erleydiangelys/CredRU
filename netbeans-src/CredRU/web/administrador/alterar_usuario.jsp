@@ -8,6 +8,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%
+    //COM ERRO APOS A ALTERAÇÃO DO USUARIO
+    
     boolean senhaCorrespondem = true;
     boolean codastroOk = true;
     Usuario u = null;
