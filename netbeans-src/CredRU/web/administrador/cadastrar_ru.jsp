@@ -213,32 +213,42 @@
             String hijantar = request.getParameter("jantar1");
             String hfjantar = request.getParameter("jantar2");
             
+            System.out.print(hialmoco);
+            System.out.print(hialmoco.substring(0, 2));
+            System.out.print(hialmoco.substring(3, 5));
             //LocalTime tempo = 
-            ArrayList<Horario> horas = new ArrayList();
+            ArrayList<Horario> horarios = new ArrayList();
             
             Horario almoco = new Horario();
             almoco.setDescricao("Almoço");
+            
             LocalTime hoIalmo = new LocalTime();
             hoIalmo.setHora(Integer.parseInt(hialmoco.substring(0, 2)));
+            hoIalmo.setMinuto(Integer.parseInt(hialmoco.substring(3, 5)));
             almoco.setHoraInicio(hoIalmo);
+            
             LocalTime hoFalmo = new LocalTime();
-            hoFalmo.setHora(Integer.parseInt(hialmoco.substring(3, 5)));
+            hoFalmo.setHora(Integer.parseInt(hfalmoco.substring(0, 2)));
+            hoFalmo.setMinuto(Integer.parseInt(hfalmoco.substring(3, 5)));
             almoco.setHoraFim(hoFalmo);
             
-            horas.add(almoco);
+            horarios.add(almoco);
             
             Horario jantar = new Horario();
             jantar.setDescricao("Jantar");
             LocalTime hoIjan = new LocalTime();
             hoIjan.setHora(Integer.parseInt(hijantar.substring(0, 2)));
+            hoIjan.setHora(Integer.parseInt(hijantar.substring(3, 5)));
             jantar.setHoraInicio(hoIjan);
             LocalTime hoFjan = new LocalTime();
+            hoFjan.setHora(Integer.parseInt(hfjantar.substring(0, 2)));
             hoFjan.setHora(Integer.parseInt(hfjantar.substring(3, 5)));
             jantar.setHoraFim(hoFjan);
             
-            horas.add(jantar);
+            horarios.add(jantar);
+            System.out.print(request.getParameter("cafe1"));
             
-            if (request.getParameter("cafe1") != null && request.getParameter("cafe2") != null){
+            if (request.getParameter("cafe1").isEmpty() == false && request.getParameter("cafe2").isEmpty() == false){
                 String hicafe = request.getParameter("cafe1");
                 String hfcafe = request.getParameter("cafe2");
                 
@@ -251,11 +261,20 @@
                 hoFcaf.setHora(Integer.parseInt(hfcafe.substring(3, 5)));
                 cafe.setHoraFim(hoFcaf);
             
-                horas.add(cafe);
+                horarios.add(cafe);
                 
             }
             
+            Restaurante res = new Restaurante();
+            res.setNome(nome);
+            res.setHorarios(horarios);
             
+            if ( Cadastrar.cadastrarRestaurante(res)){
+                out.print("Cadastro realizado com sucesso!");
+            }
+            else{
+                out.print("Cadastro não realizado!, esse nome já foi cadastrado");
+            }
         }
     %>
     <!-- Footer -->
