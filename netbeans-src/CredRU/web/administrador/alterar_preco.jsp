@@ -1,5 +1,7 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
   <head>
 
@@ -11,10 +13,10 @@
     <title>CRED RU - ADM - AlterarTabela </title>
 
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" type="text/css" href="../assets/credru/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/credru/css/bootstrap.min.css">
 
     <!-- Custom styles for this template -->
-    <link rel="stylesheet" type="text/css" href="../assets/credru/css/index.css">
+    <link rel="stylesheet" type="text/css" href="assets/credru/css/index.css">
 
   </head>
 
@@ -47,7 +49,7 @@
 
 
                                       <div class="form-group col-lg-12">
-                                          <center><label for="selecaoRu"><h5><b>Selecione RU</b></h5></label></center>
+                                          <center><h5><b>Selecione RU</b></h5></center>
                                           <select class="form-control" id="selecaoRu">
                                             <option>Russas</option>
                                             <option>PICI</option>
@@ -56,6 +58,7 @@
                                         </div>
                                         
                                         </div> <!-- form-group end.// -->
+                                </form>
                                     </div>
 
                                     <center><h5>Alterar preços</h5></center>
@@ -75,7 +78,6 @@
                                                     <button type="submit" class="btn btn-primary btn-block">Alterar</button>
                                                 </div>
 
-                                </form>
                             </div>
 
                             <!-- fim menu oprações-->
@@ -85,10 +87,7 @@
                       </div>
                     </div>
             </div>
-            <!-- /.row -->
-
-    </div>
-    
+            <!-- /.row -->    
    
     <!-- /.container -->
 
@@ -97,9 +96,9 @@
     <jsp:include page="../include/footer.jsp" />
 
     <!-- Bootstrap core JavaScript -->
-    <script src="../assets/credru/jquery/jquery.min.js"></script>
+    <script src="assets/credru/jquery/jquery.min.js"></script>
 
-    <script src="../assets/credru/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/credru/js/bootstrap.bundle.min.js"></script>
 
   </body>
 

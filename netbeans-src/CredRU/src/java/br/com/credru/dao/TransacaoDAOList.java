@@ -5,7 +5,6 @@
  */
 package br.com.credru.dao;
 
-import br.com.credru.dao.TransacaoDAO;
 import br.com.credru.model.LocalDate;
 import br.com.credru.model.LocalTime;
 import br.com.credru.model.Transacao;
@@ -30,6 +29,7 @@ public class TransacaoDAOList implements TransacaoDAO{
             }
         }
         TransacaoDAOList.transacoes.add(t);
+        
         return true;
     }
 

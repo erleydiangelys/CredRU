@@ -1,3 +1,4 @@
+<%@page import="br.com.credru.controller.Cadastrar"%>
 <%@page import="br.com.credru.model.TipoTransacao"%>
 <%@page import="br.com.credru.model.LocalDate"%>
 <%@page import="br.com.credru.model.LocalTime"%>
@@ -86,7 +87,11 @@
 
                                         if (u != null) {
                                             out.print("Criando transacao");
-
+                                            
+                                            float quantidadeAPagar = u.getPerfil().getValor() * qtdCreditos;
+                                                    
+                                            out.print("Valor a pagar: " + quantidadeAPagar);
+                                            
                                             Transacao tr = new Transacao();
 
                                             Calendar cc = Calendar.getInstance();
@@ -109,8 +114,9 @@
                                             tr.setTipo(TipoTransacao.COMPRA);
                                             tr.setUser(u);
 
-                                            tr.setValor(55);
-
+                                            tr.setValor(quantidadeAPagar);
+                                            
+                                            Cadastrar.cadastrarTransacao(tr);
                                         } else {
                                             out.print("Usuáio não encontrado!");
                                         }
