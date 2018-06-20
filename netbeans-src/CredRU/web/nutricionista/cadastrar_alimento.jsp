@@ -1,5 +1,8 @@
+<%@page import="br.com.credru.controller.Cadastrar"%>
+<%@page import="br.com.credru.model.Categoria"%>
+<%@page import="br.com.credru.model.Alimento"%>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
   <head>
 
@@ -21,77 +24,8 @@
   <body>
 
     <!-- Menu começa aqui-->
-    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-info fixed-top">
-      <div class="container">
-        <a class="navbar-brand" href="index.html">CRED RU / NUTRI ADM / CADASTRAR ALIMENTO</a>
-
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            
-            <li class="nav-item">
-              <a class="nav-link" href="../index.html">INICIO</a>
-            </li>
-           
-            <li class="nav-item">
-              <a class="nav-link" href="../exibir_cardapio.html">CARDAPIO</a>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link" href="../login.html">LOGIN</a>
-            </li>
-           
-            <!--
-            <li class="nav-item">
-              <a class="nav-link" href="contact.html">Contact</a>
-            </li>
-            
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Portfolio
-              </a>
-             
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
-                <a class="dropdown-item" href="portfolio-1-col.html">1 Column Portfolio</a>
-                <a class="dropdown-item" href="portfolio-2-col.html">2 Column Portfolio</a>
-                <a class="dropdown-item" href="portfolio-3-col.html">3 Column Portfolio</a>
-                <a class="dropdown-item" href="portfolio-4-col.html">4 Column Portfolio</a>
-                <a class="dropdown-item" href="portfolio-item.html">Single Portfolio Item</a>
-              </div>
-            </li>
-            
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Blog
-              </a>
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
-                <a class="dropdown-item" href="blog-home-1.html">Blog Home 1</a>
-                <a class="dropdown-item" href="blog-home-2.html">Blog Home 2</a>
-                <a class="dropdown-item" href="blog-post.html">Blog Post</a>
-              </div>
-            </li>
-           
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Other Pages
-              </a>
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
-                <a class="dropdown-item" href="full-width.html">Full Width Page</a>
-                <a class="dropdown-item" href="sidebar.html">Sidebar Page</a>
-                <a class="dropdown-item" href="faq.html">FAQ</a>
-                <a class="dropdown-item" href="404.html">404</a>
-                <a class="dropdown-item" href="pricing.html">Pricing Table</a>
-              </div>
-            -->
-
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-
+    <jsp:include page="../include/header.jsp" />
+    
     <!-- menu acaba aqui -->
 
     <!-- Page Content -->
@@ -111,7 +45,7 @@
 
       
                                     
-                    <div class="container">
+            <div class="container">
               
               <hr>
 
@@ -124,35 +58,42 @@
                 <center><h4 class="card-title mt-2">Cadastrar Novo Alimento</h4></center>
               </header>
               <article class="card-body">
-              <form>
+              <form action="" method="post">
                 <br><br>
                 <div class="form-row">
                   <div class="col form-group col-md-12">
                     <label>Nome</label>   
-                      <input type="text" class="form-control" placeholder="">
+                    <input type="text" name="nome" required="" class="form-control" placeholder="">
                   </div> <!-- form-group end.// -->
 
                   <div class="col form-group">
                     <label>Descrição</label>
-                      <input type="text" class="form-control" placeholder=" ">
+                    <input type="text" name="descricao" class="form-control" placeholder=" ">
                   </div> <!-- form-group end.// -->
                 </div> <!-- form-row end.// -->
 
                 <div class="form-row">
                         <div class="form-group col-md-6">
                             <label>Tipo</label>
-                            <select id="inputState" class="form-control">
-                                <option>Tipo 2</option>
-                                <option>Tipo 2</option>
-                                <option>Tipo 2</option>
-                                <option selected="">Tipo 1</option>
+                            <select name="tipo" id="inputState" class="form-control">
+                                <option selected="" value="0">Principal</option>
+                                <option value="1">Vegetariano</option>
+                                <option value="2">Salada</option>
+                                <option value="3">Guardinação</option>
+                                <option value="4">Acompanhamento</option>
+                                <option value="5">Suco</option>
+                                <option value="6">Sobremesa</option>
+                                <option value="7">Bebidas</option>
+                                <option value="8">Pães</option>
+                                <option value="9">Frutas</option>
+                                <option value="10">Especial</option>
                             </select>
                           </div>
 
                           <div class="col form-group">
-                    <label>Valor Nutricional</label>
-                      <input type="text" class="form-control" placeholder=" ">
-                  </div> <!-- form-group end.// -->
+                            <label>Valor Calórico (cal/10g)</label>
+                            <input type="number" name="valorNut" value="0" class="form-control" placeholder=" ">
+                          </div> <!-- form-group end.// -->
                 </div> <!-- form-row end.// -->
                 
               <!--
@@ -184,26 +125,45 @@
               </div> 
               <!--container end.//-->
 
-              </div>              
-
-
-                          </div>
-                        
-                      </div>
-                    </div>
-            </div>
-            <!-- /.row -->
 
     </div>
     <!-- /.container -->
 
+    <%
+        if (request.getParameter("nome") != null && 
+            request.getParameter("descricao") != null &&
+            request.getParameter("valorNut") != null){
+        
+            String nome = request.getParameter("nome");
+            String descricao = request.getParameter("descricao");
+            int valC = Integer.parseInt(request.getParameter("valorNut"));
+            int cat = Integer.parseInt(request.getParameter("tipo"));
+            
+            //os valores caloricos de cada depende do alimento.
+            float prot = 0;
+            float carb = 0;
+            float lip = 0;
+            
+            Alimento al = new Alimento();
+            al.setCategoria(Categoria.getCategoria(cat));
+            al.setNome(nome);
+            al.setObservacao(descricao);
+            al.setGramas(10);
+            al.setValorCalorico(valC);
+            al.setCarboidratos(carb);
+            al.setLipidios(lip);
+            al.setProteinas(prot);
+            
+            if( Cadastrar.cadastrarAlimento(al)){
+                out.print("Cadastrado com sucesso!");
+            }
+            else{
+                out.print("Cadastro não realizado! Esse nome já foi cadastrado");
+            }
+        }
+    %>
     <!-- Footer -->
-    <footer class="py-3 bg-info">
-      <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; Universidade Federal do Ceará</p>
-      </div>
-      <!-- /.container -->
-    </footer>
+    <jsp:include page="../include/footer.jsp" />
 
     <!-- Bootstrap core JavaScript -->
     <script src="../assets/credru/jquery/jquery.min.js"></script>
