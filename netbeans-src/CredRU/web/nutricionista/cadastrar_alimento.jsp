@@ -79,12 +79,33 @@
                             </select>
                           </div>
 
-                          <div class="col form-group">
-                            <label>Valor Calórico (cal/10g)</label>
-                            <input type="number" name="valorNut" value="0" class="form-control" placeholder=" ">
+                          <div class="col-md-3 form-group">
+                            <label>Valor Calórico (cal) </label>
+                            <input type="number" name="valorC" value="0" class="form-control" placeholder=" ">
+                          </div> <!-- form-group end.// -->
+                          
+                          <div class="col-md-3 form-group">
+                            <label> Total de gramas (g)</label>
+                            <input type="number" name="valorG" value="0" class="form-control" placeholder=" ">
                           </div> <!-- form-group end.// -->
                 </div> <!-- form-row end.// -->
                 
+                <div class="form-row">
+                          <div class="col-md-4 form-group">
+                            <label>Carboidratos (g) </label>
+                            <input type="number" name="gCarboidrato" value="0" class="form-control" placeholder=" ">
+                          </div> <!-- form-group end.// -->
+
+                          <div class="col-md-4 form-group">
+                            <label>Proteínas (g) </label>
+                            <input type="number" name="gProteina" value="0" class="form-control" placeholder=" ">
+                          </div> <!-- form-group end.// -->
+                          
+                          <div class="col-md-4 form-group">
+                            <label> Lipídios (g) </label>
+                            <input type="number" name="gLipidio" value="0" class="form-control" placeholder=" ">
+                          </div> <!-- form-group end.// -->
+                </div> <!-- form-row end.// -->
 
                   <div class="form-group">
                       <button type="submit" class="btn btn-primary btn-block"> Registrar  </button>
@@ -110,11 +131,13 @@
     <%
         if (request.getParameter("nome") != null && 
             request.getParameter("descricao") != null &&
-            request.getParameter("valorNut") != null){
+            request.getParameter("valorC") != null &&
+            request.getParameter("valorG") != null){
         
             String nome = request.getParameter("nome");
             String descricao = request.getParameter("descricao");
-            int valC = Integer.parseInt(request.getParameter("valorNut"));
+            int valC = Integer.parseInt(request.getParameter("valorC"));
+            int valG = Integer.parseInt(request.getParameter("valorG"));
             int cat = Integer.parseInt(request.getParameter("tipo"));
             
             //os valores caloricos de cada depende do alimento.
