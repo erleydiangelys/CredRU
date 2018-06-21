@@ -81,7 +81,7 @@
 
                           <div class="col-md-3 form-group">
                             <label>Valor Calórico (cal) </label>
-                            <input type="number" name="valorC" value="0" class="form-control" placeholder=" ">
+                            <input type="number" name="valorC" value="0" step="0.01" class="form-control" placeholder=" ">
                           </div> <!-- form-group end.// -->
                           
                           <div class="col-md-3 form-group">
@@ -92,18 +92,18 @@
                 
                 <div class="form-row">
                           <div class="col-md-4 form-group">
-                            <label>Carboidratos (g) </label>
-                            <input type="number" name="gCarboidrato" value="0" class="form-control" placeholder=" ">
+                            <label>Carboidratos (cal) </label>
+                            <input type="number" name="calCarboidrato" value="0" step="0.01" class="form-control" placeholder=" ">
                           </div> <!-- form-group end.// -->
 
                           <div class="col-md-4 form-group">
-                            <label>Proteínas (g) </label>
-                            <input type="number" name="gProteina" value="0" class="form-control" placeholder=" ">
+                            <label>Proteínas (cal) </label>
+                            <input type="number" name="calProteina" value="0" step="0.01" class="form-control" placeholder=" ">
                           </div> <!-- form-group end.// -->
                           
                           <div class="col-md-4 form-group">
-                            <label> Lipídios (g) </label>
-                            <input type="number" name="gLipidio" value="0" class="form-control" placeholder=" ">
+                            <label> Lipídios (cal) </label>
+                            <input type="number" name="calLipidio" value="0" step="0.01" class="form-control" placeholder=" ">
                           </div> <!-- form-group end.// -->
                 </div> <!-- form-row end.// -->
 
@@ -136,20 +136,33 @@
         
             String nome = request.getParameter("nome");
             String descricao = request.getParameter("descricao");
-            int valC = Integer.parseInt(request.getParameter("valorC"));
-            int valG = Integer.parseInt(request.getParameter("valorG"));
             int cat = Integer.parseInt(request.getParameter("tipo"));
-            
-            //os valores caloricos de cada depende do alimento.
-            float prot = 0;
+            float valC = 0;
+            float valG = 0;
             float carb = 0;
+            float prot = 0;
             float lip = 0;
+            if ( request.getParameter("valorC").isEmpty() == false){
+                valC = Float.parseFloat(request.getParameter("valorC"));
+            }
+            if ( request.getParameter("valorG").isEmpty() == false){
+                valG = Integer.parseInt(request.getParameter("valorG"));
+            }
+            if ( request.getParameter("calCarboidrato").isEmpty() == false){
+                carb = Float.parseFloat(request.getParameter("calCarboidrato"));
+            }
+            if ( request.getParameter("calProteina").isEmpty() == false){
+                prot = Float.parseFloat(request.getParameter("calProteina"));
+            }
+            if ( request.getParameter("calLipidio").isEmpty() == false){
+                lip = Float.parseFloat(request.getParameter("calLipidio"));
+            }
             
             Alimento al = new Alimento();
             al.setCategoria(Categoria.getCategoria(cat));
             al.setNome(nome);
             al.setObservacao(descricao);
-            al.setGramas(10);
+            al.setGramas(valG);
             al.setValorCalorico(valC);
             al.setCarboidratos(carb);
             al.setLipidios(lip);

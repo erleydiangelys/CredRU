@@ -25,7 +25,13 @@
     <!-- Menu começa aqui-->
     <jsp:include page="../include/header.jsp" />
     
-
+    <%
+        //verificar quem esta cadastrado
+        //dar opcao de alterar o preco de cada perfil
+        //qual o tipo de utusaio que nao esta cadastrado
+        //Cada perfil nao cadastrado , criar um jsp para cadastrar perfil
+    %>
+    
     <!-- Page Content -->
     <div class="container">
       <br><br>
