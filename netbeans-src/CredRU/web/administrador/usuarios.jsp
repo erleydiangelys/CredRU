@@ -1,5 +1,14 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%-- 
+    Document   : usuarios
+    Created on : 22/06/2018, 22:00:21
+    Author     : Soriano
+--%>
 
+
+<%@page import="br.com.credru.model.Usuario"%>
+<%@page import="java.util.List"%>
+<%@page import="br.com.credru.controller.Visualizar"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -37,15 +46,35 @@
 
                 <div class="col-lg-12 mb-3">
                     <div class="card h-100">
-                        <h4 class="card-header">Painel de Controle</h4>
+                        <h4 class="card-header">Vendas</h4>
                         <div class="card-body">
 
                             <!-- menu operações-->
-
-
-                            <a href="Administrador?comando=VendasRealizadas"><p>Vendas Realizadas</p></a>
-                            <a href="Administrador?comando=UsuariosCadastrados"><p>Usuários cadastrados</p></a>
-                            <a href="Administrador?comando=DebitosRealizados"><p>Debitos Realizados</p></a>
+                            
+                            <table>
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>Nome de usuário</th>
+                                    <th>Quantidade de Créditos</th>
+                                    <th>Senha</th>
+                                </tr>
+                            <%
+                                List<Usuario> usuarios = Visualizar.getUsuario();
+                                if(usuarios != null){
+                                    for(Usuario u : usuarios){
+                                    %>
+                                        <tr>
+                                            <td><%= u.getNome() %></td>
+                                            <td><%= u.getUserName() %></td>
+                                            <td><%= u.getCredito() %></td>
+                                            <td><%= u.getSenha() %></td>
+                                        </tr>
+                                    <%
+                                        
+                                    }
+                                }
+                            %>
+                            </table>
 
                             <!-- fim menu oprações-->
 

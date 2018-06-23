@@ -54,9 +54,9 @@ public class LocalTime {
     public String toString() {
         String resultado = "";
         
-        resultado += Integer.toString(this.segundo) + ":";
+        resultado += Integer.toString(this.hora) + ":";
         resultado += Integer.toString(this.minuto) + ":";
-        resultado += Integer.toString(this.hora);
+        resultado += Integer.toString(this.segundo);
         
         return resultado;
     }

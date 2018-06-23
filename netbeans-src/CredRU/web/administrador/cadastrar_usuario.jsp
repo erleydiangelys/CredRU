@@ -127,7 +127,7 @@
                                             <label>Status</label>
                                             <select name="status" id="inputState" class="form-control">
                                                 <option value="1" selected="">Ativo</option>
-                                                <option selected="">Inativo</option>
+                                                <option value="0">Inativo</option>
                                             </select>
                                         </div>
 

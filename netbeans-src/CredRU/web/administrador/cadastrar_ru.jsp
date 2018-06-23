@@ -44,7 +44,6 @@
                     <div class="col-md-1O mb-5" >
                         <div class="card">
                             <header class="card-header">
-
                                 <center><h4 class="card-title mt-2">Cadastrar Novo RU</h4></center>
                             </header>
                             <article class="card-body">

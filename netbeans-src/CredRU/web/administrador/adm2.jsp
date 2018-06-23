@@ -27,7 +27,7 @@
 
         <jsp:include page="../include/header.jsp" />
 
-        <%= u.getNome() %>
+        Usuário: <%= u.getNome() %>
         <!-- Page Content -->
         <div class="container">
             <br><br>

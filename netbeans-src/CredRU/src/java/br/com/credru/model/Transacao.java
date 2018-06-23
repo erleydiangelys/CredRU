@@ -29,8 +29,8 @@ public class Transacao {
         hora.setSegundo(cc.get(Calendar.SECOND));
 
         data.setAno(cc.get(Calendar.YEAR));
-        data.setDia(cc.get(Calendar.DAY_OF_WEEK));
-        data.setMes(cc.get(Calendar.MONTH));
+        data.setDia(cc.get(Calendar.DAY_OF_MONTH));
+        data.setMes(cc.get(Calendar.MONTH) + 1);
         data.setSemana(cc.get(Calendar.WEEK_OF_MONTH));
         
         this.data = data;
@@ -89,18 +89,6 @@ public class Transacao {
     public static Transacao creditarValor(Usuario user, float valor){
         Transacao transacao = new Transacao();
         
-        Calendar dataHora = Calendar.getInstance();
-        int dia = dataHora.get(Calendar.DAY_OF_MONTH);
-        int semana = dataHora.get(Calendar.WEEK_OF_MONTH);
-        int mes = dataHora.get(Calendar.MONTH);
-        int ano = dataHora.get(Calendar.YEAR);
-        
-        int segundo = dataHora.get(Calendar.SECOND);
-        int minuto = dataHora.get(Calendar.MINUTE);
-        int hora = dataHora.get(Calendar.HOUR_OF_DAY);
-        
-        transacao.setData(new LocalDate(dia, semana, mes, ano));
-        transacao.setHora(new LocalTime(segundo, minuto, hora));
         transacao.setValor(valor);
         transacao.setTipo(TipoTransacao.COMPRA);
         transacao.setUser(user);
@@ -116,20 +104,6 @@ public class Transacao {
     
     public static Transacao debitarValor(Usuario user){
         Transacao tra = new Transacao();
-        
-        Calendar dataHora = Calendar.getInstance();
-        int dia = dataHora.get(Calendar.DAY_OF_MONTH);
-        int semana = dataHora.get(Calendar.WEEK_OF_MONTH);
-        int mes = dataHora.get(Calendar.MONTH);
-        int ano = dataHora.get(Calendar.YEAR);
-        
-        int segundo = dataHora.get(Calendar.SECOND);
-        int minuto = dataHora.get(Calendar.MINUTE);
-        int hora = dataHora.get(Calendar.HOUR_OF_DAY);
-        
-        tra.setData(new LocalDate(dia, semana, mes, ano));
-        tra.setHora(new LocalTime(segundo, minuto, hora));
-        
         
         tra.setQtdCreditos(1);
         tra.setTipo(TipoTransacao.DEBITO);

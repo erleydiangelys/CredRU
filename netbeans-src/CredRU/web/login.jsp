@@ -15,7 +15,6 @@
         <link rel="stylesheet" type="text/css" href="assets/credru/css/login.css">
         <link rel="stylesheet" type="text/css" href="assets/credru/js/login.js">
         
-
         <title>CRED RU - Login</title>
         
     </head>
@@ -24,7 +23,7 @@
         <%
             //Só pra teste
             Perfil pp = new Perfil();
-            pp.setDescricao("Especial");
+            pp.setDescricao("Autorizado");
             pp.setTipo(TipoPerfil.AUTORIZADO);
             pp.setValor(0);
             
@@ -72,7 +71,9 @@
                             }
                         } else {
                 %>
-                <p>Username e/ou senha podem estar errados!</p>
+                <div class="alert alert-danger">
+                    <strong>Username e/ou senha podem estar errados!</strong>
+                </div>
                 <%
                         }
                     }
