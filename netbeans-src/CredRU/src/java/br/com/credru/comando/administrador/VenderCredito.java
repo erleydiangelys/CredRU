@@ -21,8 +21,16 @@ public class VenderCredito implements Comando{
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) {
         try {
-            RequestDispatcher d = request.getRequestDispatcher("administrador/venda_credito.jsp");
-            d.forward(request,response);
+            if(request.getParameter("userComprador") != null){
+                //Criar a transacao
+                RequestDispatcher d = request.getRequestDispatcher("administrador/venda_credito_qtd.jsp");
+                d.forward(request,response);
+            }
+            else{
+                //buscar o comprador
+                RequestDispatcher d = request.getRequestDispatcher("administrador/venda_credito_buscar.jsp");
+                d.forward(request,response);
+            }
             
         } catch (IOException | ServletException e) {
             e.printStackTrace();

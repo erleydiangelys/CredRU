@@ -20,7 +20,21 @@ public class Transacao {
     private int qtdCreditos;
 
     public Transacao() {
+        Calendar cc = Calendar.getInstance();
+        LocalTime hora = new LocalTime();
+        LocalDate data = new LocalDate();
+
+        hora.setHora(cc.get(Calendar.HOUR_OF_DAY));
+        hora.setMinuto(cc.get(Calendar.MINUTE));
+        hora.setSegundo(cc.get(Calendar.SECOND));
+
+        data.setAno(cc.get(Calendar.YEAR));
+        data.setDia(cc.get(Calendar.DAY_OF_WEEK));
+        data.setMes(cc.get(Calendar.MONTH));
+        data.setSemana(cc.get(Calendar.WEEK_OF_MONTH));
         
+        this.data = data;
+        this.hora = hora;
     }
 
     public Usuario getUser() {
