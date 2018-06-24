@@ -104,17 +104,6 @@
                                                         tr.setValor(0);
 
                                                         if(Cadastrar.cadastrarTransacao(tr)){
-                                                            Usuario temp = new Usuario();
-                                                            temp.setAtivo(user.isAtivo());
-                                                            temp.setCredito(user.getCredito()-1);
-                                                            temp.setNivelAcesso(user.getNivelAcesso());
-                                                            temp.setNome(user.getNome());
-                                                            temp.setPerfil(user.getPerfil());
-                                                            temp.setSenha(user.getSenha());
-                                                            temp.setTransacoes(user.getTransacoes());
-                                                            temp.setUserName(user.getUserName());
-
-                                                            Alterar.alterarUsuario(user, temp);
 
                                                            %>
                                                             <div class="alert alert-success">
