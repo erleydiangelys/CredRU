@@ -51,12 +51,12 @@
 
                             <!-- menu operações-->
                             
-                            <table>
+                         <table class="table">
                                 <tr>
-                                    <th>Nome</th>
-                                    <th>Nome de usuário</th>
-                                    <th>Quantidade de Créditos</th>
-                                    <th>Senha</th>
+                                    <th scope="col">Nome</th>
+                                    <th scope="col">Nome de usuário</th>
+                                    <th scope="col">Quantidade de Créditos</th>
+                                    <th scope="col">Senha</th>
                                 </tr>
                             <%
                                 List<Usuario> usuarios = Visualizar.getUsuario();

@@ -52,13 +52,13 @@
 
                             <!-- menu operações-->
                             
-                            <table>
+                            <table class="table">
                                 <tr>
-                                    <th>Usuário</th>
-                                    <th>Valor</th>
-                                    <th>Data</th>
-                                    <th>Hora</th>
-                                    <th>Restaurante</th>
+                                    <th scope="col">Usuário</th>
+                                    <th scope="col">Valor</th>
+                                    <th scope="col">Data</th>
+                                    <th scope="col">Hora</th>
+                                    <th scope="col">Restaurante</th>
                                 </tr>
                             <%
                                 List<Transacao> transacoes = Visualizar.getTransacao();
