@@ -5,7 +5,6 @@
  */
 package br.com.credru.dao;
 
-import br.com.credru.dao.UsuarioDAO;
 import br.com.credru.model.Usuario;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,12 +19,19 @@ public class UsuarioDAOList implements UsuarioDAO{
     
     @Override
     public Usuario getUsuario(String username, String senha) {
+        Usuario user = null;
         for(Usuario u : UsuarioDAOList.usuarios){
             if(u.getUserName().equals(username) && u.getSenha().equals(senha)){
-                return u;
+                user = u;
             }
         }
-        return null;
+        
+        if(user != null){
+            TransacaoDAO dao = new TransacaoDAOList();
+            user.setTransacoes(dao.getTransacao(user));
+        }
+        
+        return user;
     }
 
     @Override

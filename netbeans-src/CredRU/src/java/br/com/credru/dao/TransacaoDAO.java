@@ -8,6 +8,7 @@ package br.com.credru.dao;
 import br.com.credru.model.LocalDate;
 import br.com.credru.model.LocalTime;
 import br.com.credru.model.Transacao;
+import br.com.credru.model.Usuario;
 import java.util.List;
 
 
@@ -18,6 +19,7 @@ import java.util.List;
 public interface TransacaoDAO {
     public boolean setTransacao(Transacao t);
     public Transacao getTransacao(LocalDate data, LocalTime tempo);
+    public List<Transacao> getTransacao(Usuario u);
     public List<Transacao> getTransacao();
     public boolean editTransacao(Transacao t1, Transacao t2);
     public boolean removeTransacao(Transacao t);

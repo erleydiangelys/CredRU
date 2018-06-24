@@ -89,10 +89,10 @@
                 //Exibido será da data de hoje
 
                 Calendar cc = Calendar.getInstance();
-                dataAtual = new LocalDate(cc.get(Calendar.DAY_OF_MONTH), cc.get(Calendar.WEEK_OF_MONTH), cc.get(Calendar.MONTH), cc.get(Calendar.YEAR));
+                dataAtual = new LocalDate(cc.get(Calendar.DAY_OF_MONTH), cc.get(Calendar.WEEK_OF_MONTH) , cc.get(Calendar.MONTH)+1, cc.get(Calendar.YEAR));
 
                 cc.add(Calendar.DAY_OF_MONTH, -1);
-                dataOntem = new LocalDate(cc.get(Calendar.DAY_OF_MONTH), cc.get(Calendar.WEEK_OF_MONTH), cc.get(Calendar.MONTH), cc.get(Calendar.YEAR));
+                dataOntem = new LocalDate(cc.get(Calendar.DAY_OF_MONTH), cc.get(Calendar.WEEK_OF_MONTH), cc.get(Calendar.MONTH)+1, cc.get(Calendar.YEAR));
 
                 //Montando o LINK de Ontem
                 if (dataOntem.getDia() < 10) {
@@ -110,7 +110,7 @@
                 linkOntem += "/" + dataOntem.getAno();
 
                 cc.add(Calendar.DAY_OF_MONTH, +2);
-                dataAmanha = new LocalDate(cc.get(Calendar.DAY_OF_MONTH), cc.get(Calendar.WEEK_OF_MONTH), cc.get(Calendar.MONTH), cc.get(Calendar.YEAR));
+                dataAmanha = new LocalDate(cc.get(Calendar.DAY_OF_MONTH), cc.get(Calendar.WEEK_OF_MONTH), cc.get(Calendar.MONTH)+1, cc.get(Calendar.YEAR));
 
                 //Montando o LINK de Amanha
                 if (dataAmanha.getDia() < 10) {
@@ -138,10 +138,10 @@
                 Calendar cc = Calendar.getInstance();
                 cc.set(ano, mes, dia); //Setando a data passada pelo usuário
 
-                dataAtual = new LocalDate(cc.get(Calendar.DAY_OF_MONTH), cc.get(Calendar.WEEK_OF_MONTH), cc.get(Calendar.MONTH), cc.get(Calendar.YEAR));
+                dataAtual = new LocalDate(cc.get(Calendar.DAY_OF_MONTH), cc.get(Calendar.WEEK_OF_MONTH), cc.get(Calendar.MONTH)+1, cc.get(Calendar.YEAR));
 
                 cc.add(Calendar.DAY_OF_MONTH, -1);
-                dataOntem = new LocalDate(cc.get(Calendar.DAY_OF_MONTH), cc.get(Calendar.WEEK_OF_MONTH), cc.get(Calendar.MONTH), cc.get(Calendar.YEAR));
+                dataOntem = new LocalDate(cc.get(Calendar.DAY_OF_MONTH), cc.get(Calendar.WEEK_OF_MONTH), cc.get(Calendar.MONTH)+1, cc.get(Calendar.YEAR));
 
                 //Montando o LINK de Ontem
                 if (dataOntem.getDia() < 10) {
@@ -159,7 +159,7 @@
                 linkOntem += "/" + dataOntem.getAno();
 
                 cc.add(Calendar.DAY_OF_MONTH, +2);
-                dataAmanha = new LocalDate(cc.get(Calendar.DAY_OF_MONTH), cc.get(Calendar.WEEK_OF_MONTH), cc.get(Calendar.MONTH), cc.get(Calendar.YEAR));
+                dataAmanha = new LocalDate(cc.get(Calendar.DAY_OF_MONTH), cc.get(Calendar.WEEK_OF_MONTH), cc.get(Calendar.MONTH)+1, cc.get(Calendar.YEAR));
 
                 //Montando o LINK de Amanha
                 if (dataAmanha.getDia() < 10) {
@@ -186,14 +186,15 @@
                     for(int i = 0; i < restaurantes.size(); i++){
                         
                         if(restaurantes.get(i).getNome() == request.getParameter("restaurante")){
-                            restVisualizar = restaurantes.get(i);
+                            restVisualizar = Visualizar.getRestaurante(restaurantes.get(i).getNome());
                             break;
                         }
                     }
                 }
                 else{
                     //Peguando o primeiro restaurante cadastrado
-                    restVisualizar = restaurantes.get(0);
+                    restVisualizar = Visualizar.getRestaurante(restaurantes.get(0).getNome());
+                    //restVisualizar = restaurantes.get(0);
                 }
                 
                 if(restVisualizar != null){
@@ -207,7 +208,7 @@
                 <%
                 
                     List<Refeicao> refeicoes = restVisualizar.getRefeicoes().get(dataAtual.toString());
-                
+                    System.out.println(restVisualizar.getRefeicoes().isEmpty());
                     if(refeicoes != null){
                         //Exibir refeicoes do dia
                         

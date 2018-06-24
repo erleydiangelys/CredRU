@@ -21,8 +21,15 @@ public class CadastrarRefeicao implements Comando{
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) {
         try {
-            RequestDispatcher rd = request.getRequestDispatcher("nutricionista/cadastrar_refeicao.jsp");
-            rd.forward(request, response);
+            if(request.getParameter("restaurante") == null){
+                RequestDispatcher rd = request.getRequestDispatcher("nutricionista/cadastrar_refeicao_ru.jsp");
+                rd.forward(request, response);
+            }
+            else{
+                RequestDispatcher rd = request.getRequestDispatcher("nutricionista/cadastrar_refeicao_alimentos.jsp");
+                rd.forward(request, response);
+            }
+            
 
         } catch (IOException | ServletException e) {
             e.printStackTrace();

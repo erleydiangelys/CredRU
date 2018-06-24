@@ -5,10 +5,10 @@
  */
 package br.com.credru.dao;
 
-import br.com.credru.dao.RefeicaoDAO;
 import br.com.credru.model.Horario;
 import br.com.credru.model.LocalDate;
 import br.com.credru.model.Refeicao;
+import br.com.credru.model.Restaurante;
 import java.util.List;
 
 /**
@@ -23,12 +23,17 @@ public class RefeicaoDAOMySQL implements RefeicaoDAO{
     }
 
     @Override
-    public Refeicao getRefeicao(LocalDate data, Horario horario) {
+    public Refeicao getRefeicao(LocalDate data, Horario horario, Restaurante rest) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public List<Refeicao> getRefeicao() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Refeicao> getRefeicao(LocalDate data, Restaurante rest) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -43,8 +48,8 @@ public class RefeicaoDAOMySQL implements RefeicaoDAO{
     }
 
     @Override
-    public List<Refeicao> getRefeicao(LocalDate data) {
+    public List<Refeicao> getRefeicao(Restaurante rest) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
 }

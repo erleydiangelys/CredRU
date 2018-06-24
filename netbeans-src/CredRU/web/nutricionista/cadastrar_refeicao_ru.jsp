@@ -1,3 +1,6 @@
+<%@page import="br.com.credru.model.Restaurante"%>
+<%@page import="java.util.List"%>
+<%@page import="br.com.credru.controller.Visualizar"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
@@ -41,41 +44,36 @@
                     <div class="col-md-8 mb-5" >
                         <div class="card">
                             <header class="card-header">
-
                                 <center><h4 class="card-title mt-2">Cadastrar Nova Refeição</h4></center>
                             </header>
+                            <%
+                                List<Restaurante> rest = Visualizar.getRestaurante();
+                                if(rest == null || rest.size() == 0){
+                                    %>
+                                    <div class="alert alert-warning">
+                                        <strong>Nenhum restaurante cadastrado!</strong> Contate o administrador para cadastrar um RU.
+                                    </div>
+                                    <%
+                                }
+                            %>
                             <article class="card-body">
-                                <form>
+                                <form action="Nutricionista?comando=CadastrarRefeicao" method="post">
                                     <br><br>
 
                                     <div class="form-row">
                                         <div class="col form-group col-md-12">
-                                            <label>Nome</label>   
-                                            <input type="text" class="form-control" placeholder="">
+                                            <label>Restaurante</label>   
+                                            <select required="" name="restaurante">
+                                                <%
+                                                    for(Restaurante r : rest){
+                                                        %>
+                                                        <option value="<%= r.getNome() %>"><%= r.getNome() %></option>
+                                                        <%
+                                                    }
+                                                %>
+                                            </select>
                                         </div> <!-- form-group end.// -->
                                     </div>
-
-                                    <div class="form-row">
-                                        <div class="col form-group col-md-6">
-                                            <label>Descrição</label>
-                                            <input type="text" class="form-control" placeholder=" ">
-                                        </div> <!-- form-group end.// -->
-
-
-
-                                        <div class="form-row">
-                                            <div class="col form-group">
-                                                <label>Valor Nutricional</label>
-                                                <input type="text" class="form-control" placeholder=" ">
-                                            </div> <!-- form-group end.// -->
-                                        </div> <!-- form-row end.// -->
-
-                                    </div>
-                                    <!-- codigo novo aqui -->
-
-
-
-
 
 
                                     <!-- fim codigo novo-->

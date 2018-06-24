@@ -146,7 +146,7 @@
                 valC = Float.parseFloat(request.getParameter("valorC"));
             }
             if ( request.getParameter("valorG").isEmpty() == false){
-                valG = Integer.parseInt(request.getParameter("valorG"));
+                valG = Float.parseFloat(request.getParameter("valorG"));
             }
             if ( request.getParameter("calCarboidrato").isEmpty() == false){
                 carb = Float.parseFloat(request.getParameter("calCarboidrato"));
@@ -169,9 +169,22 @@
             al.setProteinas(prot);
             
             if( Cadastrar.cadastrarAlimento(al)){
-                out.print("Cadastrado com sucesso!");
+                %>
+    
+                <div class="alert alert-success">
+                    <strong>Cadastro realizado com sucesso!</strong>
+                </div>
+                
+                <%
             }
             else{
+                %>
+                
+                <div class="alert alert-danger">
+                    <strong>Cadastro não realizado!</strong>Um alimento com o mesmo nome já foi cadastrado.
+                </div>
+    
+                <%
                 out.print("Cadastro não realizado! Esse nome já foi cadastrado");
             }
         }

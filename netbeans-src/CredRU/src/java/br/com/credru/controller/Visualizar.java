@@ -54,11 +54,11 @@ public class Visualizar {
         return alidao.getAlimento();
     }
     
-    public static Refeicao getRefeicao( LocalDate ld, Horario h){
-        return refdao.getRefeicao( ld, h);
+    public static Refeicao getRefeicao( LocalDate ld, Horario h, Restaurante rest){
+        return refdao.getRefeicao( ld, h, rest);
     }
-    public static List<Refeicao> getRefeicao(LocalDate data){
-        return refdao.getRefeicao(data);
+    public static List<Refeicao> getRefeicao(LocalDate data, Restaurante rest){
+        return refdao.getRefeicao(data, rest);
     }
     public static List<Refeicao> getRefeicao(){
         return refdao.getRefeicao();

@@ -185,10 +185,10 @@
                 System.out.print(hialmoco.substring(0, 2));
                 System.out.print(hialmoco.substring(3, 5));
                 //LocalTime tempo = 
-                ArrayList<Horario> horarios = new ArrayList();
+                ArrayList<Horario> horarios = new ArrayList<>();
 
                 Horario almoco = new Horario();
-                almoco.setDescricao("Almoço");
+                almoco.setDescricao("Almoco");
 
                 LocalTime hoIalmo = new LocalTime();
                 hoIalmo.setHora(Integer.parseInt(hialmoco.substring(0, 2)));
@@ -221,7 +221,7 @@
                     String hfcafe = request.getParameter("cafe2");
 
                     Horario cafe = new Horario();
-                    cafe.setDescricao("Café da Manhã");
+                    cafe.setDescricao("Cafe_da_Manha");
                     LocalTime hoIcaf = new LocalTime();
                     hoIcaf.setHora(Integer.parseInt(hicafe.substring(0, 2)));
                     cafe.setHoraInicio(hoIcaf);
@@ -238,9 +238,21 @@
                 res.setHorarios(horarios);
 
                 if (Cadastrar.cadastrarRestaurante(res)) {
-                    out.print("Cadastro realizado com sucesso!");
+                    %>
+        
+                    <div class="alert alert-success">
+                        <strong>Cadastro realizado com sucesso!</strong>
+                    </div>
+        
+                    <%
                 } else {
-                    out.print("Cadastro não realizado!, esse nome já foi cadastrado");
+                    %>
+        
+                    <div class="alert alert-danger">
+                        <strong>Cadastro não realizado!</strong>Um restaurante com o mesmo nome já foi cadastrado.
+                    </div>
+
+                    <%
                 }
             }
         %>

@@ -12,12 +12,21 @@ import java.util.List;
  * @author Soriano
  */
 public class Refeicao {
+    private Restaurante restaurante;
     private Horario horario;
     private LocalDate data;
     private List<Alimento> alimentos;
 
     public Refeicao() {
         
+    }
+
+    public Restaurante getRestaurante() {
+        return restaurante;
+    }
+
+    public void setRestaurante(Restaurante restaurante) {
+        this.restaurante = restaurante;
     }
 
     public Horario getHorario() {
@@ -43,5 +52,6 @@ public class Refeicao {
     public void setAlimentos(List<Alimento> alimentos) {
         this.alimentos = alimentos;
     }
+    
 
 }

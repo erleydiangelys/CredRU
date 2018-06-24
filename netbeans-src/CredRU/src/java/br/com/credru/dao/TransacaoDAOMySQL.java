@@ -5,10 +5,10 @@
  */
 package br.com.credru.dao;
 
-import br.com.credru.dao.TransacaoDAO;
 import br.com.credru.model.LocalDate;
 import br.com.credru.model.LocalTime;
 import br.com.credru.model.Transacao;
+import br.com.credru.model.Usuario;
 import java.util.List;
 
 /**
@@ -39,6 +39,11 @@ public class TransacaoDAOMySQL implements TransacaoDAO{
 
     @Override
     public boolean removeTransacao(Transacao t) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Transacao> getTransacao(Usuario u) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

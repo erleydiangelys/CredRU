@@ -5,10 +5,12 @@
  */
 package br.com.credru.dao;
 
-import br.com.credru.dao.RestauranteDAO;
+import br.com.credru.model.Refeicao;
 import br.com.credru.model.Restaurante;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -31,12 +33,38 @@ public class RestauranteDAOList implements RestauranteDAO{
 
     @Override
     public Restaurante getRestaurante(String nome) {
+        Restaurante resultado = null;
+        
         for(Restaurante temp : RestauranteDAOList.restaurantes){
             if(temp.getNome().equals(nome)){
-                return temp;
+                resultado = temp;
             }
         }
-        return null;
+        
+        if(resultado != null){
+            RefeicaoDAO dao = new RefeicaoDAOList();
+            
+            Map<String , List<Refeicao>> refeicoesMap = new HashMap<>();
+            
+            List<Refeicao> refeicoesCadastradas = dao.getRefeicao(resultado);
+            
+            for(Refeicao r : refeicoesCadastradas){
+                List<Refeicao> refeicaoDoDia = refeicoesMap.get(r.getData().toString());
+                
+                if(refeicaoDoDia != null){
+                    refeicaoDoDia.add(r);
+                }
+                else{
+                    refeicaoDoDia = new ArrayList<>();
+                    refeicaoDoDia.add(r);
+                }
+                refeicoesMap.put(r.getData().toString(), refeicaoDoDia);
+            }
+            
+            resultado.setRefeicoes(refeicoesMap);
+        }
+        
+        return resultado;
     }
 
     @Override

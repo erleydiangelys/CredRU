@@ -8,6 +8,7 @@ package br.com.credru.dao;
 import br.com.credru.model.LocalDate;
 import br.com.credru.model.LocalTime;
 import br.com.credru.model.Transacao;
+import br.com.credru.model.Usuario;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -84,6 +85,18 @@ public class TransacaoDAOList implements TransacaoDAO{
             }
         }
         return false;
+    }
+
+    @Override
+    public List<Transacao> getTransacao(Usuario u) {
+        List<Transacao> transacoes = new ArrayList<>();
+        
+        for(Transacao t : TransacaoDAOList.transacoes){
+            if(t.getUser().getUserName().equals(u.getUserName())){
+                transacoes.add(t);
+            }
+        }
+        return transacoes;
     }
     
 }

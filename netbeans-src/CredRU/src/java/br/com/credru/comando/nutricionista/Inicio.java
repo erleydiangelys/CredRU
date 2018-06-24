@@ -21,7 +21,7 @@ public class Inicio implements Comando{
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) {
         try {
-            RequestDispatcher rd = request.getRequestDispatcher("nutricionista/nutricionista_adm.html");
+            RequestDispatcher rd = request.getRequestDispatcher("nutricionista/nutricionista_adm.jsp");
             rd.forward(request, response);
 
         } catch (IOException | ServletException e) {
