@@ -1,18 +1,16 @@
+<%-- 
+    Document   : escanear_buscar
+    Created on : 24/06/2018, 11:39:14
+    Author     : Soriano
+--%>
+
 <%@page import="br.com.credru.model.Restaurante"%>
 <%@page import="java.util.List"%>
-<%@page import="java.util.List"%>
-<%@page import="br.com.credru.controller.Cadastrar"%>
-<%@page import="br.com.credru.model.TipoTransacao"%>
-<%@page import="br.com.credru.model.LocalDate"%>
-<%@page import="br.com.credru.model.LocalTime"%>
-<%@page import="java.util.Calendar"%>
-<%@page import="br.com.credru.model.Transacao"%>
 <%@page import="br.com.credru.controller.Visualizar"%>
 <%@page import="br.com.credru.model.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
-
 <html lang="pt-br">
 
     <head>
@@ -22,7 +20,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>CRED RU - ADM - TICKETS </title>
+        <title>CRED RU - ESCANEADOR </title>
 
         <!-- Bootstrap core CSS -->
         <link rel="stylesheet" type="text/css" href="assets/credru/css/bootstrap.min.css">
@@ -42,7 +40,7 @@
             <div class="row">
                 <div class="col-lg-11 mb-3">
                     <div class="card h-100">
-                        <center><h4 class="card-header">Venda de Creditos</h4></center>
+                        <center><h4 class="card-header">Debitar Créditos</h4></center>
                         <div class="card-body">
 
                             <!-- menu operações-->
@@ -53,7 +51,7 @@
                                     <header class="card-header">
                                         <center><h5 class="card-title mt-1">Buscar Usuário</h5></center>
                                     </header>
-                                    
+
                                     <%
                                         List<Restaurante> rest = Visualizar.getRestaurante();
                                         if (rest == null || rest.size() == 0) {
@@ -64,43 +62,43 @@
                                     <%
                                         }
                                     %>
-                                    
+
                                     <%
-                                    
-                                        if(request.getParameter("userName") != null){
+                                        if (request.getParameter("userName") != null) {
                                             Usuario u = Visualizar.getUsuario(request.getParameter("userName"));
-                                            
-                                            if(u == null){
-                                                %>
-                                                <div class="alert alert-danger">
-                                                <strong>Usuário não encontrado!</strong> Tente Novamente.
-                                                </div>
-                                                <%
-                                            }
-                                            else{
-                                                Restaurante restaurante = Visualizar.getRestaurante(request.getParameter("restaurante"));
-                                                if (restaurante != null) {
-                                                    response.sendRedirect("Administrador?comando=VenderCredito&userComprador=" + u.getUserName()+"&restaurante="+restaurante.getNome());
-                                                } else {
-                                                %>
-                                                <div class="alert alert-danger">
-                                                    <strong>Restaurante não encontrado</strong> Tente Novamente.
-                                                </div>
-                                                <%
+
+                                            if (u == null) {
+                                    %>
+                                    <div class="alert alert-danger">
+                                        <strong>Usuário não encontrado!</strong> Tente Novamente.
+                                    </div>
+                                    <%
+                                    } else {
+                                        Restaurante restaurante = Visualizar.getRestaurante(request.getParameter("restaurante"));
+                                        if (restaurante != null) {
+                                            response.sendRedirect("Escaneador?comando=Escanear&comprador=" + u.getUserName() + "&restaurante=" + restaurante.getNome());
+                                        } else {
+                                    %>
+                                    <div class="alert alert-danger">
+                                        <strong>Restaurante não encontrado</strong> Tente Novamente.
+                                    </div>
+                                    <%
                                                 }
+
                                             }
                                         }
-                                    
+
                                     %>
-                                    
+
                                     <article class="card-body">
-                                        <form action="Administrador?comando=VenderCredito" method="post">
+                                        <form action="Escaneador?comando=Escanear" method="post">
                                             <!-- função de vender -->
                                             <center>
                                                 <div>
                                                     <br>
 
                                                     <b>Nome de usuario:</b> <input type="text" name="userName" placeholder="ex: ze123" required="">
+                                                    <label>Restaurante</label>
                                                     <select required="" name="restaurante">
                                                         <%                                                            for (Restaurante r : rest) {
                                                         %>
@@ -140,3 +138,4 @@
     </body>
 
 </html>
+

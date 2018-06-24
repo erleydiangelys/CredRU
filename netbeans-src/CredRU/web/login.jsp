@@ -20,27 +20,6 @@
     </head>
     <body>
         
-        <%
-            //Só pra teste
-            Perfil pp = new Perfil();
-            pp.setDescricao("Autorizado");
-            pp.setTipo(TipoPerfil.AUTORIZADO);
-            pp.setValor(0);
-            
-            Cadastrar.cadastrarPerfil(pp);
-            
-            Usuario temp = new Usuario();
-            temp.setAtivo(true);
-            temp.setNivelAcesso(NivelAcesso.ADMINISTRADOR);
-            temp.setNome("Anderson Soriano");
-            temp.setUserName("ander");
-            temp.setSenha("senha");
-            temp.setPerfil(Visualizar.getPerfil(TipoPerfil.AUTORIZADO));
-            
-            Cadastrar.cadastarUsuario(temp);
-            
-        %>
-        
         <div class="container">
             <div class="card card-container">
                 <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->

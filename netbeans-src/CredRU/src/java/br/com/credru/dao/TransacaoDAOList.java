@@ -89,14 +89,14 @@ public class TransacaoDAOList implements TransacaoDAO{
 
     @Override
     public List<Transacao> getTransacao(Usuario u) {
-        List<Transacao> transacoes = new ArrayList<>();
+        List<Transacao> transacoesTemp = new ArrayList<>();
         
         for(Transacao t : TransacaoDAOList.transacoes){
             if(t.getUser().getUserName().equals(u.getUserName())){
-                transacoes.add(t);
+                transacoesTemp.add(t);
             }
         }
-        return transacoes;
+        return transacoesTemp;
     }
     
 }

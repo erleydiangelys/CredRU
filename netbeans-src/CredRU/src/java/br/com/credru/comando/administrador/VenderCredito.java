@@ -21,7 +21,7 @@ public class VenderCredito implements Comando{
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) {
         try {
-            if(request.getParameter("userComprador") != null){
+            if(request.getParameter("userComprador") != null && request.getParameter("restaurante") != null){
                 //Criar a transacao
                 RequestDispatcher d = request.getRequestDispatcher("administrador/venda_credito_qtd.jsp");
                 d.forward(request,response);

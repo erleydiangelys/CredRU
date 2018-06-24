@@ -48,12 +48,19 @@ public class UsuarioDAOList implements UsuarioDAO{
 
     @Override
     public Usuario getUsuario(String username) {
-        for(Usuario u : usuarios){
+        Usuario user = null;
+        for(Usuario u : UsuarioDAOList.usuarios){
             if(u.getUserName().equals(username)){
-                return u;
+                user = u;
             }
         }
-        return null;
+        
+        if(user != null){
+            TransacaoDAO dao = new TransacaoDAOList();
+            user.setTransacoes(dao.getTransacao(user));
+        }
+        
+        return user;
     }
 
     @Override

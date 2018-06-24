@@ -13,6 +13,7 @@ import java.util.Calendar;
  */
 public class Transacao {
     private Usuario user;
+    private Restaurante restaurante;
     private LocalDate data;
     private LocalTime hora;
     private TipoTransacao tipo;
@@ -20,21 +21,11 @@ public class Transacao {
     private int qtdCreditos;
 
     public Transacao() {
-        Calendar cc = Calendar.getInstance();
-        LocalTime hora = new LocalTime();
-        LocalDate data = new LocalDate();
-
-        hora.setHora(cc.get(Calendar.HOUR_OF_DAY));
-        hora.setMinuto(cc.get(Calendar.MINUTE));
-        hora.setSegundo(cc.get(Calendar.SECOND));
-
-        data.setAno(cc.get(Calendar.YEAR));
-        data.setDia(cc.get(Calendar.DAY_OF_MONTH));
-        data.setMes(cc.get(Calendar.MONTH) + 1);
-        data.setSemana(cc.get(Calendar.WEEK_OF_MONTH));
+        LocalTime horaTemp = new LocalTime();
+        LocalDate dataTemp = new LocalDate();
         
-        this.data = data;
-        this.hora = hora;
+        this.data = dataTemp;
+        this.hora = horaTemp;
     }
 
     public Usuario getUser() {
@@ -45,6 +36,14 @@ public class Transacao {
         this.user = user;
     }
 
+    public Restaurante getRestaurante() {
+        return restaurante;
+    }
+
+    public void setRestaurante(Restaurante restaurante) {
+        this.restaurante = restaurante;
+    }
+    
     public LocalDate getData() {
         return data;
     }

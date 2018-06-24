@@ -18,7 +18,7 @@
         }
         
         if(NivelAcesso.getCodigo(uu.getNivelAcesso()) == NivelAcesso.getCodigo(NivelAcesso.ESCANEADOR)){
-            linkInicio = "Escaniador?comando=Inicio";
+            linkInicio = "Escaneador?comando=Inicio";
         }
         
         if(NivelAcesso.getCodigo(uu.getNivelAcesso()) == NivelAcesso.getCodigo(NivelAcesso.NUTRICIONISTA)){

@@ -58,6 +58,7 @@
                                     <th>Valor</th>
                                     <th>Data</th>
                                     <th>Hora</th>
+                                    <th>Restaurante</th>
                                 </tr>
                             <%
                                 List<Transacao> transacoes = Visualizar.getTransacao();
@@ -71,6 +72,7 @@
                                                 <th><%= t.getValor() %></th>
                                                 <th><%= t.getData().toString() %></th>
                                                 <th><%= t.getHora().toString() %></th>
+                                                <td><%= t.getRestaurante().getNome() %></td>
                                             </tr>
                                             <%
                                         }

@@ -1,5 +1,7 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
   <head>
 
@@ -11,10 +13,10 @@
     <title>CRED RU - PERFIL </title>
 
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" type="text/css" href="../assets/credru/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/credru/css/bootstrap.min.css">
 
     <!-- Custom styles for this template -->
-    <link rel="stylesheet" type="text/css" href="../assets/credru/css/index.css">
+    <link rel="stylesheet" type="text/css" href="assets/credru/css/index.css">
 
   </head>
 
@@ -205,9 +207,9 @@
     </footer>
 
     <!-- Bootstrap core JavaScript -->
-    <script src="../assets/credru/jquery/jquery.min.js"></script>
+    <script src="assets/credru/jquery/jquery.min.js"></script>
 
-    <script src="../assets/credru/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/credru/js/bootstrap.bundle.min.js"></script>
 
   </body>
 

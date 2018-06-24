@@ -5,6 +5,8 @@
  */
 package br.com.credru.model;
 
+import java.util.Calendar;
+
 /**
  *
  * @author Soriano
@@ -16,10 +18,12 @@ public class LocalDate {
     private int ano;
 
     public LocalDate() {
-        this.dia = 0;
-        this.semana = 0;
-        this.mes = 0;
-        this.ano = 0;
+        Calendar cc = Calendar.getInstance();
+        
+        this.ano = cc.get(Calendar.YEAR);
+        this.dia = cc.get(Calendar.DAY_OF_MONTH);
+        this.mes = cc.get(Calendar.MONTH) + 1;
+        this.semana = cc.get(Calendar.WEEK_OF_MONTH);
     }
 
     public LocalDate(int dia, int semana, int mes, int ano) {

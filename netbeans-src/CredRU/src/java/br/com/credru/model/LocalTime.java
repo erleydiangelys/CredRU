@@ -5,6 +5,8 @@
  */
 package br.com.credru.model;
 
+import java.util.Calendar;
+
 /**
  *
  * @author Soriano
@@ -15,9 +17,12 @@ public class LocalTime {
     private int hora;
 
     public LocalTime() {
-        this.hora = 0;
-        this.minuto = 0;
-        this.hora = 0;
+        Calendar cc = Calendar.getInstance();
+        
+        this.hora = cc.get(Calendar.HOUR_OF_DAY);
+        this.minuto = cc.get(Calendar.MINUTE);
+        this.segundo = cc.get(Calendar.SECOND);
+       
     }
 
     public LocalTime(int segundo, int minuto, int hora) {

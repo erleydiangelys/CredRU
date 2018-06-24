@@ -6,7 +6,11 @@
 package br.com.credru.servlet;
 
 import br.com.credru.comando.Comando;
+import br.com.credru.comando.Login;
 import br.com.credru.comando.PaginaNaoEncontrada;
+import br.com.credru.comando.escaneador.Inicio;
+import br.com.credru.model.NivelAcesso;
+import br.com.credru.model.Usuario;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -24,8 +28,36 @@ public class Escaneador extends HttpServlet {
         Comando paginaRequisitada = new PaginaNaoEncontrada();
 
         try {
-
-            paginaRequisitada = (Comando) Class.forName("br.com.credru.comando.escaneador." + request.getParameter("comando")).newInstance();
+            
+            Usuario user = null;
+            user = (Usuario) request.getSession().getAttribute("usuario");
+            
+            if(user != null){
+                if(NivelAcesso.getCodigo(user.getNivelAcesso()) == NivelAcesso.getCodigo(NivelAcesso.ESCANEADOR)){
+                    paginaRequisitada = (Comando)Class.forName("br.com.credru.comando.escaneador."+request.getParameter("comando")).newInstance();
+                }
+                else{
+                    if(NivelAcesso.getCodigo(user.getNivelAcesso()) == NivelAcesso.getCodigo(NivelAcesso.COMPRADOR)){
+                        paginaRequisitada = (Comando)Class.forName("br.com.credru.comando.comprador.Inicio").newInstance();
+                    }
+                    
+                    if(NivelAcesso.getCodigo(user.getNivelAcesso()) == NivelAcesso.getCodigo(NivelAcesso.ADMINISTRADOR)){
+                        paginaRequisitada = (Comando)Class.forName("br.com.credru.comando.administrador.Inicio").newInstance();
+                    }
+                    
+                    if(NivelAcesso.getCodigo(user.getNivelAcesso()) == NivelAcesso.getCodigo(NivelAcesso.ADMINISTRADOR)){
+                        paginaRequisitada = (Comando)Class.forName("br.com.credru.comando.administrador.Inicio").newInstance();
+                    }
+                }
+                
+                if(paginaRequisitada instanceof Login){
+                    paginaRequisitada = new Inicio();
+                }
+            }
+            else{
+                paginaRequisitada = new Login();
+            }
+            
 
         } catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
             e.printStackTrace();

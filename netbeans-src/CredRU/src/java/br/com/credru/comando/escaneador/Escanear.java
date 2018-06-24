@@ -16,13 +16,21 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Soriano
  */
-public class Escaniar implements Comando{
+public class Escanear implements Comando{
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) {
         try {
-            RequestDispatcher rd = request.getRequestDispatcher("scaneador/escaniar.jsp");
-            rd.forward(request, response);
+            if(request.getParameter("comprador") != null && request.getParameter("restaurante")!=null){
+                //Comprador definido
+                RequestDispatcher rd = request.getRequestDispatcher("scaneador/escanear_debitar.jsp");
+                rd.forward(request, response);
+            }
+            else{
+                RequestDispatcher rd = request.getRequestDispatcher("scaneador/escanear_buscar.jsp");
+                rd.forward(request, response);
+            }
+            
 
         } catch (IOException | ServletException e) {
             e.printStackTrace();

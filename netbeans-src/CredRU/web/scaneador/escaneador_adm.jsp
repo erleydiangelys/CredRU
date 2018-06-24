@@ -10,7 +10,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>CRED RU - NUTRI ADM</title>
+        <title>CRED RU - ESCANEADOR </title>
 
         <!-- Bootstrap core CSS -->
         <link rel="stylesheet" type="text/css" href="assets/credru/css/bootstrap.min.css">
@@ -63,13 +63,12 @@
                                                 </a>
                                                 <div class="circle-tile-content dark-blue">
                                                     <div class="circle-tile-description text-faded">
-                                                        Cadastrar Alimento
+                                                        Perfil
                                                     </div>
                                                     <div class="circle-tile-number text-faded">
-
                                                         <span id="sparklineA"></span>
                                                     </div>
-                                                    <a href="Nutricionista?comando=CadastrarAlimento" class="circle-tile-footer">Fazer isso! <i class="fa fa-chevron-circle-right"></i></a>
+                                                    <a href="Escaneador?comando=Perfil" class="circle-tile-footer">Fazer isso! <i class="fa fa-chevron-circle-right"></i></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -83,12 +82,12 @@
                                                 </a>
                                                 <div class="circle-tile-content green">
                                                     <div class="circle-tile-description text-faded">
-                                                        Cadastrar Refeição
+                                                        Debitar
                                                     </div>
                                                     <div class="circle-tile-number text-faded">
 
                                                     </div>
-                                                    <a href="Nutricionista?comando=CadastrarRefeicao" class="circle-tile-footer">Fazer isso! <i class="fa fa-chevron-circle-right"></i></a>
+                                                    <a href="Escaneador?comando=Escanear" class="circle-tile-footer">Fazer isso! <i class="fa fa-chevron-circle-right"></i></a>
                                                 </div>
                                             </div>
                                         </div>

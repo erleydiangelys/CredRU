@@ -4,6 +4,8 @@
     Author     : Soriano
 --%>
 
+<%@page import="br.com.credru.controller.Alterar"%>
+<%@page import="br.com.credru.model.Restaurante"%>
 <%@page import="br.com.credru.controller.Cadastrar"%>
 <%@page import="br.com.credru.model.TipoTransacao"%>
 <%@page import="br.com.credru.model.LocalDate"%>
@@ -39,7 +41,8 @@
 
         <jsp:include page="../include/header.jsp" />
         <%
-            if (request.getParameter("userComprador") != null) {
+            if (request.getParameter("userComprador") != null && request.getParameter("restaurante")!=null) {
+                Restaurante rest = Visualizar.getRestaurante(request.getParameter("restaurante"));
                 Usuario u = Visualizar.getUsuario(request.getParameter("userComprador"));
                 request.removeAttribute("userComprador");
                 float total_a_pagar_1 = u.getPerfil().getValor() * 5;
@@ -77,14 +80,26 @@
                                     }
 
                                     Transacao tr = new Transacao();
-
+                                    tr.setRestaurante(rest);
                                     tr.setQtdCreditos(qtdCreditos);
                                     tr.setTipo(TipoTransacao.COMPRA);
                                     tr.setUser(u);
-
                                     tr.setValor(valorPargar);
+                                    
 
                                     if (Cadastrar.cadastrarTransacao(tr)) {
+                                        
+                                        Usuario temp = new Usuario();
+                                        temp.setAtivo(u.isAtivo());
+                                        temp.setCredito(u.getCredito()+qtdCreditos);
+                                        temp.setNivelAcesso(u.getNivelAcesso());
+                                        temp.setNome(u.getNome());
+                                        temp.setPerfil(u.getPerfil());
+                                        temp.setSenha(u.getSenha());
+                                        temp.setTransacoes(u.getTransacoes());
+                                        temp.setUserName(u.getUserName());
+                                        
+                                        Alterar.alterarUsuario(u, temp);
 
                             %>
 
@@ -115,7 +130,7 @@
                                     </header>
 
                                     <article class="card-body">
-                                        <form action="Administrador?comando=VenderCredito&userComprador=<%= u.getUserName()%>" method="post">
+                                        <form action="Administrador?comando=VenderCredito&userComprador=<%= u.getUserName()%>&restaurante=<%=rest.getNome()%>" method="post">
 
                                             <!-- função de vender -->
                                             <center>

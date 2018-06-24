@@ -9,7 +9,7 @@
 
 <%
     boolean senhaCorrespondem = true;
-    boolean codastroOk = true;
+    int codastroOk = 3;
     
     List<Perfil> perfis = Visualizar.getPerfil();
     
@@ -63,7 +63,13 @@
             }
             
             u.setPerfil(perfilEscolhido);
-            codastroOk = Cadastrar.cadastarUsuario(u);
+            if(Cadastrar.cadastarUsuario(u)){
+                codastroOk = 1;
+            }
+            else{
+                codastroOk = 2;
+            }
+            
         }
     }
 %>
@@ -96,18 +102,29 @@
             <br><br>
 
             <div class="container">
-                <%if(!codastroOk){%>
-                <p>Erro ao cadastrar!</p>
-                <%}%>
+                
                 <hr>
                 
                 <div class="row justify-content-center">
                     <div class="col-md-8">
                         <div class="card">
                             <header class="card-header">
-
                                 <center><h4 class="card-title mt-2">Cadastrar Novo Usuario</h4></center>
                             </header>
+                            
+                            
+                            <%if(codastroOk == 2){%>
+                            <div class="alert alert-danger">
+                                <strong>Erro ao Cadastrar!</strong>Um usuário com mesmo username já cadastrado.
+                            </div>
+                            <%}
+                            
+                            if(codastroOk == 1){%>
+                            <div class="alert alert-success">
+                                <strong>Usuário cadastrado com sucesso!</strong>
+                            </div>
+                            <%}%>
+                            
                             <article class="card-body">
                                 <form method="post" action="Administrador?comando=CadastrarUsuario">
                                     <div class="form-row">
