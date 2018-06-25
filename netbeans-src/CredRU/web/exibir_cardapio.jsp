@@ -141,6 +141,7 @@
 
                 linkAmanha += "/" + dataAmanha.getAno();
             }
+            
 
         %>
 
@@ -148,13 +149,10 @@
             if(restaurantes.size() > 0){
                 //Pegando restaurante requisitado
                 if(request.getParameter("restaurante") != null){
-                    for(int i = 0; i < restaurantes.size(); i++){
-                        
-                        if(restaurantes.get(i).getNome() == request.getParameter("restaurante")){
-                            restVisualizar = Visualizar.getRestaurante(restaurantes.get(i).getNome());
-                            break;
-                        }
-                    }
+                    
+                    restVisualizar = Visualizar.getRestaurante(request.getParameter("restaurante"));
+                    linkAmanha += "&restaurante=" + restVisualizar.getNome();
+                    linkOntem += "&restaurante=" + restVisualizar.getNome();
                 }
                 else{
                     //Peguando o primeiro restaurante cadastrado
@@ -164,7 +162,21 @@
                 
                 if(restVisualizar != null){
                 %>
-        
+                
+                <form method="POST" action="Visitante?comando=Cardapio">
+                    <label>Escolha uma Restaurante</label>
+                    <select name="restaurante">
+                        <%
+                            for(Restaurante rrr : restaurantes){
+                                %>
+                                <option value="<%= rrr.getNome()%>" <% if(rrr.getNome().equals(restVisualizar.getNome())){ %> selected="" <% }%> ><%= rrr.getNome()%></option>
+                                <%
+                            }
+                        %>
+                    </select>
+                    <input type="submit" value="Escolher">
+                </form>
+                
                 <h2>Restaurante Universitário de <%= restVisualizar.getNome()%></h2>
                 <a href="Visitante?comando=Cardapio&data=<%= linkOntem%>">Ontem: <%= dataOntem.toString()%></a>
                 Hoje: <%= dataAtual.toString()%>

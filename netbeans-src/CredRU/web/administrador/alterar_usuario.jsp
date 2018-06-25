@@ -11,7 +11,7 @@
     //COM ERRO APOS A ALTERAÇÃO DO USUARIO
     
     boolean senhaCorrespondem = true;
-    boolean codastroOk = true;
+    int codastroOk = 3;
     Usuario u = null;
     
     List<Perfil> perfis = Visualizar.getPerfil();
@@ -68,12 +68,19 @@
                 }
 
                 uu.setPerfil(perfilEscolhido);
-                codastroOk = Alterar.alterarUsuario(u, uu);
+                if(Alterar.alterarUsuario(u, uu)){
+                    codastroOk = 1;
+                }
+                else{
+                    codastroOk = 2;
+                }
+                
             }
         }
     }
-    else{
-        
+
+    if(codastroOk == 1){
+        u = null;
     }
 %>
 
@@ -106,9 +113,7 @@
             <br><br>
 
             <div class="container">
-                <%if(!codastroOk){%>
-                <p>Erro ao cadastrar!</p>
-                <%}%>
+                
                 <hr>
                 
                 <div class="row justify-content-center">
@@ -118,12 +123,23 @@
 
                                 <center><h4 class="card-title mt-2">Alterar Usuario</h4></center>
                             </header>
+                            
+                            <%if(codastroOk == 2){%>
+                            <div class="alert alert-danger">
+                                <strong>Erro ao alterar as informações do usuário <%= u.getNome() %>!</strong>
+                            </div>
+                            <%}if(codastroOk == 1){%>
+                            <div class="alert alert-success">
+                                <strong>Alteração realizado com sucesso!</strong>
+                            </div>
+                            <%}%>
+                
                             <article class="card-body">
-                                <form method="post" action="Administrador?comando=AlterarUsuario">
+                                <form method="post" action="Administrador?comando=AlterarUsuario<% if(u!=null){ %>&nomeUsuario=<%= u.getUserName() %><%}%>">
                                     <div class="form-row">
                                         <div class="col form-group">
                                             <label>Nome Completo</label>   
-                                            <input <%if(request.getParameter("nomeCompleto") == null && u == null){%>disabled=""<%}else{%>value="<%= u.getNome() %>" <%}%> name="nomeCompleto" type="text" class="form-control" required="">
+                                            <input <%if(u == null){%>disabled=""<%}else{%>value="<%= u.getNome() %>" <%}%> name="nomeCompleto" type="text" class="form-control" required="">
                                         </div> <!-- form-group end.// -->
                                         <div class="col form-group">
                                             <label>Nome de Usuario</label>
@@ -135,7 +151,7 @@
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
                                             <label>Status</label>
-                                            <select <%if(request.getParameter("status") == null && u == null){%>disabled=""<%}%> name="status" id="inputState" class="form-control">
+                                            <select <%if(u == null){%>disabled=""<%}%> name="status" id="inputState" class="form-control">
                                                 <option <%if(u != null){ if(u.isAtivo()){%> selected="" <%}}%> value="1">Ativo</option>
                                                 <option <%if(u != null){ if(!u.isAtivo()){%> selected="" <%}}%> value="0">Inativo</option>
                                             </select>
@@ -144,7 +160,7 @@
 
                                         <div class="form-group col-md-6">
                                             <label>Nivel de Acesso</label>
-                                            <select <%if(request.getParameter("nivelAcesso") == null && u == null){%>disabled=""<%}%> name="nivelAcesso" id="inputState" class="form-control">
+                                            <select <%if(u == null){%>disabled=""<%}%> name="nivelAcesso" id="inputState" class="form-control">
                                                 <option <%if(u != null){ if( NivelAcesso.getCodigo(u.getNivelAcesso()) == NivelAcesso.getCodigo(NivelAcesso.ADMINISTRADOR) ){%> selected="" <%}}%> value="adm">Administrador</option>
                                                 <option <%if(u != null){ if( NivelAcesso.getCodigo(u.getNivelAcesso()) == NivelAcesso.getCodigo(NivelAcesso.NUTRICIONISTA) ){%> selected="" <%}}%> value="nutri">Nutricionista</option>
                                                 <option <%if(u != null){ if( NivelAcesso.getCodigo(u.getNivelAcesso()) == NivelAcesso.getCodigo(NivelAcesso.COMPRADOR) ){%> selected="" <%}}%> value="comprador">Comprador</option>
@@ -156,7 +172,7 @@
                                     <div class="form-row">
                                         <div class="col form-group">
                                             <label>Perfil</label>
-                                            <select <%if(request.getParameter("perfil") == null && u == null){%>disabled=""<%}%> name="perfil" id="inputState" class="form-control">
+                                            <select <%if(u == null){%>disabled=""<%}%> name="perfil" id="inputState" class="form-control">
                                                 <%
                                                     for (Perfil pp : perfis) {
                                                 %>
@@ -178,16 +194,16 @@
 
                                     <div class="form-group">
                                         <label>Crie uma Senha</label>
-                                        <input <%if(request.getParameter("senha") == null && u == null){%>disabled=""<%}%> name="senha" class="form-control" type="password" required="">
+                                        <input <%if(u == null){%>disabled=""<%}%> name="senha" class="form-control" type="password" required="">
                                     </div> <!-- form-group end.// -->  
 
                                     <div class="form-group">
                                         <label>Confirme sua Senha</label>
-                                        <input <%if(request.getParameter("senhaConfir") == null && u == null){%>disabled=""<%}%> name="senhaConfir" class="form-control" type="password" required="">
+                                        <input <%if(u == null){%>disabled=""<%}%> name="senhaConfir" class="form-control" type="password" required="">
                                     </div> <!-- form-group end.// -->  
 
                                     <div class="form-group">
-                                        <button type="submit" class="btn btn-primary btn-block"><%if(request.getParameter("nomeUsuario") == null && u == null){%>Pesquisar<%}else{%>Atualizar<%}%></button>
+                                        <button type="submit" class="btn btn-primary btn-block"><%if( u == null){%>Pesquisar<%}else{%>Atualizar<%}%></button>
                                     </div> <!-- form-group// -->      
 
                                 </form>
