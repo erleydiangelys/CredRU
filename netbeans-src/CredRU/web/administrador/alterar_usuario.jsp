@@ -42,6 +42,8 @@
 
             if(senhaCorrespondem){
                 Usuario uu = new Usuario();
+                uu.setCredito(u.getCredito());
+                uu.setTransacoes(u.getTransacoes());
 
                 if(status==1){
                     uu.setAtivo(true);

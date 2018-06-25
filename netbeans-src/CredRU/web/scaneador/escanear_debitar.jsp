@@ -96,71 +96,94 @@
                                                         <%
                                                     }
                                                     else{
-                                                        Transacao tr = new Transacao();
-                                                        tr.setRestaurante(rest);
-                                                        tr.setQtdCreditos(1);
-                                                        tr.setTipo(TipoTransacao.DEBITO);
-                                                        tr.setUser(user);
-                                                        tr.setValor(0);
+                                                        if(user.isAtivo()){
+                                                            Transacao tr = new Transacao();
+                                                            tr.setRestaurante(rest);
+                                                            tr.setQtdCreditos(1);
+                                                            tr.setTipo(TipoTransacao.DEBITO);
+                                                            tr.setUser(user);
+                                                            tr.setValor(0);
 
-                                                        if(Cadastrar.cadastrarTransacao(tr)){
+                                                            if(Cadastrar.cadastrarTransacao(tr)){
 
-                                                           %>
-                                                            <div class="alert alert-success">
-                                                                <strong>Transação criada!</strong> Acesso liberado.
-                                                                <a href="Escaneador?comando=Escanear">Voltar</a>
-                                                            </div>
-                                                            <%
+                                                               %>
+                                                                <div class="alert alert-success">
+                                                                    <strong>Transação criada!</strong> Acesso liberado.
+                                                                    <a href="Escaneador?comando=Escanear">Voltar</a>
+                                                                </div>
+                                                                <%
+                                                            }
+                                                            else{
+                                                                %>
+                                                                <div class="alert alert-danger">
+                                                                    <strong>Erro ao criar transação!</strong> Acesso negado.
+                                                                    <a href="Escaneador?comando=Escanear">Voltar</a>
+                                                                </div>
+                                                                <%
+                                                            }
                                                         }
                                                         else{
                                                             %>
                                                             <div class="alert alert-danger">
-                                                                <strong>Erro ao criar transação!</strong> Acesso negado.
+                                                                <strong>Usuário inativo</strong> Acesso negado.
                                                                 <a href="Escaneador?comando=Escanear">Voltar</a>
                                                             </div>
                                                             <%
                                                         }
+                                                        
                                                     }
                                                         
                                                 }
                                                 else{
                                                     int qtdCreditosDoUsuario = user.getCredito();
                                                     if(qtdCreditosDoUsuario > 0){
-                                                        Transacao tr = new Transacao();
-                                                        tr.setRestaurante(rest);
-                                                        tr.setQtdCreditos(1);
-                                                        tr.setTipo(TipoTransacao.DEBITO);
-                                                        tr.setUser(user);
-                                                        tr.setValor(user.getPerfil().getValor());
+                                                        
+                                                        if(user.isAtivo()){
+                                                            Transacao tr = new Transacao();
+                                                            tr.setRestaurante(rest);
+                                                            tr.setQtdCreditos(1);
+                                                            tr.setTipo(TipoTransacao.DEBITO);
+                                                            tr.setUser(user);
+                                                            tr.setValor(user.getPerfil().getValor());
 
-                                                        if(Cadastrar.cadastrarTransacao(tr)){
-                                                            Usuario temp = new Usuario();
-                                                            temp.setAtivo(user.isAtivo());
-                                                            temp.setCredito(user.getCredito()-1);
-                                                            temp.setNivelAcesso(user.getNivelAcesso());
-                                                            temp.setNome(user.getNome());
-                                                            temp.setPerfil(user.getPerfil());
-                                                            temp.setSenha(user.getSenha());
-                                                            temp.setTransacoes(user.getTransacoes());
-                                                            temp.setUserName(user.getUserName());
+                                                            if(Cadastrar.cadastrarTransacao(tr)){
+                                                                Usuario temp = new Usuario();
+                                                                temp.setAtivo(user.isAtivo());
+                                                                temp.setCredito(user.getCredito()-1);
+                                                                temp.setNivelAcesso(user.getNivelAcesso());
+                                                                temp.setNome(user.getNome());
+                                                                temp.setPerfil(user.getPerfil());
+                                                                temp.setSenha(user.getSenha());
+                                                                temp.setTransacoes(user.getTransacoes());
+                                                                temp.setUserName(user.getUserName());
 
-                                                            Alterar.alterarUsuario(user, temp);
+                                                                Alterar.alterarUsuario(user, temp);
 
-                                                           %>
-                                                            <div class="alert alert-success">
-                                                                <strong>Transação criada!</strong> Acesso liberado.
-                                                                <a href="Escaneador?comando=Escanear">Voltar</a>
-                                                            </div>
-                                                            <%
+                                                               %>
+                                                                <div class="alert alert-success">
+                                                                    <strong>Transação criada!</strong> Acesso liberado.
+                                                                    <a href="Escaneador?comando=Escanear">Voltar</a>
+                                                                </div>
+                                                                <%
+                                                            }
+                                                            else{
+                                                                %>
+                                                                <div class="alert alert-danger">
+                                                                    <strong>Erro ao criar transação!</strong> Acesso negado.
+                                                                    <a href="Escaneador?comando=Escanear">Voltar</a>
+                                                                </div>
+                                                                <%
+                                                            }
                                                         }
                                                         else{
                                                             %>
                                                             <div class="alert alert-danger">
-                                                                <strong>Erro ao criar transação!</strong> Acesso negado.
+                                                                <strong>Usuário inativo</strong> Acesso negado.
                                                                 <a href="Escaneador?comando=Escanear">Voltar</a>
                                                             </div>
                                                             <%
                                                         }
+                                                        
                                                     }
                                                     else{
                                                         %>
