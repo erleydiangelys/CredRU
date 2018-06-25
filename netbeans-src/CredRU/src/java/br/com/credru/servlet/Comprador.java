@@ -6,7 +6,11 @@
 package br.com.credru.servlet;
 
 import br.com.credru.comando.Comando;
+import br.com.credru.comando.Login;
 import br.com.credru.comando.PaginaNaoEncontrada;
+import br.com.credru.comando.comprador.Inicio;
+import br.com.credru.model.NivelAcesso;
+import br.com.credru.model.Usuario;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -21,17 +25,44 @@ public class Comprador extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Comando paginaRequisitada = new PaginaNaoEncontrada();
+        Comando comando = new PaginaNaoEncontrada();
 
         try {
-
-            paginaRequisitada = (Comando) Class.forName("br.com.credru.comando.comprador." + request.getParameter("comando")).newInstance();
+            Usuario user = null;
+            user = (Usuario) request.getSession().getAttribute("usuario");
+            
+            if(user != null){
+                if(NivelAcesso.getCodigo(user.getNivelAcesso()) == NivelAcesso.getCodigo(NivelAcesso.COMPRADOR)){
+                    comando = (Comando)Class.forName("br.com.credru.comando.comprador."+request.getParameter("comando")).newInstance();
+                }
+                else{
+                    if(NivelAcesso.getCodigo(user.getNivelAcesso()) == NivelAcesso.getCodigo(NivelAcesso.ADMINISTRADOR)){
+                        comando = (Comando)Class.forName("br.com.credru.comando.administrador.Inicio").newInstance();
+                    }
+                    
+                    if(NivelAcesso.getCodigo(user.getNivelAcesso()) == NivelAcesso.getCodigo(NivelAcesso.ESCANEADOR)){
+                        comando = (Comando)Class.forName("br.com.credru.comando.escaneador.Inicio").newInstance();
+                    }
+                    
+                    if(NivelAcesso.getCodigo(user.getNivelAcesso()) == NivelAcesso.getCodigo(NivelAcesso.NUTRICIONISTA)){
+                        comando = (Comando)Class.forName("br.com.credru.comando.nutricionista.Inicio").newInstance();
+                    }
+                }
+                
+                if(comando instanceof Login){
+                    comando = new Inicio();
+                }
+            }
+            else{
+                comando = new Login();
+            }
+            
 
         } catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
             e.printStackTrace();
         } finally {
 
-            paginaRequisitada.execute(request, response);
+            comando.execute(request, response);
 
         }
 

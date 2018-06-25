@@ -36,41 +36,6 @@
     <body>
 
         <jsp:include page="include/header.jsp" />
-
-        <%
-            /*
-            //Só pra teste
-            Restaurante temp = new Restaurante();
-            temp.setNome("Russas");
-            
-            Map<String, List<Refeicao>> mm = new HashMap<>();
-            
-            List<Refeicao> refei = new ArrayList<>();
-            List<Alimento> alim = new ArrayList<>();
-            
-            Alimento aa = new Alimento();
-            aa.setNome("Laranja");
-            aa.setCategoria(Categoria.SUCO);
-            alim.add(aa);
-            
-            Calendar cadas = Calendar.getInstance();
-            LocalDate dd = new LocalDate(cadas.get(Calendar.DAY_OF_MONTH), cadas.get(Calendar.WEEK_OF_MONTH), cadas.get(Calendar.MONTH), cadas.get(Calendar.YEAR));
-            
-            Refeicao rr = new Refeicao();
-            Horario hhh = new Horario();
-            hhh.setDescricao("Almoço");
-            
-            rr.setHorario(hhh);
-            rr.setAlimentos(alim);
-            rr.setData(dd);
-            refei.add(rr);
-            
-            
-            mm.put(dd.toString(), refei);
-            temp.setRefeicoes(mm);
-            Cadastrar.cadastrarRestaurante(temp);
-            */
-        %>
         
         
         <%
@@ -138,10 +103,10 @@
                 Calendar cc = Calendar.getInstance();
                 cc.set(ano, mes, dia); //Setando a data passada pelo usuário
 
-                dataAtual = new LocalDate(cc.get(Calendar.DAY_OF_MONTH), cc.get(Calendar.WEEK_OF_MONTH), cc.get(Calendar.MONTH)+1, cc.get(Calendar.YEAR));
+                dataAtual = new LocalDate(cc.get(Calendar.DAY_OF_MONTH), cc.get(Calendar.WEEK_OF_MONTH), cc.get(Calendar.MONTH), cc.get(Calendar.YEAR));
 
                 cc.add(Calendar.DAY_OF_MONTH, -1);
-                dataOntem = new LocalDate(cc.get(Calendar.DAY_OF_MONTH), cc.get(Calendar.WEEK_OF_MONTH), cc.get(Calendar.MONTH)+1, cc.get(Calendar.YEAR));
+                dataOntem = new LocalDate(cc.get(Calendar.DAY_OF_MONTH), cc.get(Calendar.WEEK_OF_MONTH), cc.get(Calendar.MONTH), cc.get(Calendar.YEAR));
 
                 //Montando o LINK de Ontem
                 if (dataOntem.getDia() < 10) {
@@ -159,7 +124,7 @@
                 linkOntem += "/" + dataOntem.getAno();
 
                 cc.add(Calendar.DAY_OF_MONTH, +2);
-                dataAmanha = new LocalDate(cc.get(Calendar.DAY_OF_MONTH), cc.get(Calendar.WEEK_OF_MONTH), cc.get(Calendar.MONTH)+1, cc.get(Calendar.YEAR));
+                dataAmanha = new LocalDate(cc.get(Calendar.DAY_OF_MONTH), cc.get(Calendar.WEEK_OF_MONTH), cc.get(Calendar.MONTH), cc.get(Calendar.YEAR));
 
                 //Montando o LINK de Amanha
                 if (dataAmanha.getDia() < 10) {

@@ -64,7 +64,8 @@
 
 
                             <%                                        
-                                
+                                if(u.getPerfil().getValor() > 0){
+                                    
                                 float valorPargar = 0;
                                 int qtdCreditos = 0;
                                 if (request.getParameter("op1") != null || request.getParameter("op2") != null) {
@@ -160,6 +161,16 @@
 
                 <%
                     }
+                }
+                else{
+                    %>
+                    <div class="alert alert-dark">
+                        <strong>Compra negada!</strong> O usuário(a) em questão não paga pelos créditos.
+                    </div>
+                    <a href="Administrador?comando=VenderCredito"><p>Efetuar uma nova venda!</p></a>
+                    </div></div></div></div></div>
+                    <%
+                }
                 %>
 
 

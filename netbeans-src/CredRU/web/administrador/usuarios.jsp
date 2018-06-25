@@ -46,7 +46,7 @@
 
                 <div class="col-lg-12 mb-3">
                     <div class="card h-100">
-                        <h4 class="card-header">Vendas</h4>
+                        <h4 class="card-header">Usuários</h4>
                         <div class="card-body">
 
                             <!-- menu operações-->

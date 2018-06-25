@@ -27,7 +27,6 @@
 
         <jsp:include page="../include/header.jsp" />
 
-        Usuário: <%= u.getNome() %>
         <!-- Page Content -->
         <div class="container">
             <br><br>
@@ -49,6 +48,25 @@
                                     </div> 
                                     <br><br>                                         
                                     <div class="row" >
+                                        
+                                        <div class="col-lg-2 col-sm-6">
+                                            <div class="circle-tile">
+                                                <a href="#">
+                                                    <div class="circle-tile-heading dark-blue">
+                                                        <i class="fa fa-graduation-cap fa-fw fa-3x"></i>
+                                                    </div>
+                                                </a>
+                                                <div class="circle-tile-content dark-blue">
+                                                    <div class="circle-tile-description text-faded">
+                                                        Perfil
+                                                    </div>
+                                                    <div class="circle-tile-number text-faded">
+                                                        <span id="sparklineA"></span>
+                                                    </div>
+                                                    <a href="Administrador?comando=Perfil" class="circle-tile-footer">Fazer isso! <i class="fa fa-chevron-circle-right"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
 
                                         <div class="col-lg-2 col-sm-6">
                                             <div class="circle-tile">

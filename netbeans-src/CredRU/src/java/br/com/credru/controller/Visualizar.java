@@ -87,4 +87,7 @@ public class Visualizar {
     public static List<Transacao> getTransacao(){
         return tradao.getTransacao();
     }
+    public static List<Transacao> getTransacao(Usuario user){
+        return tradao.getTransacao(user);
+    }
 }
